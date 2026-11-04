@@ -135,6 +135,7 @@ setting TV mode
     key docked
     int 0 2
     default 1
+    default-if __ANDROID__ 0
     startup
     set options_tv_mode_set
     words Off|On|Auto
@@ -268,6 +269,7 @@ setting Memory fit
     int 0 1
     default 0
     default-if SNX_IOS 1
+    default-if __ANDROID__ 1
     startup
     words Off|On
     help On = the game sees no more of Memory (GB) than the device can still give it, measured as it starts, less what
@@ -320,6 +322,7 @@ setting Async pipelines
     key async_pipelines
     int 0 1
     default 0
+    default-if __ANDROID__ 1
     words Off|On
     help 1 = what a new shader draws is skipped while its pipeline is made, instead of the game waiting for it: no
     help pause where a new shader first appears, and the things it draws show up a few frames late
@@ -916,6 +919,7 @@ setting Descriptor buffers
     key vk_descriptors
     int 0 1
     default 0
+    default-if __ANDROID__ 1
     startup
     words Sets|Buffers
     help 1 = graphics descriptors use addressable Vulkan buffers when supported, with no descriptor-set allocations.

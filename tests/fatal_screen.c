@@ -27,7 +27,7 @@ int main(void) {
     int n;
     assert(strstr(fatal_hint("vulkan: the GPU device was lost (driver reset or crash)"), "driver reset it"));
     assert(strstr(fatal_hint("Unsupported instruction 0x1ee0f800 at 0x80021c4"), "does not translate"));
-    assert(strstr(fatal_hint("Vulkan could not start (see the log). ScarletNX needs a GPU and driver with Vulkan 1.3."),
+    assert(strstr(fatal_hint("Vulkan could not start (see the log). Adrena needs a GPU and driver with Vulkan 1.3."),
                   "Vulkan 1.3"));
     assert(strstr(fatal_hint("kernel: out of memory mapping 0x10000000 bytes"), "ran out of memory"));
     assert(!fatal_hint("svc 0x7f is not implemented"));

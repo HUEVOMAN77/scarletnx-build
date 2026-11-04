@@ -14,8 +14,8 @@ msgstr ""
 msgid "Settings"
 msgstr "Ajustes"
 
-msgid "SCARLETNX  /  SETTINGS"
-msgstr "SCARLETNX  /  CONFIGURATIONS OF EVERY GROUP AND ITS SETTINGS"
+msgid "ADRENA  /  SETTINGS"
+msgstr "ADRENA  /  CONFIGURATIONS OF EVERY GROUP AND ITS SETTINGS"
 
 msgid "Language"
 msgstr "Língua"

@@ -1422,8 +1422,8 @@ msgid "Aborting..."
 msgstr "正在中止..."
 
 #: src/gui/main.c
-msgid "Exit ScarletNX?"
-msgstr "退出 ScarletNX？"
+msgid "Exit Adrena?"
+msgstr "退出 Adrena？"
 
 #: src/gui/main.c
 #, c-format
@@ -1444,12 +1444,12 @@ msgid "Outside the app, Android checks every file access: games may run slower."
 msgstr "在应用之外，Android 会检查每次文件访问：游戏可能运行得更慢。"
 
 #: src/gui/main.c
-msgid "A compile goes: exiting ScarletNX stops it, its work lost."
-msgstr "编译正在进行：退出 ScarletNX 会停止它，其工作将丢失。"
+msgid "A compile goes: exiting Adrena stops it, its work lost."
+msgstr "编译正在进行：退出 Adrena 会停止它，其工作将丢失。"
 
 #: src/gui/main.c
-msgid "A game runs: exiting ScarletNX ends it."
-msgstr "游戏正在运行：退出 ScarletNX 会结束它。"
+msgid "A game runs: exiting Adrena ends it."
+msgstr "游戏正在运行：退出 Adrena 会结束它。"
 
 #: src/gui/main.c
 msgid "Abort the compile? Its work is lost."
@@ -1464,8 +1464,8 @@ msgid "Left by older versions"
 msgstr "旧版本留下的文件"
 
 #: src/gui/main.c
-msgid "While the app is in testing, Android's Settings > Apps > ScarletNX > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
-msgstr "应用测试期间，Android 的「设置 > 应用 > ScarletNX > 存储 > 清除存储」会删除上面这些菜单文件，以及应用中的所有游戏、存档和密钥"
+msgid "While the app is in testing, Android's Settings > Apps > Adrena > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
+msgstr "应用测试期间，Android 的「设置 > 应用 > Adrena > 存储 > 清除存储」会删除上面这些菜单文件，以及应用中的所有游戏、存档和密钥"
 
 #: src/gui/main.c
 msgid "counting"
@@ -1615,8 +1615,8 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot find %s beside ScarletNX or on PATH."
-msgstr "在 ScarletNX 旁边或 PATH 中找不到 %s。"
+msgid "Cannot find %s beside Adrena or on PATH."
+msgstr "在 Adrena 旁边或 PATH 中找不到 %s。"
 
 #: src/gui/main.c
 #, c-format
@@ -1987,46 +1987,46 @@ msgid "Not deleted: %s could not be removed"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS"
-msgstr "SCARLETNX  /  设置"
+msgid "ADRENA  /  SETTINGS"
+msgstr "ADRENA  /  设置"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  COMPILE"
-msgstr "SCARLETNX  /  编译"
+msgid "ADRENA  /  COMPILE"
+msgstr "ADRENA  /  编译"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETUP"
-msgstr "SCARLETNX  /  初始设置"
-
-#: src/gui/main.c
-#, c-format
-msgid "SCARLETNX  /  THEME EDITOR  /  %s"
-msgstr "SCARLETNX  /  主题编辑器  /  %s"
+msgid "ADRENA  /  SETUP"
+msgstr "ADRENA  /  初始设置"
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
-msgstr "SCARLETNX  /  设置  /  %s  /  玩家 %d  /  %s"
+msgid "ADRENA  /  THEME EDITOR  /  %s"
+msgstr "ADRENA  /  主题编辑器  /  %s"
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  SETTINGS  /  %s  /  %s"
-msgstr "SCARLETNX  /  设置  /  %s  /  %s"
+msgid "ADRENA  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
+msgstr "ADRENA  /  设置  /  %s  /  玩家 %d  /  %s"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  FOLDERS"
-msgstr "SCARLETNX  /  设置  /  文件夹"
+#, c-format
+msgid "ADRENA  /  SETTINGS  /  %s  /  %s"
+msgstr "ADRENA  /  设置  /  %s  /  %s"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  GPU DRIVERS"
+msgid "ADRENA  /  SETTINGS  /  FOLDERS"
+msgstr "ADRENA  /  设置  /  文件夹"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  FREEDRENO SETTINGS"
+msgid "ADRENA  /  SETTINGS  /  FREEDRENO SETTINGS"
 msgstr ""
 
 #: src/gui/main.c
@@ -2121,8 +2121,8 @@ msgid "Installs prod.keys, which games are extracted with"
 msgstr "安装用于提取游戏的 prod.keys"
 
 #: src/gui/main.c
-msgid "Closes ScarletNX"
-msgstr "关闭 ScarletNX"
+msgid "Closes Adrena"
+msgstr "关闭 Adrena"
 
 #: src/gui/main.c
 msgid "Last output:"
@@ -2606,7 +2606,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Remove %s from the Dumps Library? Its games stay in the folder, which ScarletNX no longer makes as it starts."
+msgid "Remove %s from the Dumps Library? Its games stay in the folder, which Adrena no longer makes as it starts."
 msgstr ""
 
 #: src/gui/main.c
@@ -3811,8 +3811,8 @@ msgid "Library folders"
 msgstr "游戏库文件夹"
 
 #: src/gui/main.c
-msgid "Closing ScarletNX"
-msgstr "正在关闭 ScarletNX"
+msgid "Closing Adrena"
+msgstr "正在关闭 Adrena"
 
 #: src/gui/main.c
 msgid "Kept for the next start:"
@@ -4247,8 +4247,8 @@ msgstr "此文件不是 prod.keys 或 aes_keys.txt。请选取密钥文件（%s�
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot read this file by its path. Check that ScarletNX may access the device's files in Android's settings, then pick it from the device's storage (%s)."
-msgstr "无法通过路径读取此文件。请在 Android 设置中确认 ScarletNX 可以访问设备上的文件，然后从设备存储中选取它（%s）。"
+msgid "Cannot read this file by its path. Check that Adrena may access the device's files in Android's settings, then pick it from the device's storage (%s)."
+msgstr "无法通过路径读取此文件。请在 Android 设置中确认 Adrena 可以访问设备上的文件，然后从设备存储中选取它（%s）。"
 
 #: src/gui/main.c
 #, c-format
@@ -4267,7 +4267,7 @@ msgstr "请从这台电脑的存储中选取文件（%s）。"
 
 #: src/gui/main.c
 #, c-format
-msgid "%s opens with %s: cannot find %s beside ScarletNX or on PATH."
+msgid "%s opens with %s: cannot find %s beside Adrena or on PATH."
 msgstr ""
 
 #: src/gui/main.c
@@ -4651,8 +4651,8 @@ msgstr "请拖入一个本地文件夹"
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot find the folder ScarletNX runs from: %s"
-msgstr "找不到 ScarletNX 运行所在的文件夹：%s"
+msgid "Cannot find the folder Adrena runs from: %s"
+msgstr "找不到 Adrena 运行所在的文件夹：%s"
 
 #: src/gui/main.c
 #, c-format

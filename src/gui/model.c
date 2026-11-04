@@ -42,6 +42,7 @@ GuiMenuDo gui_menu_key(GuiMenu* menu, GuiKey key) {
                 case GUI_SETTINGS: return GUI_MENU_SETTINGS;
                 case GUI_LOG: return GUI_MENU_LOG;
                 case GUI_FOLDERS: return GUI_MENU_FOLDERS;
+                case GUI_GITHUB: return GUI_MENU_GITHUB;
                 case GUI_EXIT: menu->quit = true; break;
                 default: break;
             }

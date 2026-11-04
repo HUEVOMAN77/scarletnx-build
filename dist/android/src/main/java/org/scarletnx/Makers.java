@@ -19,7 +19,7 @@ final class Makers {
     private static final String TRANSSION = "Phone Master, Auto-start: on.";
     /** the maker's name in Build, the setting, then its screens: package, activity */
     private static final String[][] LIMITS = {
-        {"samsung", "Battery, Background usage limits: add ScarletNX to Never sleeping apps.",
+        {"samsung", "Battery, Background usage limits: add Adrena to Never sleeping apps.",
          "com.samsung.android.lool", "com.samsung.android.sm.battery.ui.BatteryActivity",
          "com.samsung.android.lool", "com.samsung.android.sm.ui.battery.BatteryActivity"},
         {"xiaomi", "Autostart on, and Battery saver: No restrictions."},
@@ -36,7 +36,7 @@ final class Makers {
         {"honor", HUAWEI,
          "com.hihonor.systemmanager", "com.hihonor.systemmanager.startupmgr.ui.StartupNormalAppListActivity",
          "com.huawei.systemmanager", "com.huawei.systemmanager.optimize.process.ProtectActivity"},
-        {"asus", "Auto-start: allow ScarletNX.",
+        {"asus", "Auto-start: allow Adrena.",
          "com.asus.mobilemanager", "com.asus.mobilemanager.autostart.AutoStartActivity",
          "com.asus.mobilemanager", "com.asus.mobilemanager.powersaver.PowerSaverSettings"},
         {"tecno", TRANSSION, "com.transsion.phonemaster", "com.cyin.himgr.autostart.AutoStartActivity"},

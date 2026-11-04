@@ -19,7 +19,7 @@
     <!-- back goes to SDL as a key (the menu's ESC), not to Android's predictive back. The menu is singleTop: its icon
          brings the task back with a game on top, where singleTask would clear the game away -->
     <application
-        android:label="ScarletNX"
+        android:label="Adrena"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/ScarletNX"
         android:hardwareAccelerated="true"

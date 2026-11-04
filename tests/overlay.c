@@ -315,7 +315,7 @@ static void keyboard_box(void) {
     overlay_keyboard_show(&k);
     assert(overlay_keyboard_shown());
     draw();
-    assert(shows("SCARLETNX  /  KEYBOARD") && shows("Your rival's name") && shows("Up to six letters") &&
+    assert(shows("ADRENA  /  KEYBOARD") && shows("Your rival's name") && shows("Up to six letters") &&
            shows("Pick a name"));
     assert(shows("Ann\xDD") && shows("3 of 6 characters, 4 at least.") && shows("Enter or A: Done. Esc or B: Cancel."));
     assert(shows("\xFE Done") && shows("\xFE Cancel") && quads_of(PANEL_RGBA) == 1); /* the line on its panel */
@@ -392,12 +392,12 @@ static void keyboard_box(void) {
     overlay_keyboard_show(&k);
     overlay_toggle();
     draw();
-    assert(shows("SCARLETNX  /  MENU") && !shows("SCARLETNX  /  KEYBOARD"));
+    assert(shows("ADRENA  /  MENU") && !shows("ADRENA  /  KEYBOARD"));
     overlay_controls(0, still, 1112);
     assert(overlay_controls(2, still, 1128) == OVERLAY_CLOSE && overlay_keyboard_shown());
     overlay_toggle();
     draw();
-    assert(shows("SCARLETNX  /  KEYBOARD") && shows("Bo\xDD"));
+    assert(shows("ADRENA  /  KEYBOARD") && shows("Bo\xDD"));
     /* the game takes its box away: another's ticket leaves it, its own hides it unanswered */
     overlay_keyboard_hide(99);
     assert(overlay_keyboard_shown());
@@ -465,7 +465,7 @@ int main(void) {
     assert(list.q[0].rgba >> 24 == 0xFFu);
     assert(text_at(C - 2, 3, ">") && text_at(C - 2, 4, ">")); /* a page under each */
     /* each item its marker, its icon in two cells and one, its name */
-    assert(text_at(1, 0, "SCARLETNX  /  MENU") && text_at(1, 3, "\xFE") && icon_at(3, 3, GUI_ICON_POINTER) &&
+    assert(text_at(1, 0, "ADRENA  /  MENU") && text_at(1, 3, "\xFE") && icon_at(3, 3, GUI_ICON_POINTER) &&
            text_at(6, 3, "On-screen controls") && icon_at(3, 4, GUI_ICON_GAMEPAD_2) && text_at(6, 4, "Controllers") &&
            icon_at(3, 5, GUI_ICON_SAVE) && text_at(6, 5, "Save states") && icon_at(3, 6, GUI_ICON_ACTIVITY) &&
            text_at(6, 6, "Stats") && icon_at(3, 7, GUI_ICON_LOG_OUT) && text_at(1, 7, "\xFE") && text_at(6, 7, "Exit"));
@@ -487,7 +487,7 @@ int main(void) {
     /* the controls' page: each setting shown with its value, changed and kept */
     assert(tap(0, 3) == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  CONTROLS") && text_at(1, 3, "\xFE Show controls"));
+    assert(text_at(1, 0, "ADRENA  /  CONTROLS") && text_at(1, 3, "\xFE Show controls"));
     assert(list.q[0].h == 16 * 32 && text_at(C - 2, 12, ">")); /* twelve items: the tallest; Buttons opens a page */
     /* named as the .ini's rows name them, in the launcher's order, the game's own actions among them */
     assert(text_at(1, 4, "\xFE Edit layout") && text_at(1, 5, "\xFE Snap to grid") &&
@@ -539,7 +539,7 @@ int main(void) {
     /* the buttons' page: one hidden and kept, All shows them again; it scrolls to its last item */
     assert(tap(9, 3) == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  BUTTONS") && text_at(1, 4, "\xFE L"));
+    assert(text_at(1, 0, "ADRENA  /  BUTTONS") && text_at(1, 4, "\xFE L"));
     log_[0] = 0;
     tap(1, 3);
     assert(!g_settings.control_shown[SNX_VPAD_L] && !strcmp(log_, "controls_l_shown=0;")); /* its place stays */
@@ -562,10 +562,10 @@ int main(void) {
     /* Back on it, and the key Back, go up a page each */
     assert(overlay_select() == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  CONTROLS"));
+    assert(text_at(1, 0, "ADRENA  /  CONTROLS"));
     assert(overlay_back() == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  MENU"));
+    assert(text_at(1, 0, "ADRENA  /  MENU"));
     /* a pad's buttons, as the game reads them: the D-pad and the left stick move, A selects, B goes back, the rest do
        nothing */
     {
@@ -574,10 +574,10 @@ int main(void) {
         assert(overlay_pad(1ull << 13) == OVERLAY_NONE && overlay_pad(1ull << 2) == OVERLAY_NONE); /* X */
         assert(overlay_pad(1ull << 0) == OVERLAY_NONE);                                            /* Controllers */
         draw();
-        assert(text_at(1, 0, "SCARLETNX  /  CONTROLLERS"));
+        assert(text_at(1, 0, "ADRENA  /  CONTROLLERS"));
         assert(overlay_pad(1ull << 1) == OVERLAY_NONE);
         draw();
-        assert(text_at(1, 0, "SCARLETNX  /  MENU"));
+        assert(text_at(1, 0, "ADRENA  /  MENU"));
         /* the pads each poll (the on-screen controls and the connected ones): a press acts once; a direction held, the
            left stick past half way as one, goes on after a while, then on and on; with the menu closed, nothing, and
            a press held as it opens does not act */
@@ -591,7 +591,7 @@ int main(void) {
         assert(overlay_controls(0, down, 1000 + SNX_OVERLAY_REPEAT_DELAY) == OVERLAY_NONE); /* round to the top */
         assert(overlay_controls(1ull << 0, down, 1001 + SNX_OVERLAY_REPEAT_DELAY) == OVERLAY_NONE); /* a page */
         draw();
-        assert(text_at(1, 0, "SCARLETNX  /  CONTROLS"));
+        assert(text_at(1, 0, "ADRENA  /  CONTROLS"));
         assert(overlay_controls(1ull << 1, still, 2000) == OVERLAY_NONE);  /* B: back to the menu, on its first */
         assert(overlay_controls(1ull << 15, still, 2001) == OVERLAY_NONE); /* the D-pad down: Controllers */
         assert(overlay_controls(1ull << 15, still, 2001 + SNX_OVERLAY_REPEAT_DELAY) == OVERLAY_NONE); /* Save states */
@@ -625,7 +625,7 @@ int main(void) {
             vpad_state(&b, st);
             assert(!b && overlay_controls(1ull << 0, still, 4001) == OVERLAY_NONE);
             draw();
-            assert(text_at(1, 0, "SCARLETNX  /  CONTROLLERS"));
+            assert(text_at(1, 0, "ADRENA  /  CONTROLLERS"));
             assert(overlay_controls(1ull << 1, still, 4002) == OVERLAY_NONE); /* B: the menu */
             overlay_pointer_down(8, 5, 5, area);
             assert(overlay_pointer_up(8, 5, 5, SW, SH) == OVERLAY_CLOSE);
@@ -643,7 +643,7 @@ int main(void) {
        zone by fives, the vibration by tens down to Off and the background input, each kept */
     assert(tap(1, 3) == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  CONTROLLERS") && text_at(1, 1, "None connected."));
+    assert(text_at(1, 0, "ADRENA  /  CONTROLLERS") && text_at(1, 1, "None connected."));
     assert(list.q[0].h == 11 * 32 && text_at(1, 3, "\xFE Player") && shows("< All >"));
     assert(text_at(1, 4, "\xFE Swap A/B") && text_at(C - 4, 4, "Off"));
     tap(1, 3);
@@ -700,7 +700,7 @@ int main(void) {
     assert(tap(5, 3) == OVERLAY_NONE);
     pads_held[0] = 1u << SNX_PAD_RT;
     draw();
-    assert(shows("SCARLETNX  /  BUTTON MAP") && !shows("By label") && shows("Xbox Wireless Controller"));
+    assert(shows("ADRENA  /  BUTTON MAP") && !shows("By label") && shows("Xbox Wireless Controller"));
     assert(shows("LT sends ZL") && quads_of(FAILURE) > 0); /* RT held: lit */
     overlay_side(1);                                       /* LT's button, ZL, up one: ZR */
     assert(pads.own.bit[SNX_PAD_LT] == 9 && maps_stored == 1);
@@ -718,7 +718,7 @@ int main(void) {
     }
     assert(overlay_back() == OVERLAY_NONE); /* no presets to go back to: up to its item at once */
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  CONTROLLERS") && text_at(1, 8, "\xFE Button map"));
+    assert(text_at(1, 0, "ADRENA  /  CONTROLLERS") && text_at(1, 8, "\xFE Button map"));
     pads_held[0] = 0;
     /* the Player row steps to player 1: its Swap A/B and Vibration its own, As All until picked; its Button map
        its own map, kept as its key; round the eight back to All */
@@ -729,7 +729,7 @@ int main(void) {
     assert(g_settings.player_swap_a_b[0] == 0 && pad_stored == &g_settings.player_swap_a_b[0] && !g_settings.swap_a_b);
     tap(5, 3);
     draw();
-    assert(shows("SCARLETNX  /  PLAYER 1  /  BUTTON MAP"));
+    assert(shows("ADRENA  /  PLAYER 1  /  BUTTON MAP"));
     overlay_side(1); /* from every player's map, where LT sends B now: up one, X; every player's stays */
     assert(players[0].has_map && players[0].own.bit[SNX_PAD_LT] == 2 && pads.own.bit[SNX_PAD_LT] == 1 &&
            player_maps_stored == 1 && maps_stored == 2);
@@ -742,7 +742,7 @@ int main(void) {
     tap(0, 3);
     tap(5, 3);
     draw();
-    assert(shows("SCARLETNX  /  PLAYER 2  /  BUTTON MAP") && shows("DualSense Wireless Controller"));
+    assert(shows("ADRENA  /  PLAYER 2  /  BUTTON MAP") && shows("DualSense Wireless Controller"));
     assert(!shows("Xbox Wireless Controller") && shows("Cross") && !quads_of(FAILURE));
     pads_held[1] = 1u << SNX_PAD_RT;
     draw();
@@ -751,7 +751,7 @@ int main(void) {
     tap(0, 3);
     tap(5, 3);
     draw();
-    assert(shows("SCARLETNX  /  PLAYER 3  /  BUTTON MAP") && shows("No controller"));
+    assert(shows("ADRENA  /  PLAYER 3  /  BUTTON MAP") && shows("No controller"));
     assert(!shows("Xbox Wireless Controller") && !shows("DualSense Wireless Controller") && !quads_of(FAILURE));
     assert(overlay_back() == OVERLAY_NONE);
     /* every player's: the first pad, lit by any */
@@ -759,7 +759,7 @@ int main(void) {
     tap(5, 3);
     pads_held[0] = 0;
     draw();
-    assert(shows("SCARLETNX  /  BUTTON MAP") && shows("Xbox Wireless Controller") && quads_of(FAILURE) > 0);
+    assert(shows("ADRENA  /  BUTTON MAP") && shows("Xbox Wireless Controller") && quads_of(FAILURE) > 0);
     assert(overlay_back() == OVERLAY_NONE);
     pads_held[1] = 0;
     pad_names[1] = NULL;
@@ -768,11 +768,11 @@ int main(void) {
     /* Back, on its item or the key, comes up to the controllers' item */
     assert(tap(6, 3) == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  MENU") && overlay_select() == OVERLAY_NONE);
+    assert(text_at(1, 0, "ADRENA  /  MENU") && overlay_select() == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  CONTROLLERS") && overlay_back() == OVERLAY_NONE);
+    assert(text_at(1, 0, "ADRENA  /  CONTROLLERS") && overlay_back() == OVERLAY_NONE);
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  MENU"));
+    assert(text_at(1, 0, "ADRENA  /  MENU"));
     /* the save states' pages: a row per slot, the auto one first, then a slot's Save, Load and Delete, Load and
        Delete asked first. The list is read again each time the page opens */
     {
@@ -788,7 +788,7 @@ int main(void) {
         overlay_slots_set(sl, 3);
         assert(!overlay_states_stale());
         draw();
-        assert(shows("SCARLETNX  /  SAVE STATES") && shows("\xFE Auto") && shows("\xFE Slot 1") &&
+        assert(shows("ADRENA  /  SAVE STATES") && shows("\xFE Auto") && shows("\xFE Slot 1") &&
                shows("\xFE Slot 2") && shows("\xFE Back"));
         assert(shows("Empty") && shows("2026-10-22 14:05  0:02:00"));
         /* the focused slot's thumbnail beside the list: none for an empty one, slot 2's once in focus */
@@ -798,15 +798,15 @@ int main(void) {
         assert(ui_image_get(&version) != NULL);
         assert(overlay_select() == OVERLAY_NONE);
         draw();
-        assert(shows("SCARLETNX  /  SLOT 2") && shows("\xFE Save"));
+        assert(shows("ADRENA  /  SLOT 2") && shows("\xFE Save"));
         assert(overlay_select() == OVERLAY_SAVE && overlay_slot() == 2);
         overlay_move(1); /* Load: asked, Cancel in focus */
         assert(overlay_select() == OVERLAY_NONE);
         draw();
-        assert(shows("SCARLETNX  /  LOAD SLOT 2?"));
+        assert(shows("ADRENA  /  LOAD SLOT 2?"));
         assert(overlay_select() == OVERLAY_NONE); /* Cancel */
         draw();
-        assert(shows("SCARLETNX  /  SLOT 2"));
+        assert(shows("ADRENA  /  SLOT 2"));
         assert(overlay_select() == OVERLAY_NONE); /* Load again, the focus back on it, then yes */
         overlay_move(-1);
         assert(overlay_select() == OVERLAY_LOAD && overlay_slot() == 2);
@@ -817,16 +817,16 @@ int main(void) {
         overlay_move(1);
         assert(overlay_select() == OVERLAY_NONE);
         draw();
-        assert(shows("SCARLETNX  /  SLOT 1"));
+        assert(shows("ADRENA  /  SLOT 1"));
         /* the auto slot has no Save */
         assert(overlay_back() == OVERLAY_NONE);
         overlay_move(-1);
         assert(overlay_select() == OVERLAY_NONE);
         draw();
-        assert(shows("SCARLETNX  /  AUTO SLOT") && shows("\xFE Load"));
+        assert(shows("ADRENA  /  AUTO SLOT") && shows("\xFE Load"));
         assert(overlay_back() == OVERLAY_NONE && overlay_back() == OVERLAY_NONE && !overlay_states_shown());
         draw();
-        assert(shows("SCARLETNX  /  MENU"));
+        assert(shows("ADRENA  /  MENU"));
     }
     /* a notification over the game, closed or open, until its time is up */
     overlay_toast("Saved to slot 2", 1000);
@@ -842,7 +842,7 @@ int main(void) {
     assert(!overlay_shown() && !list.n);
     overlay_toggle();
     draw();
-    assert(text_at(1, 0, "SCARLETNX  /  MENU"));
+    assert(text_at(1, 0, "ADRENA  /  MENU"));
 
     /* ui.c: the atlas with the font's glyphs, white where a glyph's bit is, and sprites' alpha premultiplied */
     {
@@ -900,7 +900,7 @@ int main(void) {
                list.q[0].rgba >> 24 == 0xFFu);
         assert(top >= 0 && top + list.q[0].h <= (float)SH && list.q[1].y == top && list.q[1].h == row_h);
         py = (int)top;
-        assert(text_at(1, 0, "SCARLETNX  /  STOPPED") && text_at(1, 1, "ENDER MAGNOLIA"));
+        assert(text_at(1, 0, "ADRENA  /  STOPPED") && text_at(1, 1, "ENDER MAGNOLIA"));
         assert(
             text_at(1, 3, "vulkan: the GPU device was lost (driver reset or crash)")); /* one row, as wide as it is */
         i = glyph_at(1, 3, 'v');

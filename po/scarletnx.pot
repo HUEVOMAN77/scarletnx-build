@@ -1419,7 +1419,7 @@ msgid "Aborting..."
 msgstr ""
 
 #: src/gui/main.c
-msgid "Exit ScarletNX?"
+msgid "Exit Adrena?"
 msgstr ""
 
 #: src/gui/main.c
@@ -1441,11 +1441,11 @@ msgid "Outside the app, Android checks every file access: games may run slower."
 msgstr ""
 
 #: src/gui/main.c
-msgid "A compile goes: exiting ScarletNX stops it, its work lost."
+msgid "A compile goes: exiting Adrena stops it, its work lost."
 msgstr ""
 
 #: src/gui/main.c
-msgid "A game runs: exiting ScarletNX ends it."
+msgid "A game runs: exiting Adrena ends it."
 msgstr ""
 
 #: src/gui/main.c
@@ -1461,7 +1461,7 @@ msgid "Left by older versions"
 msgstr ""
 
 #: src/gui/main.c
-msgid "While the app is in testing, Android's Settings > Apps > ScarletNX > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
+msgid "While the app is in testing, Android's Settings > Apps > Adrena > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
 msgstr ""
 
 #: src/gui/main.c
@@ -1612,7 +1612,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot find %s beside ScarletNX or on PATH."
+msgid "Cannot find %s beside Adrena or on PATH."
 msgstr ""
 
 #: src/gui/main.c
@@ -1984,46 +1984,46 @@ msgid "Not deleted: %s could not be removed"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS"
+msgid "ADRENA  /  SETTINGS"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  COMPILE"
+msgid "ADRENA  /  COMPILE"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETUP"
-msgstr ""
-
-#: src/gui/main.c
-#, c-format
-msgid "SCARLETNX  /  THEME EDITOR  /  %s"
+msgid "ADRENA  /  SETUP"
 msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
+msgid "ADRENA  /  THEME EDITOR  /  %s"
 msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  SETTINGS  /  %s  /  %s"
+msgid "ADRENA  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  FOLDERS"
+#, c-format
+msgid "ADRENA  /  SETTINGS  /  %s  /  %s"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  GPU DRIVERS"
+msgid "ADRENA  /  SETTINGS  /  FOLDERS"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  FREEDRENO SETTINGS"
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
+msgstr ""
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS  /  FREEDRENO SETTINGS"
 msgstr ""
 
 #: src/gui/main.c
@@ -2118,7 +2118,11 @@ msgid "Installs prod.keys, which games are extracted with"
 msgstr ""
 
 #: src/gui/main.c
-msgid "Closes ScarletNX"
+msgid "Opens Adrena's page on GitHub, where its code and releases are"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Closes Adrena"
 msgstr ""
 
 #: src/gui/main.c
@@ -2603,7 +2607,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Remove %s from the Dumps Library? Its games stay in the folder, which ScarletNX no longer makes as it starts."
+msgid "Remove %s from the Dumps Library? Its games stay in the folder, which Adrena no longer makes as it starts."
 msgstr ""
 
 #: src/gui/main.c
@@ -2626,7 +2630,35 @@ msgid "Not added"
 msgstr ""
 
 #: src/gui/main.c
+msgid "Display"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Graphics"
+msgstr ""
+
+#: src/gui/main.c
+msgid "3DS"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Performance"
+msgstr ""
+
+#: src/gui/main.c
 msgid "Overlay"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Controllers"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Network"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Debug"
 msgstr ""
 
 #: src/gui/main.c
@@ -3808,7 +3840,7 @@ msgid "Library folders"
 msgstr ""
 
 #: src/gui/main.c
-msgid "Closing ScarletNX"
+msgid "Closing Adrena"
 msgstr ""
 
 #: src/gui/main.c
@@ -4244,7 +4276,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot read this file by its path. Check that ScarletNX may access the device's files in Android's settings, then pick it from the device's storage (%s)."
+msgid "Cannot read this file by its path. Check that Adrena may access the device's files in Android's settings, then pick it from the device's storage (%s)."
 msgstr ""
 
 #: src/gui/main.c
@@ -4264,7 +4296,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "%s opens with %s: cannot find %s beside ScarletNX or on PATH."
+msgid "%s opens with %s: cannot find %s beside Adrena or on PATH."
 msgstr ""
 
 #: src/gui/main.c
@@ -4648,7 +4680,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot find the folder ScarletNX runs from: %s"
+msgid "Cannot find the folder Adrena runs from: %s"
 msgstr ""
 
 #: src/gui/main.c
@@ -5164,6 +5196,10 @@ msgstr ""
 
 #: src/gui/ui.txt
 msgid "Install Keys"
+msgstr ""
+
+#: src/gui/ui.txt
+msgid "GitHub"
 msgstr ""
 
 #: src/common/utilities/setup.c

@@ -106,7 +106,7 @@ public class DataProviderTest {
         assertTrue(roots.moveToFirst());
         assertEquals("data", text(roots, Root.COLUMN_ROOT_ID));
         assertEquals("data", text(roots, Root.COLUMN_DOCUMENT_ID));
-        assertEquals("ScarletNX", text(roots, Root.COLUMN_TITLE));
+        assertEquals("Adrena", text(roots, Root.COLUMN_TITLE));
         assertEquals(Root.FLAG_SUPPORTS_CREATE | Root.FLAG_SUPPORTS_IS_CHILD | Root.FLAG_LOCAL_ONLY,
                      roots.getInt(roots.getColumnIndexOrThrow(Root.COLUMN_FLAGS)));
         assertEquals("content://org.scarletnx.data/root/data", DataProvider.rootUri(context).toString());
@@ -116,7 +116,7 @@ public class DataProviderTest {
     public void theRootDocumentIsTheFolderAndCannotGo() throws FileNotFoundException {
         Cursor root = document("data");
         assertEquals("data", text(root, Document.COLUMN_DOCUMENT_ID));
-        assertEquals("ScarletNX", text(root, Document.COLUMN_DISPLAY_NAME));
+        assertEquals("Adrena", text(root, Document.COLUMN_DISPLAY_NAME));
         assertEquals(Document.MIME_TYPE_DIR, text(root, Document.COLUMN_MIME_TYPE));
         assertEquals(Document.FLAG_DIR_SUPPORTS_CREATE, flags(root));
     }

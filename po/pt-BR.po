@@ -1422,8 +1422,8 @@ msgid "Aborting..."
 msgstr ""
 
 #: src/gui/main.c
-msgid "Exit ScarletNX?"
-msgstr "Sair do ScarletNX?"
+msgid "Exit Adrena?"
+msgstr "Sair do Adrena?"
 
 #: src/gui/main.c
 #, c-format
@@ -1444,12 +1444,12 @@ msgid "Outside the app, Android checks every file access: games may run slower."
 msgstr "Fora do app, o Android confere cada acesso a arquivo: os jogos podem rodar mais devagar."
 
 #: src/gui/main.c
-msgid "A compile goes: exiting ScarletNX stops it, its work lost."
+msgid "A compile goes: exiting Adrena stops it, its work lost."
 msgstr ""
 
 #: src/gui/main.c
-msgid "A game runs: exiting ScarletNX ends it."
-msgstr "Um jogo está rodando: sair do ScarletNX o encerra."
+msgid "A game runs: exiting Adrena ends it."
+msgstr "Um jogo está rodando: sair do Adrena o encerra."
 
 #: src/gui/main.c
 msgid "Abort the compile? Its work is lost."
@@ -1464,8 +1464,8 @@ msgid "Left by older versions"
 msgstr "Deixados por versões antigas"
 
 #: src/gui/main.c
-msgid "While the app is in testing, Android's Settings > Apps > ScarletNX > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
-msgstr "Enquanto o app está em testes, Configurações > Apps > ScarletNX > Armazenamento > Limpar armazenamento do Android apaga os arquivos do menu acima, com todos os jogos, saves e chaves do app"
+msgid "While the app is in testing, Android's Settings > Apps > Adrena > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
+msgstr "Enquanto o app está em testes, Configurações > Apps > Adrena > Armazenamento > Limpar armazenamento do Android apaga os arquivos do menu acima, com todos os jogos, saves e chaves do app"
 
 #: src/gui/main.c
 msgid "counting"
@@ -1615,7 +1615,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot find %s beside ScarletNX or on PATH."
+msgid "Cannot find %s beside Adrena or on PATH."
 msgstr ""
 
 #: src/gui/main.c
@@ -1987,46 +1987,46 @@ msgid "Not deleted: %s could not be removed"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS"
-msgstr "SCARLETNX  /  CONFIGURAÇÕES"
+msgid "ADRENA  /  SETTINGS"
+msgstr "ADRENA  /  CONFIGURAÇÕES"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  COMPILE"
+msgid "ADRENA  /  COMPILE"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETUP"
-msgstr "SCARLETNX  /  CONFIGURAÇÃO"
+msgid "ADRENA  /  SETUP"
+msgstr "ADRENA  /  CONFIGURAÇÃO"
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  THEME EDITOR  /  %s"
-msgstr "SCARLETNX  /  EDITOR DE TEMA  /  %s"
+msgid "ADRENA  /  THEME EDITOR  /  %s"
+msgstr "ADRENA  /  EDITOR DE TEMA  /  %s"
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
-msgstr "SCARLETNX  /  CONFIGURAÇÕES  /  %s  /  JOGADOR %d  /  %s"
+msgid "ADRENA  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
+msgstr "ADRENA  /  CONFIGURAÇÕES  /  %s  /  JOGADOR %d  /  %s"
 
 #: src/gui/main.c
 #, c-format
-msgid "SCARLETNX  /  SETTINGS  /  %s  /  %s"
-msgstr "SCARLETNX  /  CONFIGURAÇÕES  /  %s  /  %s"
+msgid "ADRENA  /  SETTINGS  /  %s  /  %s"
+msgstr "ADRENA  /  CONFIGURAÇÕES  /  %s  /  %s"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  FOLDERS"
-msgstr "SCARLETNX  /  CONFIGURAÇÕES  /  PASTAS"
+msgid "ADRENA  /  SETTINGS  /  FOLDERS"
+msgstr "ADRENA  /  CONFIGURAÇÕES  /  PASTAS"
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  GPU DRIVERS"
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
 msgstr ""
 
 #: src/gui/main.c
-msgid "SCARLETNX  /  SETTINGS  /  FREEDRENO SETTINGS"
+msgid "ADRENA  /  SETTINGS  /  FREEDRENO SETTINGS"
 msgstr ""
 
 #: src/gui/main.c
@@ -2121,8 +2121,8 @@ msgid "Installs prod.keys, which games are extracted with"
 msgstr "Instala o prod.keys, com o qual os jogos são extraídos"
 
 #: src/gui/main.c
-msgid "Closes ScarletNX"
-msgstr "Fecha o ScarletNX"
+msgid "Closes Adrena"
+msgstr "Fecha o Adrena"
 
 #: src/gui/main.c
 msgid "Last output:"
@@ -2606,7 +2606,7 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "Remove %s from the Dumps Library? Its games stay in the folder, which ScarletNX no longer makes as it starts."
+msgid "Remove %s from the Dumps Library? Its games stay in the folder, which Adrena no longer makes as it starts."
 msgstr ""
 
 #: src/gui/main.c
@@ -3811,8 +3811,8 @@ msgid "Library folders"
 msgstr ""
 
 #: src/gui/main.c
-msgid "Closing ScarletNX"
-msgstr "Fechando o ScarletNX"
+msgid "Closing Adrena"
+msgstr "Fechando o Adrena"
 
 #: src/gui/main.c
 msgid "Kept for the next start:"
@@ -4247,8 +4247,8 @@ msgstr "Este arquivo não é prod.keys nem aes_keys.txt. Escolha o arquivo de ch
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot read this file by its path. Check that ScarletNX may access the device's files in Android's settings, then pick it from the device's storage (%s)."
-msgstr "Não foi possível ler este arquivo pelo caminho. Confira nas configurações do Android se o ScarletNX pode acessar os arquivos do aparelho e escolha-o no armazenamento do aparelho (%s)."
+msgid "Cannot read this file by its path. Check that Adrena may access the device's files in Android's settings, then pick it from the device's storage (%s)."
+msgstr "Não foi possível ler este arquivo pelo caminho. Confira nas configurações do Android se o Adrena pode acessar os arquivos do aparelho e escolha-o no armazenamento do aparelho (%s)."
 
 #: src/gui/main.c
 #, c-format
@@ -4267,8 +4267,8 @@ msgstr "Escolha o arquivo no armazenamento deste computador (%s)."
 
 #: src/gui/main.c
 #, c-format
-msgid "%s opens with %s: cannot find %s beside ScarletNX or on PATH."
-msgstr "%s abre em %s: não há %s ao lado do ScarletNX nem no PATH."
+msgid "%s opens with %s: cannot find %s beside Adrena or on PATH."
+msgstr "%s abre em %s: não há %s ao lado do Adrena nem no PATH."
 
 #: src/gui/main.c
 #, c-format
@@ -4651,8 +4651,8 @@ msgstr "Solte uma pasta local"
 
 #: src/gui/main.c
 #, c-format
-msgid "Cannot find the folder ScarletNX runs from: %s"
-msgstr "Não foi possível achar a pasta de onde o ScarletNX roda: %s"
+msgid "Cannot find the folder Adrena runs from: %s"
+msgstr "Não foi possível achar a pasta de onde o Adrena roda: %s"
 
 #: src/gui/main.c
 #, c-format

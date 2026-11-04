@@ -362,7 +362,7 @@ static void buzzer_open(void) {
 static void renderer_failed(const char* what) {
     const char* why = g_renderer->start_failure ? g_renderer->start_failure() : "";
     if (why && why[0]) fatal("%s: %s.", what, why);
-    fatal("%s (see the log). ScarletNX needs a GPU and driver with Vulkan 1.3.", what);
+    fatal("%s (see the log). Adrena needs a GPU and driver with Vulkan 1.3.", what);
 }
 void video_init(const char* title, const char* addons) {
     if (g_opt_headless) {

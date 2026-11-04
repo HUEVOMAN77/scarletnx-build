@@ -3921,7 +3921,7 @@ int main(int argc, char** argv) {
         app.menu.selected = GUI_VITA;
         key(&app, SDLK_RETURN);
         assert(app.menu.view == GUI_LOAD_NONE && !app.menu.activated && app.menu.selected == GUI_VITA);
-        assert(!strcmp(app.message, "Cannot find scarletnx-vita beside ScarletNX or on PATH."));
+        assert(!strcmp(app.message, "Cannot find scarletnx-vita beside Adrena or on PATH."));
         render(&app);
         shows(&app, "- " ICON_PACKAGE " Load Vita VPK", rgb(app.theme.soft)); /* focused, greyed */
         hides(&app, "- " ICON_PACKAGE " Load Vita VPK", yellow);
@@ -6789,7 +6789,7 @@ int main(int argc, char** argv) {
         drop(&app, card, false);
         assert(!app.menu.running && !app.queue.count && app.confirm.shown);
         assert(!strcmp(app.message,
-                       "a card.cci opens with Load 3DS game: cannot find scarletnx-3ds beside ScarletNX or on PATH."));
+                       "a card.cci opens with Load 3DS game: cannot find scarletnx-3ds beside Adrena or on PATH."));
         key(&app, SDLK_RETURN);
         assert(!rename(aside, ctr));
         set_env("PATH", path);
@@ -6817,7 +6817,7 @@ int main(int argc, char** argv) {
         set_env("PATH", "/nonexistent");
         launch(&app, snx_strdup(input), false);
         play_made(&app);
-        assert(!app.menu.running && !strcmp(app.message, "Cannot find scarletnx beside ScarletNX or on PATH."));
+        assert(!app.menu.running && !strcmp(app.message, "Cannot find scarletnx beside Adrena or on PATH."));
         assert(app.confirm.shown && app.confirm.ask == GUI_ASK_ERROR && !strcmp(app.error_line, app.message));
         key(&app, SDLK_RETURN); /* in the box too, whole, until OK */
         assert(!app.confirm.shown);
@@ -7863,7 +7863,7 @@ int main(int argc, char** argv) {
         assert(app.folder_count == folders); /* its answer is the run's alone: no other box's (a folder taken off) */
         closing = app.closing_ms;
         render(&app);
-        shows(&app, "Closing ScarletNX", rgb(app.theme.panels == GUI_PANELS_FILL ? app.theme.page : app.theme.ink));
+        shows(&app, "Closing Adrena", rgb(app.theme.panels == GUI_PANELS_FILL ? app.theme.page : app.theme.ink));
         shows(&app, "Kept for the next start:", rgb(app.theme.soft));
         key(&app, SDLK_RETURN); /* nothing else is taken meanwhile */
         assert(app.closing_ms == closing && !app.menu.quit);
@@ -10105,7 +10105,7 @@ int main(int argc, char** argv) {
         render(&app);
         page = rgb(app.theme.page);
         ink = rgb(app.theme.ink);
-        shows_big(&app, "SCARLETNX  /  MENU", ink, 2);        /* its head plain, as NieR's titles */
+        shows_big(&app, "ADRENA  /  MENU", ink, 2);        /* its head plain, as NieR's titles */
         shows(&app, "\xfe " ICON_SETTINGS " Settings", page); /* the focused box on a band */
         shows(&app, "\xfe " ICON_LOG_OUT " Exit", ink);
         shows_half(&app, "Working folder: ", ink);
@@ -10426,7 +10426,7 @@ int main(int argc, char** argv) {
         assert(entered && faded == entered + app.theme.fade_out_ms);
         app.clock = entered;
         render(&app);
-        shows_big(&app, "SCARLETNX  /  MENU", rgb(app.theme.ink), 2);
+        shows_big(&app, "ADRENA  /  MENU", rgb(app.theme.ink), 2);
         hides(&app, "Last output", rgb(app.theme.soft)); /* the run's output waits for the run */
         app.clock = entered + app.theme.fade_out_ms / 2;
         render(&app);
@@ -10667,7 +10667,7 @@ int main(int argc, char** argv) {
         assert(same_colour(pixel(&app, x, y + 2), black));
         app.clock += app.theme.fade_in_ms;
         render(&app);
-        shows_big(&app, "SCARLETNX  /  MENU", rgb(app.theme.ink), 2); /* the menus' own */
+        shows_big(&app, "ADRENA  /  MENU", rgb(app.theme.ink), 2); /* the menus' own */
         app.clock = 0;
         app.theme = *gui_theme_builtin("default");
         launcher(&app, false);
@@ -11279,7 +11279,7 @@ int main(int argc, char** argv) {
             assert(app.confirm.shown && app.confirm.ask == GUI_ASK_EXIT);
             render(&app);
             ask_boxes(&app, &r, &choices);
-            text_px_is(&app, r.x + cw, r.y + 4 * s, "Exit ScarletNX?", rgb(app.theme.warning), black);
+            text_px_is(&app, r.x + cw, r.y + 4 * s, "Exit Adrena?", rgb(app.theme.warning), black);
             text_px_is(&app, choice_box(&app, &choices, 0).x + cw / 2, item_text_y(&app, choice_box(&app, &choices, 0)),
                        "- Cancel", yellow, black);
             { /* a row each, 2 pixels apart and as high as the menu's rows */
@@ -11842,11 +11842,11 @@ int main(int argc, char** argv) {
                 else if (wide == 1) {
                     /* a translation too long for the size the English titles take: that size still, the same first
                        parts left out of every screen's */
-                    const char* xx_title = "SCARLETNX  /  CONFIGURATIONS OF EVERY GROUP AND ITS SETTINGS";
+                    const char* xx_title = "ADRENA  /  CONFIGURATIONS OF EVERY GROUP AND ITS SETTINGS";
                     char seen_xx[3][160];
                     int sizes_xx[3];
-                    assert(!strcmp(seen[0], "SCARLETNX  /  MENU") && !strcmp(seen[1], "SCARLETNX  /  GAMES") &&
-                           !strcmp(seen[2], "SCARLETNX  /  SETTINGS") && sizes[0] == 2);
+                    assert(!strcmp(seen[0], "ADRENA  /  MENU") && !strcmp(seen[1], "ADRENA  /  GAMES") &&
+                           !strcmp(seen[2], "ADRENA  /  SETTINGS") && sizes[0] == 2);
                     assert(title_px(&app, xx_title, 2) > head_room(&app, 2) &&
                            title_px(&app, title_tail(xx_title, 1), 2) <= head_room(&app, 2));
                     snx_tr_use(1); /* xx */
@@ -11860,9 +11860,9 @@ int main(int argc, char** argv) {
                            !strcmp(seen_xx[2], title_tail(xx_title, 1)));
                     snx_tr_use(0);
                 } else if (
-                    !wide) /* too narrow for SCARLETNX  /  SETTINGS big beside the tabs: every one whole, smaller */
-                    assert(!strcmp(seen[0], "SCARLETNX  /  MENU") && !strcmp(seen[1], "SCARLETNX  /  GAMES") &&
-                           !strcmp(seen[2], "SCARLETNX  /  SETTINGS") && sizes[0] == 1);
+                    !wide) /* too narrow for ADRENA  /  SETTINGS big beside the tabs: every one whole, smaller */
+                    assert(!strcmp(seen[0], "ADRENA  /  MENU") && !strcmp(seen[1], "ADRENA  /  GAMES") &&
+                           !strcmp(seen[2], "ADRENA  /  SETTINGS") && sizes[0] == 1);
             }
             snprintf(app.user_name, sizeof app.user_name, "%s", name);
             assert(SDL_SetWindowSize(app.window, w0, h0));
@@ -12101,7 +12101,7 @@ int main(int argc, char** argv) {
         menu_boxes(&app, &m);
         assert(same_colour(pixel(&app, (float)(m.place.head.x + m.place.head.w / 2), (float)(m.place.head.y)), ink));
         shows(&app, "Games", page);
-        shows_big(&app, "SCARLETNX  /  MENU", page, 1); /* too wide big beside the user: whole, at the text's size */
+        shows_big(&app, "ADRENA  /  MENU", page, 1); /* too wide big beside the user: whole, at the text's size */
         app.theme.head = GUI_STYLE_PLAIN;
         render(&app);
         assert(same_colour(pixel(&app, (float)(m.place.head.x + m.place.head.w / 2),

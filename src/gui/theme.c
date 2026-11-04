@@ -130,7 +130,7 @@ static const char* const sections[][2] = {
     {"run", "A run: the driver's output as it comes, or a loading screen in its own colours."},
     {"prompt", "A line that waits on the user: framed, placed and blinking when its key is true."},
     {"transitions", "Milliseconds, 0 to 10000; 0 turns the thing off."},
-    {"splash", "The boot's: one of Wimsy's drawings on a page."}};
+    {"splash", "The boot's: Adrena's mark, or a drawing of Wimsy's, on a page."}};
 
 /* "quoted" keeps its spaces */
 static char* unquote(char* s) {

@@ -454,7 +454,7 @@ typedef struct App {
     Uint64 games_tick, games_last_ms;
     Uint32 picked;                    /* the event a file from the system's picker comes back as */
     SDL_Texture* splash;              /* the boot's splash, its drawing splash_side pixels square, until splash_until */
-    const SnxSplashSvg* splash_svg;   /* the boot's pick: Wimsy, or one of dist/splash's */
+    const SnxSplashSvg* splash_svg;   /* the boot's pick: Adrena's mark, or Wimsy and dist/splash's */
     SnxSplashDrawing* splash_drawing; /* it, read once; NULL: the icon shows */
     int splash_side;
     /* the user at the head's right (place's badge), the one Settings' user names (users_read): 0 for none */
@@ -761,6 +761,7 @@ typedef char gui_entries_in_order[GUI_ENTRY(GUI_LINUX) == UI_MENU_ENTRIES_LOAD_L
                                           GUI_ENTRY(GUI_SETTINGS) == UI_MENU_ENTRIES_SETTINGS &&
                                           GUI_ENTRY(GUI_LOG) == UI_MENU_ENTRIES_SHARE_LOG &&
                                           GUI_ENTRY(GUI_FOLDERS) == UI_MENU_ENTRIES_FOLDERS &&
+                                          GUI_ENTRY(GUI_GITHUB) == UI_MENU_ENTRIES_GITHUB &&
                                           GUI_ENTRY(GUI_EXIT) == UI_MENU_ENTRIES_EXIT &&
                                           GUI_ENTRY(GUI_ITEM_COUNT) == UI_MENU_ITEMS
                                       ? 1
@@ -2282,7 +2283,7 @@ static bool jobs_live(const App* app);
 static const char* job_leaving(App* app) {
     int run = gui_queue_running(&app->queue), waiting = gui_queue_waiting(&app->queue);
     if (run < 0) run = gui_queue_next(&app->queue);
-    if (run < 0) return snx_tr("Exit ScarletNX?"); /* it ended while asked */
+    if (run < 0) return snx_tr("Exit Adrena?"); /* it ended while asked */
     if (waiting > (app->queue.job[run].state == GUI_JOB_WAITING))
         snprintf(app->ask_line, sizeof app->ask_line,
                  snx_tr("%s is compiling (%d%%), %d more in the queue: exiting stops them. Exit?"),
@@ -2296,7 +2297,7 @@ static const char* job_leaving(App* app) {
 static const char* ask_question(App* app) {
     switch (app->confirm.ask) {
         case GUI_ASK_DEEP: return snx_tr("List the games in its subfolders too?");
-        case GUI_ASK_EXIT: return jobs_live(app) ? job_leaving(app) : snx_tr("Exit ScarletNX?");
+        case GUI_ASK_EXIT: return jobs_live(app) ? job_leaving(app) : snx_tr("Exit Adrena?");
         case GUI_ASK_OUTSIDE: return snx_tr("Outside the app, Android checks every file access: games may run slower.");
         case GUI_ASK_ROOM: return app->room_line;
         case GUI_ASK_CLEAN:
@@ -2313,8 +2314,8 @@ static const char* ask_question(App* app) {
         case GUI_ASK_CLOSE:
             if (!app->menu.running && !app->finished) return job_leaving(app);
             return screen(app) == GUI_SCREEN_COMPILING
-                       ? snx_tr("A compile goes: exiting ScarletNX stops it, its work lost.")
-                       : snx_tr("A game runs: exiting ScarletNX ends it.");
+                       ? snx_tr("A compile goes: exiting Adrena stops it, its work lost.")
+                       : snx_tr("A game runs: exiting Adrena ends it.");
         default: /* the run's, or on the Compile tab the queue's one running */
             return !app->menu.running || screen(app) == GUI_SCREEN_COMPILING
                        ? snx_tr("Abort the compile? Its work is lost.")
@@ -2327,7 +2328,7 @@ static const char* ask_question(App* app) {
 /* how the menu's own files an older Android version left go (left_clear): out of the player's reach, and the app in
    testing, its whole storage is cleared */
 #define SAY_LEFT_CLEAR                                                                                                 \
-    SNX_TR_NOOP("While the app is in testing, Android's Settings > Apps > ScarletNX > Storage > Clear storage takes "  \
+    SNX_TR_NOOP("While the app is in testing, Android's Settings > Apps > Adrena > Storage > Clear storage takes "  \
                 "the menu's files above, with every game, save and key in the app")
 /* a line of app->left: the file where an older build left it, and where this one keeps it */
 static void left_paths(const char* line, char* old, char* now, size_t size) {
@@ -2749,12 +2750,71 @@ static void render_ask(App* app) {
     box_shade(app); /* over another screen */
     choices_draw(app, &c, ask_question(app), NULL);
 }
-/* the boot's splash: a drawing of Wimsy's, picked at random, drawn a third of the window's shorter side on a theme's
-   splash page, then the menu as the theme brings it in */
+/* the boot's splash: Adrena's own mark, the bird in a dive of dist/splash, a third of the window's shorter side square,
+   on a theme's splash page with its name and where its code lives under it; Wimsy's drawings, and the program's icon
+   when none can be read, are the fallback */
+#define SNX_GITHUB_URL   "https://github.com/HUEVOMAN77"
+#define SNX_GITHUB_SHOWN "github.com/HUEVOMAN77"
+#define SNX_SPLASH_BRAND "adrena"
+#define SNX_SPLASH_NAME  "ADRENA"
+/* the mark, of the drawings compiled in, NULL when this build's dist/splash has none */
+static const SnxSplashSvg* splash_brand(void) {
+    int i;
+    for (i = 0; i < snx_splash_svg_count; ++i)
+        if (!strcmp(snx_splash_svgs[i].name, SNX_SPLASH_BRAND)) return &snx_splash_svgs[i];
+    return NULL;
+}
 static int splash_size(const App* app) {
     SDL_Rect view;
     SDL_GetRenderViewport(app->renderer, &view);
     return SDL_max(1, SDL_min(view.w, view.h) / 3);
+}
+/* the splash's letters, far from its page or nearer to it: 100 for the name, less for the line under it */
+static SDL_Color splash_ink(GuiRgb page, int hundredths) {
+    int light = (page.r * 299 + page.g * 587 + page.b * 114) / 1000; /* the page, as one brightness */
+    int far = light < 128 ? 255 : 0, near = light < 128 ? 0 : 255;
+    int v = (far * hundredths + near * (100 - hundredths)) / 100;
+    SDL_Color ink = {(Uint8)v, (Uint8)v, (Uint8)v, 255};
+    return ink;
+}
+/* the columns text takes in the menu's font, and how many letters of them it is */
+static void splash_measure(const char* text, int* cols, int* letters) {
+    const char* c = text;
+    *cols = *letters = 0;
+    while (*c) {
+        *cols += gui_glyph_cols(gui_menu_glyph(gui_utf8_step(&c)));
+        ++*letters;
+    }
+}
+/* the size, of the text's times three down to one, at which text with sixths of a letter between its letters is no
+   wider than room pixels */
+static int splash_letter_size(const char* text, int scale, int sixths, int room) {
+    int cols, letters, size, w = 8 * scale; /* the smallest's letter, for when none of the larger fit */
+    splash_measure(text, &cols, &letters);
+    for (size = 3; size > 1; --size) {
+        w = 8 * scale * size;
+        if (cols * w + (letters > 1 ? (letters - 1) * w * sixths / 6 : 0) <= room) break;
+    }
+    return size;
+}
+/* the letters one at a time, sixths of one between them; big_text draws them, defined with the head's titles below */
+static void big_text(App* app, GuiRect r, int x, int y, const char* value, int size, SDL_Color color);
+static void splash_text(App* app, GuiRect r, int center, int y, const char* text, int size, int sixths,
+                        SDL_Color ink) {
+    int cols, letters, w = 8 * app->scale * size, x, space = w * sixths / 6;
+    const char* c;
+    char one[5];
+    splash_measure(text, &cols, &letters);
+    x = center - (cols * w + (letters > 1 ? (letters - 1) * space : 0)) / 2;
+    for (c = text; *c;) {
+        const char* after = c;
+        int glyph = gui_menu_glyph(gui_utf8_step(&after));
+        memcpy(one, c, (size_t)(after - c));
+        one[after - c] = 0;
+        big_text(app, r, x, y, one, size, ink);
+        x += gui_glyph_cols(glyph) * w + space;
+        c = after;
+    }
 }
 /* the drawing at side pixels; the program's icon when it cannot be, said once */
 static SDL_Texture* splash_texture(App* app, int side) {
@@ -2806,7 +2866,8 @@ static void splash_with(App* app, const GuiTheme* t, const SnxSplashSvg* svg) {
 }
 static void splash_start(App* app) {
     const GuiTheme* t = gui_splash_theme(&app->theme, (int)SDL_rand(100));
-    if (t->splash_ms) splash_with(app, t, &snx_splash_svgs[SDL_rand(snx_splash_svg_count)]);
+    const SnxSplashSvg* brand = splash_brand();
+    if (t->splash_ms) splash_with(app, t, brand ? brand : &snx_splash_svgs[SDL_rand(snx_splash_svg_count)]);
 }
 static int splash_shown(App* app) {
     SDL_Rect view;
@@ -2830,8 +2891,20 @@ static int splash_shown(App* app) {
     SDL_SetRenderDrawColor(app->renderer, app->splash_page.r, app->splash_page.g, app->splash_page.b, 255);
     SDL_RenderClear(app->renderer);
     {
-        SDL_FRect at = {(float)((view.w - side) / 2), (float)((view.h - side) / 2), (float)side, (float)side};
+        GuiRect whole = {0, 0, view.w, view.h};
+        SDL_FRect at;
+        SDL_Color light = splash_ink(app->splash_page, 100), quiet = splash_ink(app->splash_page, 65);
+        int name = splash_letter_size(SNX_SPLASH_NAME, app->scale, 2, view.w * 3 / 4);
+        int name_h = 16 * app->scale * name, handle_h = 16 * app->scale;
+        int gap = side / 6, under = 8 * app->scale; /* the mark's space and the name's */
+        int top = SDL_max(0, (view.h - (side + gap + name_h + under + handle_h)) / 2);
+        at.x = (float)((view.w - side) / 2);
+        at.y = (float)top;
+        at.w = (float)side;
+        at.h = (float)side;
         SDL_RenderTexture(app->renderer, app->splash, NULL, &at);
+        splash_text(app, whole, view.w / 2, top + side + gap, SNX_SPLASH_NAME, name, 2, light);
+        splash_text(app, whole, view.w / 2, top + side + gap + name_h + under, SNX_GITHUB_SHOWN, 1, 1, quiet);
     }
     SDL_RenderPresent(app->renderer);
     return 1;
@@ -3717,7 +3790,7 @@ static bool dump_icon_ask(App* app, const char* dump, const char* dir) {
 #endif
         if (!d->driver) {
             char why[256];
-            snprintf(why, sizeof why, snx_tr("Cannot find %s beside ScarletNX or on PATH."), driver_name(GUI_SWITCH));
+            snprintf(why, sizeof why, snx_tr("Cannot find %s beside Adrena or on PATH."), driver_name(GUI_SWITCH));
             icon_failed_keep(d, dump, dir, why, NULL);
             return false;
         }
@@ -5623,35 +5696,35 @@ static void big_text(App* app, GuiRect r, int x, int y, const char* value, int s
         x += n * (int)w;
     }
 }
-#define SAY_SETTINGS_TITLE SNX_TR_NOOP("SCARLETNX  /  SETTINGS")
-#define SAY_COMPILE_TITLE  SNX_TR_NOOP("SCARLETNX  /  COMPILE")
+#define SAY_SETTINGS_TITLE SNX_TR_NOOP("ADRENA  /  SETTINGS")
+#define SAY_COMPILE_TITLE  SNX_TR_NOOP("ADRENA  /  COMPILE")
 static const char* screen_title(const App* app, char* out, size_t size) {
     char* c;
-    if (app->setup_on && !app->editing) return snx_tr("SCARLETNX  /  SETUP");
+    if (app->setup_on && !app->editing) return snx_tr("ADRENA  /  SETUP");
     if (!app->editing && app->menu.view == GUI_LOAD_RECOMPILE && !app->menu.running && !app->finished)
         return snx_tr(SAY_COMPILE_TITLE);
     if (!app->editing)
         return app->theme
             .title[(app->menu.running || app->finished) && !entering(app) ? screen(app) : menu_screen(app)];
     if (app->form == GUI_FORM_THEME)
-        snprintf(out, size, snx_tr("SCARLETNX  /  THEME EDITOR  /  %s"), app->editor.id);
+        snprintf(out, size, snx_tr("ADRENA  /  THEME EDITOR  /  %s"), app->editor.id);
     else if (app->form == GUI_FORM_PAD) {
         if (app->pad_player) /* a player's own */
-            snprintf(out, size, snx_tr("SCARLETNX  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"),
+            snprintf(out, size, snx_tr("ADRENA  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"),
                      snx_tr(app->group_keys[app->group].key), app->pad_player,
                      snx_tr(app->settings.keys[app->page].key));
         else
-            snprintf(out, size, snx_tr("SCARLETNX  /  SETTINGS  /  %s  /  %s"), snx_tr(app->group_keys[app->group].key),
+            snprintf(out, size, snx_tr("ADRENA  /  SETTINGS  /  %s  /  %s"), snx_tr(app->group_keys[app->group].key),
                      snx_tr(app->settings.keys[app->page].key));
         for (c = out; *c; ++c) *c = (char)SDL_toupper((unsigned char)*c);
     } else if (app->form == GUI_FORM_FOLDERS)
-        snprintf(out, size, "%s", snx_tr("SCARLETNX  /  SETTINGS  /  FOLDERS"));
+        snprintf(out, size, "%s", snx_tr("ADRENA  /  SETTINGS  /  FOLDERS"));
     else if (app->form == GUI_FORM_DRIVERS)
-        snprintf(out, size, "%s", snx_tr("SCARLETNX  /  SETTINGS  /  GPU DRIVERS"));
+        snprintf(out, size, "%s", snx_tr("ADRENA  /  SETTINGS  /  GPU DRIVERS"));
     else if (app->form == GUI_FORM_FETCH)
-        snprintf(out, size, "%s", snx_tr("SCARLETNX  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"));
+        snprintf(out, size, "%s", snx_tr("ADRENA  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"));
     else if (app->form == GUI_FORM_FREEDRENO)
-        snprintf(out, size, "%s", snx_tr("SCARLETNX  /  SETTINGS  /  FREEDRENO SETTINGS"));
+        snprintf(out, size, "%s", snx_tr("ADRENA  /  SETTINGS  /  FREEDRENO SETTINGS"));
     else
         snprintf(out, size, "%s", snx_tr(SAY_SETTINGS_TITLE));
     return out;
@@ -5850,7 +5923,7 @@ static int head_room(const App* app, int size) {
 }
 /* The head's title over the tabs' screens and its letters' size: a window too narrow for the main screens' titles
    (the menu's, Games', the keys' and the Settings') whole at the theme's size takes a size smaller, down to the
-   text's, and only then leaves out the same first parts of every one, "SCARLETNX  /" first, so the head stays one
+   text's, and only then leaves out the same first parts of every one, "ADRENA  /" first, so the head stays one
    and the same from screen to screen. The size is the English titles', so the head is as big in every language: a
    translation too long for it leaves out first parts too. A screen deeper in the Settings leaves out what more it
    must, and a last part still too wide is cut. The setup's head, its steps for tabs, keeps its title as it is */
@@ -6113,7 +6186,8 @@ static const char* item_about(const App* app, int item) {
                                         SNX_TR_NOOP("Runs a GBA ROM on the emulated AGB board")};
     if (item >= GUI_SWITCH && item <= GUI_GBA) return snx_tr(loads[item - GUI_SWITCH]);
     if (item == GUI_KEYS) return snx_tr("Installs prod.keys, which games are extracted with");
-    if (item == GUI_EXIT) return snx_tr("Closes ScarletNX");
+    if (item == GUI_GITHUB) return snx_tr("Opens Adrena's page on GitHub, where its code and releases are");
+    if (item == GUI_EXIT) return snx_tr("Closes Adrena");
     {
         GuiMenu menu = app->menu;
         menu.selected = item;
@@ -7754,7 +7828,7 @@ static void folder_off_ask(App* app, int folder) {
     app->folder_off = folder;
     if (folder == -1) /* dumps/ of the data folder, which the launcher makes at each start until then */
         snprintf(app->ask_line, sizeof app->ask_line,
-                 snx_tr("Remove %s from the Dumps Library? Its games stay in the folder, which ScarletNX no longer "
+                 snx_tr("Remove %s from the Dumps Library? Its games stay in the folder, which Adrena no longer "
                         "makes as it starts."),
                  dumps ? dumps : "dumps/");
     else if (folder == -2) /* the Recompiled Library's Main, where new games went */
@@ -7828,10 +7902,21 @@ static void group_add(App* app, const char* name, int first, const char* about) 
     app->group_first[g] = first;
     app->group_rows[g] = 0;
 }
-/* the name a section's group has in the launcher: Overlay for the runtime's On-screen controls, whose page in the game
-   and settings.ini's [header] keep that name */
+/* the name a section's group has in the launcher, each marked for the catalogs since the launcher shows these through
+   snx_tr: Overlay for the runtime's On-screen controls, whose page in the game and settings.ini's [header] keep that
+   name. group_icon looks a group up by its English, which is what these return, so only the menus translate them */
 static const char* group_title(const char* section) {
-    return strcmp(section, "On-screen controls") ? section : SNX_TR_NOOP("Overlay");
+    static const struct {
+        const char* section;
+        const char* name;
+    } names[] = {{"Game", SNX_TR_NOOP("Game")}, {"Display", SNX_TR_NOOP("Display")},
+                 {"Graphics", SNX_TR_NOOP("Graphics")}, {"3DS", SNX_TR_NOOP("3DS")},
+                 {"Performance", SNX_TR_NOOP("Performance")}, {"On-screen controls", SNX_TR_NOOP("Overlay")},
+                 {"Controllers", SNX_TR_NOOP("Controllers")}, {"Network", SNX_TR_NOOP("Network")},
+                 {"User", SNX_TR_NOOP("User")}, {"Debug", SNX_TR_NOOP("Debug")}};
+    for (size_t i = 0; i < SDL_arraysize(names); ++i)
+        if (!strcmp(section, names[i].section)) return names[i].name;
+    return section;
 }
 /* the icon of a group by its name (group_title's English), and of a group's row that opens a page by the page's: none
    for one these do not name, which gui_sdl's test refuses for every section and page of settings.txt */
@@ -12177,9 +12262,9 @@ static void setup_boxes(App* app, GuiSetupBoxes* b) {
     place_screen(app, &b->place, snx_tr(setup_keys_said(app)), GUI_SHOWS_TABS | GUI_SHOWS_FOOT_TIPS);
     snprintf(b->question, sizeof b->question, "%s", setup_question(app, question, sizeof question));
     if (app->theme.dialog == GUI_DIALOG_YORHA && n)
-        snprintf(b->tab, sizeof b->tab, "ScarletNX  %d/%d", n, setup_steps(app));
+        snprintf(b->tab, sizeof b->tab, "ADRENA  %d/%d", n, setup_steps(app));
     else if (app->theme.dialog == GUI_DIALOG_YORHA)
-        snprintf(b->tab, sizeof b->tab, "ScarletNX");
+        snprintf(b->tab, sizeof b->tab, "ADRENA");
     else if (n)
         snprintf(b->tab, sizeof b->tab, "%d/%d", n, setup_steps(app));
     else
@@ -12503,7 +12588,7 @@ static void draw_closing(App* app) {
             rows += wrap_rows(app, line, cols - 2, 1);
         }
     r = over_rect(app, cols, head_h(app) + rows * cell_h(app) + 8 * app->scale);
-    y = pane(app, r, snx_tr("Closing ScarletNX"));
+    y = pane(app, r, snx_tr("Closing Adrena"));
     text = inner(app, r);
     y += wrap_in(app, text, text.x, y,
                  rows > 1 ? snx_tr("Kept for the next start:") : snx_tr("Nothing to keep: no file of the menu's"), 0,
@@ -13752,7 +13837,7 @@ static void launch(App* app, char* absolute, bool prepared) {
     if (!direct && !driver && app->menu.selected == GUI_SWITCH) driver = snx_strdup("scarletnx");
 #endif
     if (!direct && !driver) {
-        snprintf(app->message, sizeof(app->message), snx_tr("Cannot find %s beside ScarletNX or on PATH."),
+        snprintf(app->message, sizeof(app->message), snx_tr("Cannot find %s beside Adrena or on PATH."),
                  driver_name(app->menu.selected) ? driver_name(app->menu.selected) : snx_tr("the selected driver"));
         say_failure(app, app->message);
         free(absolute);
@@ -14821,7 +14906,7 @@ static void install_keys(App* app, const char* source) {
     SNX_TR_NOOP("This file could not be read. Pick prod.keys or aes_keys.txt again, from the device's storage (%s).")
 #define SAY_KEYS_NOT SNX_TR_NOOP("This file is not prod.keys or aes_keys.txt. Pick the keys file (%s).")
 #define SAY_PICK_UNREAD                                                                                                \
-    SNX_TR_NOOP("Cannot read this file by its path. Check that ScarletNX may access the device's files in Android's "  \
+    SNX_TR_NOOP("Cannot read this file by its path. Check that Adrena may access the device's files in Android's "  \
                 "settings, then pick it from the device's storage (%s).")
 #else
 #define SAY_KEYS_UNREAD SNX_TR_NOOP("The picked file could not be read as prod.keys or aes_keys.txt (%s).")
@@ -14850,7 +14935,7 @@ static bool drop_elsewhere(App* app, const char* path) {
     app->loads_at = 0; /* looked for again, as Enter on a load does */
     if (loads_off(app) >> named & 1u)
         snprintf(app->message, sizeof app->message,
-                 snx_tr("%s opens with %s: cannot find %s beside ScarletNX or on PATH."), last_part(path),
+                 snx_tr("%s opens with %s: cannot find %s beside Adrena or on PATH."), last_part(path),
                  snx_tr(entry_text(named)), driver_name(named));
     else
         snprintf(app->message, sizeof app->message, snx_tr("%s opens with %s, not %s."), last_part(path),
@@ -15615,6 +15700,22 @@ static void screen_tab(App* app, int step) {
     else
         go_tab(app, ((tab_shown(app) + step) % n + n) % n);
 }
+/* Adrena's page on GitHub, which the menu's row opens and the splash's line under its name gives: SDL_OpenURL is not for
+   an https:// address on Android, where MainActivity's openUrl takes it */
+static void open_github(App* app) {
+    char why[256] = "";
+    int opened;
+#ifdef SDL_PLATFORM_ANDROID
+    opened = gui_android_open_url(SNX_GITHUB_URL, why, sizeof why);
+#else
+    opened = (app->open_url ? app->open_url : SDL_OpenURL)(SNX_GITHUB_URL);
+    if (!opened) snprintf(why, sizeof why, "%s", SDL_GetError());
+#endif
+    if (opened)
+        snprintf(app->message, sizeof app->message, snx_tr("Opened %s"), SNX_GITHUB_URL);
+    else
+        snprintf(app->message, sizeof app->message, snx_tr("Could not open %s: %s"), SNX_GITHUB_URL, why);
+}
 static void menu_key(App* app, GuiKey key) {
     GuiLoadView before = app->menu.view; /* the screen this key was pressed on */
     if (app->finished) {
@@ -15673,7 +15774,7 @@ static void menu_key(App* app, GuiKey key) {
     if (key == GUI_SELECT && app->menu.view == GUI_LOAD_NONE && !app->menu.running && app->menu.selected <= GUI_GBA) {
         app->loads_at = 0;
         if (loads_off(app) >> app->menu.selected & 1u) {
-            snprintf(app->message, sizeof(app->message), snx_tr("Cannot find %s beside ScarletNX or on PATH."),
+            snprintf(app->message, sizeof(app->message), snx_tr("Cannot find %s beside Adrena or on PATH."),
                      driver_name(app->menu.selected));
             return;
         }
@@ -15692,6 +15793,7 @@ static void menu_key(App* app, GuiKey key) {
             open_folders(app, 0);
             app->folders_from_menu = true;
             break;
+        case GUI_MENU_GITHUB: open_github(app); break;
         default: break;
     }
     if (key == GUI_CANCEL || (key == GUI_SELECT && pick_screen(app))) app->message[0] = 0;
@@ -15903,6 +16005,7 @@ void ui_menu_entries_install_keys_action_cb(App* app, uint32_t hit) { menu_entry
 void ui_menu_entries_settings_action_cb(App* app, uint32_t hit) { menu_entry(app, GUI_SETTINGS, hit); }
 void ui_menu_entries_share_log_action_cb(App* app, uint32_t hit) { menu_entry(app, GUI_LOG, hit); }
 void ui_menu_entries_folders_action_cb(App* app, uint32_t hit) { menu_entry(app, GUI_FOLDERS, hit); }
+void ui_menu_entries_github_action_cb(App* app, uint32_t hit) { menu_entry(app, GUI_GITHUB, hit); }
 void ui_menu_entries_exit_action_cb(App* app, uint32_t hit) { menu_entry(app, GUI_EXIT, hit); }
 /* the keys the foot names, a word each ("Up/Down" is two): what a click or a tap on the word presses. Space selects
    where the foot names it, as Enter; Add a folder's opens the folder picker, as Enter on its row. A word is found by
@@ -16980,7 +17083,7 @@ static bool paths_start(App* app, const char* self) {
     if (!app->drivers) { /* SDL_GetBasePath's failure */
         char why[256];
         SDL_strlcpy(why, SDL_GetError(), sizeof why);
-        return SDL_SetError(snx_tr("Cannot find the folder ScarletNX runs from: %s"), why);
+        return SDL_SetError(snx_tr("Cannot find the folder Adrena runs from: %s"), why);
     }
     app->data_dir = snx_data_dir(app->drivers);
     if (!app->data_dir) app->data_dir = snx_strdup(app->cwd ? app->cwd : ".");
@@ -17285,9 +17388,9 @@ int snx_gui_main(const char* self) {
         gui_log_fatal(why); /* a phone shows no stderr */
 #ifdef SDL_PLATFORM_IOS
         if (app.window) /* a message box there needs the window, which may be what failed */
-            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ScarletNX", why, app.window);
+            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Adrena", why, app.window);
 #else
-        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ScarletNX", why, app.window);
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Adrena", why, app.window);
 #endif
         cleanup(&app);
         return 1;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adrena's own mark: the diving bird of its icon, three feathers to a wing, its head down. GPL-3.0-or-later. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#"
+             xmlns:dc="http://purl.org/dc/elements/1.1/">
+      <cc:Work rdf:about="">
+        <dc:title>Adrena, the diving bird of its icon</dc:title>
+        <dc:creator><cc:Agent><dc:title>HUEVOMAN77</dc:title></cc:Agent></dc:creator>
+        <dc:license rdf:resource="https://spdx.org/licenses/GPL-3.0-or-later.html" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path fill="#5AD8FF" d="M 256 88 L 290 154 L 256 202 L 222 154 Z"/>
+  <path fill="#5AD8FF" d="M 272 240 C 300 176 360 116 458 70 C 420 140 356 206 296 258 Z"/>
+  <path fill="#5AD8FF" d="M 240 240 C 212 176 152 116 54 70 C 92 140 156 206 216 258 Z"/>
+  <path fill="#1FA6E6" d="M 282 262 C 330 232 402 208 486 176 C 436 232 366 274 302 294 Z"/>
+  <path fill="#1FA6E6" d="M 230 262 C 182 232 110 208 26 176 C 76 232 146 274 210 294 Z"/>
+  <path fill="#0E6FC0" d="M 288 288 C 344 282 410 270 476 248 C 428 296 356 326 300 328 Z"/>
+  <path fill="#0E6FC0" d="M 224 288 C 168 282 102 270 36 248 C 84 296 156 326 212 328 Z"/>
+  <path fill="#0E6FC0" d="M 256 432 C 232 376 226 306 240 254 C 245 232 250 220 256 216 C 262 220 267 232 272 254 C 286 306 280 376 256 432 Z"/>
+</svg>

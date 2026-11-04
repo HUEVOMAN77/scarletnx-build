@@ -76,8 +76,8 @@ const char* fatal_hint(const char* msg) {
     if (strstr(msg, "GPU device was lost"))
         return "The GPU stopped answering and its driver reset it: something the game gave it, a shader or a draw, "
                "ran too long or read memory it should not.";
-    if (strstr(msg, "Unsupported instruction")) return "The game ran an instruction ScarletNX does not translate yet.";
-    if (strstr(msg, "Vulkan 1.3")) return "ScarletNX needs a GPU and driver with Vulkan 1.3, and this one has none.";
+    if (strstr(msg, "Unsupported instruction")) return "The game ran an instruction Adrena does not translate yet.";
+    if (strstr(msg, "Vulkan 1.3")) return "Adrena needs a GPU and driver with Vulkan 1.3, and this one has none.";
     if (strstr(msg, "out of memory") || strstr(msg, "Out of memory"))
         return "The device ran out of memory: close other apps and start the game again.";
     return NULL;

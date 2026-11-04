@@ -32,8 +32,9 @@ The window's title tells which build it is, as `ScarletNX <branch> <commit> (<co
 `ScarletNX main 43bf71a (clang 22.1.8, Linux x86_64)`; the commit ends in `-dirty` when the tree had changes, a
 build of a detached checkout outside CI says `detached`, and both read `unknown` outside a git checkout. A game's window carries the same line after the game's name.
 
-It opens on a splash: Wimsy, or Fuddles (`dist/splash/`), picked at random each start, a third of the window's
-shorter side on the theme's `[splash] page` for its `ms`; a key, a click or a finger ends it. The drawings are SVGs
+It opens on a splash: Adrena's mark (`dist/splash/adrena.svg`), or one of Wimsy's and Fuddles' drawings where a build
+has no mark, a third of the window's shorter side on the theme's `[splash] page` for its `ms`, its name and its GitHub
+page under it; the menu then comes in over `[transitions] fade_in_ms`. The drawings are SVGs
 built in, drawn at the window's size ([lunasvg](https://github.com/sammycage/lunasvg)).
 
 - Up/Down and Left/Right move the yellow focus, wrapping at the ends.
@@ -61,7 +62,7 @@ built in, drawn at the window's size ([lunasvg](https://github.com/sammycage/lun
   presses the key when its words all press one. `Arrows`, `mouse`, `pad` and `D-pad` press nothing.
 - The menu, top to bottom: the three loads, **Install Keys**, **Settings**, **Share Log**,
   **Folders**, and **Exit**. The games, and the recent ones, are the Games tab's. A load whose driver
-  is neither beside ScarletNX nor on PATH, as those an app leaves out ([APPLE](APPLE.md)), is greyed out, still there,
+  is neither beside Adrena nor on PATH, as those an app leaves out ([APPLE](APPLE.md)), is greyed out, still there,
   and Enter or a tap on it says which driver it misses rather than opening its screen; the drivers are looked for
   again each second, and with F5.
 - Space, Enter or a left click explicitly activates an item, marking it bright
@@ -596,11 +597,11 @@ holding their nickname and their picture, `users/<uid>.jpg` or Wimsy
 without one ([USAGE](USAGE.md#users)), square or round (`[head] picture`; `none` for no box). A click on it opens
 the users over the screen, each with their picture; the one picked is Settings' user from then on, and ESC or a click
 off them leaves it as it was. The head is the same on every screen of one window: when the main screens' titles
-(the menu's, Games', the keys', `SCARLETNX  /  SETTINGS` and while its tab shows `SCARLETNX  /  RECOMPILE`) do not all
+(the menu's, Games', the keys', `ADRENA  /  SETTINGS` and while its tab shows `ADRENA  /  RECOMPILE`) do not all
 fit beside the tabs, every one takes letters a
-size smaller, down to the text's, else leaves out the same first parts (`SCARLETNX  /` first), else shows no title.
+size smaller, down to the text's, else leaves out the same first parts (`ADRENA  /` first), else shows no title.
 The size is the one the English titles take, so the head is as big in every language, and a translation too long for
-it leaves out first parts too (its last part alone, big, where `SCARLETNX  /  SETTINGS` fits whole); a
+it leaves out first parts too (its last part alone, big, where `ADRENA  /  SETTINGS` fits whole); a
 screen deeper in
 the Settings leaves out what more it must. Under them the list, each entry a box
 of its own, the focused one framed in the focus colour or inverted, with the theme's cursor in the margin;
@@ -802,7 +803,7 @@ blink_ms = 500
 ; a line too long for its row (big letters) slides left a column every scroll_ms and back; 0 cuts it
 scroll_ms = 120
 [splash]
-; the boot's: one of Wimsy's drawings, at random, on page for ms milliseconds (0: none). chance: the
+; the boot's: Adrena's mark, or a drawing of Wimsy's, on page for ms milliseconds (0: none). chance: the
 ; boots in 100 that show this theme's, the default theme's the others
 page = #DAD6BE
 ms = 1000

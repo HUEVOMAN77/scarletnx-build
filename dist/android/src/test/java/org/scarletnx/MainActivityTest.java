@@ -163,7 +163,7 @@ public class MainActivityTest {
         MainActivity.share(game, log.getPath());
         Intent chooser = shadowOf(game).getNextStartedActivity();
         assertEquals(Intent.ACTION_CHOOSER, chooser.getAction());
-        assertEquals("ScarletNX log", chooser.getCharSequenceExtra(Intent.EXTRA_TITLE).toString());
+        assertEquals("Adrena log", chooser.getCharSequenceExtra(Intent.EXTRA_TITLE).toString());
         Intent send = chooser.getParcelableExtra(Intent.EXTRA_INTENT);
         assertEquals(Intent.ACTION_SEND, send.getAction());
         assertEquals("text/plain", send.getType());
@@ -233,7 +233,7 @@ public class MainActivityTest {
         AlertDialog maker = ShadowAlertDialog.getLatestAlertDialog();
         assertNotNull("the maker's setting named", maker);
         assertEquals("This phone may stop a recompile behind other apps. In Settings: Battery, Background usage "
-                         + "limits: add ScarletNX to Never sleeping apps.",
+                         + "limits: add Adrena to Never sleeping apps.",
                      shadowOf(maker).getMessage().toString());
         maker.dismiss();
 

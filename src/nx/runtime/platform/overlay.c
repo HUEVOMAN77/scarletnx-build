@@ -252,9 +252,9 @@ static void map_draw(SnxUiList* l, int sw, int sh) {
     {
         char title[48];
         if (pad_player) /* the player's own */
-            snprintf(title, sizeof title, "SCARLETNX  /  PLAYER %d  /  BUTTON MAP", pad_player);
+            snprintf(title, sizeof title, "ADRENA  /  PLAYER %d  /  BUTTON MAP", pad_player);
         else
-            snprintf(title, sizeof title, "SCARLETNX  /  BUTTON MAP");
+            snprintf(title, sizeof title, "ADRENA  /  BUTTON MAP");
         ui_text(l, x + cw, y, s, title, LIGHT);
         user_draw(l, x + cw * (float)(strlen(title) + 2), x + w - cw, y, s);
     }
@@ -672,7 +672,7 @@ static void kb_dialog(Dialog* d, KbTexts* t) {
     size_t n = 0;
     const char* c;
     memset(d, 0, sizeof *d);
-    d->title = "SCARLETNX  /  KEYBOARD";
+    d->title = "ADRENA  /  KEYBOARD";
     d->user = 1;
     if (k->password)
         for (c = k->text; *c && n < OVERLAY_KB_UNITS; c += kb_step(c)) t->line[n++] = '*';
@@ -827,8 +827,8 @@ static const char* pads_hint(char* out, size_t size);
 static void menu_dialog(Dialog* d, char (*text)[OVERLAY_COLS_MAX + 1], char (*value)[OVERLAY_COLS_MAX + 1], char* pads,
                         size_t size) {
     static const char* const titles[] = {
-        "SCARLETNX  /  MENU",       "SCARLETNX  /  CONTROLS", "SCARLETNX  /  BUTTONS", "SCARLETNX  /  CONTROLLERS", "",
-        "SCARLETNX  /  SAVE STATES"};
+        "ADRENA  /  MENU",       "ADRENA  /  CONTROLS", "ADRENA  /  BUTTONS", "ADRENA  /  CONTROLLERS", "",
+        "ADRENA  /  SAVE STATES"};
     static const char* const hints[] = {
         "Back or Home: back to the game.",        "Back: the menu.", "Tap one to show or hide it.", "", "",
         "The game waits while this page is open."};
@@ -848,9 +848,9 @@ static void menu_dialog(Dialog* d, char (*text)[OVERLAY_COLS_MAX + 1], char (*va
         else
             snprintf(name, sizeof name, "AUTO SLOT");
         if (page == PAGE_SLOT)
-            snprintf(title, size / 2, "SCARLETNX  /  %s", name);
+            snprintf(title, size / 2, "ADRENA  /  %s", name);
         else
-            snprintf(title, size / 2, "SCARLETNX  /  %s %s?", ask == OVERLAY_LOAD ? "LOAD" : "DELETE", name);
+            snprintf(title, size / 2, "ADRENA  /  %s %s?", ask == OVERLAY_LOAD ? "LOAD" : "DELETE", name);
         if (page == PAGE_ASK && ask == OVERLAY_LOAD)
             snprintf(pads, size / 2, "The game goes back to %s.%s", sl->when,
                      g_settings.save_state_backup ? " What was played since is kept in the auto slot." : "");
@@ -994,7 +994,7 @@ void overlay_error_draw(SnxUiList* l, int sw, int sh, SnxOverlayError* e) {
     DialogDrawn at;
     int i;
     memset(&d, 0, sizeof d);
-    d.title = "SCARLETNX  /  STOPPED";
+    d.title = "ADRENA  /  STOPPED";
     memcpy(d.para, para, sizeof para);
     d.paras = (int)(sizeof para / sizeof *para);
     d.items = d.shown = SNX_OVERLAY_ERROR_ITEMS;

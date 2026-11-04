@@ -36,6 +36,9 @@
 		[button]"Folders" {
 			icon = folder-open
 		}
+		[button]"GitHub" {
+			icon = app-window
+		}
 		[button]"Exit" {
 			icon = log-out
 		}

@@ -149,6 +149,17 @@ int gui_android_open_folder(const char* path, char* message, size_t size) {
     return ok;
 }
 
+int gui_android_open_url(const char* url, char* message, size_t size) {
+    JNIEnv* env = (JNIEnv*)SDL_GetAndroidJNIEnv();
+    jvalue arg;
+    int ok;
+    if (!env) return call("openUrl", "", NULL, message, size);
+    arg.l = (*env)->NewStringUTF(env, url);
+    ok = call("openUrl", "(Ljava/lang/String;)V", &arg, message, size);
+    (*env)->DeleteLocalRef(env, arg.l);
+    return ok;
+}
+
 static SDL_DialogFileCallback folder_done;
 static void* folder_data;
 int gui_android_pick_folder(SDL_DialogFileCallback done, void* data, char* message, size_t size) {

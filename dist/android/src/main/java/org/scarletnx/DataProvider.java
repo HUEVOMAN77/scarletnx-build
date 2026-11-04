@@ -102,7 +102,7 @@ public class DataProvider extends DocumentsProvider {
         cursor.newRow()
             .add(Document.COLUMN_DOCUMENT_ID, idOf(file))
             .add(Document.COLUMN_MIME_TYPE, typeOf(file))
-            .add(Document.COLUMN_DISPLAY_NAME, file.equals(base()) ? "ScarletNX" : file.getName())
+            .add(Document.COLUMN_DISPLAY_NAME, file.equals(base()) ? "Adrena" : file.getName())
             .add(Document.COLUMN_LAST_MODIFIED, file.lastModified())
             .add(Document.COLUMN_FLAGS, flags)
             .add(Document.COLUMN_SIZE, file.isDirectory() ? null : file.length());
@@ -126,7 +126,7 @@ public class DataProvider extends DocumentsProvider {
             .add(Root.COLUMN_ROOT_ID, ROOT)
             .add(Root.COLUMN_FLAGS, Root.FLAG_SUPPORTS_CREATE | Root.FLAG_SUPPORTS_IS_CHILD | Root.FLAG_LOCAL_ONLY)
             .add(Root.COLUMN_ICON, R.mipmap.ic_launcher)
-            .add(Root.COLUMN_TITLE, "ScarletNX")
+            .add(Root.COLUMN_TITLE, "Adrena")
             .add(Root.COLUMN_DOCUMENT_ID, ROOT)
             .add(Root.COLUMN_AVAILABLE_BYTES, base.getFreeSpace());
         return cursor;

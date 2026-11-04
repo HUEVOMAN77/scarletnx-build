@@ -7,8 +7,8 @@
 #include <stdint.h>
 #include "common/utilities/font.h" /* gui_glyph */
 
-/* the menu's items, in order: the loads, the keys, Settings and Share Log, on Android the data folder, Exit. The games
-   are the Games tab's */
+/* the menu's items, in order: the loads, the keys, Settings and Share Log, on Android the data folder, then the
+   page on GitHub and Exit. The games are the Games tab's */
 enum {
     GUI_SWITCH,
     GUI_LINUX,
@@ -19,6 +19,7 @@ enum {
     GUI_SETTINGS, /* the game's .ini settings, the launcher's own for the runs and its App: settings.h */
     GUI_LOG,      /* the logs in one file, for a bug report: a phone has no terminal to copy them from */
     GUI_FOLDERS,  /* Settings > App > Folders, where each folder opens */
+    GUI_GITHUB,   /* Adrena's page on GitHub, in the browser */
     GUI_EXIT,
     GUI_ITEM_COUNT
 };
@@ -35,8 +36,9 @@ typedef struct {
     /* the font's scale, 1 to GUI_TEXT_MAX; 0 fits the screen (Auto) */
     int text_size;
 } GuiMenu;
-/* what a key on the menu asks of the GUI: nothing more, the Settings or the logs shared */
-typedef enum { GUI_MENU_STAY, GUI_MENU_SETTINGS, GUI_MENU_LOG, GUI_MENU_FOLDERS } GuiMenuDo;
+/* what a key on the menu asks of the GUI: nothing more, the Settings or the logs shared, the folders, the page on
+   GitHub */
+typedef enum { GUI_MENU_STAY, GUI_MENU_SETTINGS, GUI_MENU_LOG, GUI_MENU_FOLDERS, GUI_MENU_GITHUB } GuiMenuDo;
 GuiMenuDo gui_menu_key(GuiMenu* menu, GuiKey key);
 /* The menu's questions, one box for all (main.c's render_ask): shown or not, which one, the choice in focus (the first
    stays first: it keeps things as they are), and whether its second choice takes a second press */

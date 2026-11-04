@@ -153,7 +153,7 @@ public class MainActivity extends SDLActivity {
     private static void send(Activity activity, Uri uri) {
         Intent send = new Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_STREAM, uri);
         activity.startActivity(
-            Intent.createChooser(send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), "ScarletNX log"));
+            Intent.createChooser(send.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION), "Adrena log"));
     }
 
     /** src/gui/android.c: a folder in the system's Files app: one of the data folder through DataProvider, one of the
@@ -168,6 +168,16 @@ public class MainActivity extends SDLActivity {
                                                      "primary:" + full.substring(Math.min(full.length(), shared.length() + 1)));
         if (uri == null) throw new IllegalArgumentException(path + " is neither in the app's data nor in shared storage");
         view(uri, uri.equals(DataProvider.rootUri(this)) ? "vnd.android.document/root" : DocumentsContract.Document.MIME_TYPE_DIR);
+    }
+
+    /** src/gui/android.c: an https:// address, in whatever browser the device has - the menu's GitHub row, which
+        SDL_OpenURL is not for on Android, where a file:// URL is no app's to open either */
+    public void openUrl(String url) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        } catch (ActivityNotFoundException e) {
+            throw new IllegalStateException("no app opens " + url, e);
+        }
     }
 
     /** the system's Files app on uri, the one app that reads both providers (they ask for MANAGE_DOCUMENTS): any other

@@ -28,6 +28,8 @@ int gui_android_background(char* message, size_t size);
 /* Opens a folder of the data folder or of the shared storage in the system's Files app; 0 with why in message when it
    cannot (one elsewhere, which no app's provider shows) */
 int gui_android_open_folder(const char* path, char* message, size_t size);
+/* Opens an https:// address in the browser the device picks; 0 with why in message when none can */
+int gui_android_open_url(const char* url, char* message, size_t size);
 /* A run's game, the step it shows and its percent (-1 while unknown) in a notification, which keeps the app running
    behind others; the first call of a run starts it */
 void gui_android_running(const char* game, const char* step, int percent);
