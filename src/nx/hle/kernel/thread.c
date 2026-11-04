@@ -187,14 +187,18 @@ static void core_release_nl(KThread* t) {
     core_handoff_nl(k);
 }
 /* after t took a core: its host thread moves to the core's share of the host CPUs, if it was on another one. Fewer
-   host CPUs than cores leave nothing to share out */
+   host CPUs than cores leave nothing to share out. A phone shares out only its quickest CPUs, where every core has one
+   of its own: its game's own threads would wait on a slow core otherwise, one host CPU per core of the console */
 static void core_pin(KThread* t) {
     int k = t->on_core, n = snx_popcount64(g_hle.svcmem.core_mask), cpus[256], m = 0, len = 0;
+    int big[256], share = g_hle.thread.host_ncpu, b;
     char list[256] = "";
     if (k == t->pinned) return;
     t->pinned = k;
     if (g_hle.thread.host_ncpu < n || !((g_hle.svcmem.core_mask >> k) & 1)) return;
-    for (int i = snx_popcount64(g_hle.svcmem.core_mask & ((1ull << k) - 1)); i < g_hle.thread.host_ncpu; i += n)
+    b = plat_cpus_big(big, 256);
+    if (b >= n) share = b; /* host_cpu is the quickest first, so its first b of them are those b CPUs */
+    for (int i = snx_popcount64(g_hle.svcmem.core_mask & ((1ull << k) - 1)); i < share; i += n)
         cpus[m++] = g_hle.thread.host_cpu[i];
     plat_thread_cpus(cpus, m);
     if (__atomic_exchange_n(&g_hle.thread.pin_said[k], 1, __ATOMIC_RELAXED)) return;

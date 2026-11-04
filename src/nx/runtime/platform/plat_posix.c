@@ -214,10 +214,21 @@ __attribute__((noinline)) static void run_with_alt_stack(PThreadFn fn, void* arg
     alt_stack_off();
 }
 
+#if defined(__linux__)
+/* every CPU the process may use (plat_cpus), which plat_thread gives each thread it starts: one a game thread started
+   would otherwise run only on the share of that thread's core (plat_thread_cpus), on Android the core's own few */
+static cpu_set_t g_all_cpus;
+#endif
+
 static void wp_thread_start(void);
 static void* thread_start(void* p) {
     ThreadStart s = *(ThreadStart*)p;
     free(p);
+#if defined(__ANDROID__)
+    /* Android's pthread_attr_setaffinity_np is not the call to make here (the app's minSdk predates it), so a thread
+       started on a game core gives its own affinity back the whole list, before its work begins */
+    if (CPU_COUNT(&g_all_cpus)) sched_setaffinity(0, sizeof g_all_cpus, &g_all_cpus);
+#endif
     wp_thread_start();
     if (s.alt_stack)
         run_with_alt_stack(s.fn, s.arg);
@@ -226,12 +237,6 @@ static void* thread_start(void* p) {
     SDL_CleanupTLS(); /* SDL's per-thread state (plat_sdl.c's calls set its error text) */
     return NULL;
 }
-
-#if defined(__linux__) && !defined(__ANDROID__)
-/* every CPU the process may use (plat_cpus), which plat_thread gives each thread it starts: one a game thread started
-   would otherwise run only on the share of that thread's core (plat_thread_cpus) */
-static cpu_set_t g_all_cpus;
-#endif
 int plat_thread(PThreadFn fn, void* arg, size_t stack) {
     ThreadStart* s = malloc(sizeof *s);
     pthread_attr_t a;
@@ -243,7 +248,7 @@ int plat_thread(PThreadFn fn, void* arg, size_t stack) {
     s->alt_stack = stack == 0 || stack >= ALT_STACK_MIN_THREAD;
     pthread_attr_init(&a);
     pthread_attr_setdetachstate(&a, PTHREAD_CREATE_DETACHED);
-#if defined(__linux__) && !defined(__ANDROID__)
+#if defined(__linux__) && !defined(__ANDROID__) /* thread_start gives Android its own way back to g_all_cpus */
     if (CPU_COUNT(&g_all_cpus)) pthread_attr_setaffinity_np(&a, sizeof g_all_cpus, &g_all_cpus);
 #endif
     if (stack) {
@@ -348,8 +353,50 @@ int plat_power_watch(void) {
 #else
 int plat_power_watch(void) { return -1; } /* no watcher here: the caller polls */
 #endif
-/* Linux only: Android's CPUs differ in speed, so a fixed share of them would make a core slow */
-#if defined(__linux__) && !defined(__ANDROID__)
+/* Android's CPUs differ in speed, so its list is put in order of it (plat_cpus, plat_cpus_big) before a game's cores
+   are shared out; on the rest of Linux the kernel's own order is kept, where one CPU is as quick as any other */
+#if defined(__ANDROID__)
+#define CPU_SPEED_KNOWN 64 /* the CPU ids a phone's list reaches: past them the clock stays unknown, and last */
+static long g_cpu_khz[CPU_SPEED_KNOWN]; /* each CPU's fastest clock, -1 where the app can't read it */
+static int g_cpu_khz_read;              /* 1 once the clocks above are filled, as they don't change */
+static int g_big_ids[CPU_SPEED_KNOWN];  /* plat_cpus_big's answer, kept for the same reason */
+static int g_big_count = -1;
+
+/* the clocks of /sys/devices/system/cpu, which a newer Android's SELinux may keep from an app: then each stays -1 and
+   the lists keep the kernel's order, which is what this did before it knew a phone's CPUs differ */
+static void cpu_khz_read(void) {
+    char path[96], line[32];
+    int c;
+    if (g_cpu_khz_read) return;
+    g_cpu_khz_read = 1;
+    for (c = 0; c < CPU_SPEED_KNOWN; ++c) {
+        FILE* f;
+        g_cpu_khz[c] = -1;
+        snprintf(path, sizeof path, "/sys/devices/system/cpu/cpu%d/cpufreq/cpuinfo_max_freq", c);
+        f = fopen(path, "r");
+        if (!f) continue;
+        if (fgets(line, sizeof line, f)) {
+            long khz = strtol(line, NULL, 10);
+            g_cpu_khz[c] = khz > 0 ? khz : -1; /* a clock of none is the folder's placeholder, not a speed */
+        }
+        fclose(f);
+    }
+}
+static long cpu_khz(int c) { return c >= 0 && c < CPU_SPEED_KNOWN ? g_cpu_khz[c] : -1; }
+/* the quickest first, the kernel's order among those of one speed and among the CPUs whose clock is unknown; a phone
+   lists at most its own cores, so the few comparisons cost nothing and happen once */
+static void cpu_sort_by_speed(int* ids, int n) {
+    int i, j, v;
+    for (i = 1; i < n; ++i) {
+        long k;
+        v = ids[i];
+        k = cpu_khz(v);
+        for (j = i; j > 0 && cpu_khz(ids[j - 1]) < k; --j) ids[j] = ids[j - 1];
+        ids[j] = v;
+    }
+}
+#endif
+#if defined(__linux__)
 int plat_cpus(int* ids, int max) {
     int c, n = 0;
     if (sched_getaffinity(0, sizeof g_all_cpus, &g_all_cpus)) {
@@ -358,7 +405,34 @@ int plat_cpus(int* ids, int max) {
     }
     for (c = 0; c < CPU_SETSIZE && n < max; c++)
         if (CPU_ISSET(c, &g_all_cpus)) ids[n++] = c;
+#if defined(__ANDROID__)
+    cpu_khz_read();
+    cpu_sort_by_speed(ids, n);
+#endif
     return n;
+}
+int plat_cpus_big(int* ids, int max) {
+#if defined(__ANDROID__)
+    int all[CPU_SPEED_KNOWN], n, i, out = 0;
+    long top = -1;
+    if (g_big_count >= 0) { /* the clocks and the list of them don't change, so the answer is kept */
+        for (i = 0; i < g_big_count && i < max; ++i) ids[i] = g_big_ids[i];
+        return g_big_count > max ? max : g_big_count;
+    }
+    n = plat_cpus(all, (int)sizeof all / (int)sizeof all[0]);
+    for (i = 0; i < n; ++i) {
+        long k = cpu_khz(all[i]);
+        if (k < 0) break;        /* no clock here, so none further in the ordered list either */
+        if (i && k < top) break; /* the first slower CPU ends the quickest run of them */
+        if (!i) top = k;
+        g_big_ids[out++] = all[i];
+    }
+    g_big_count = out;
+    for (i = 0; i < out && i < max; ++i) ids[i] = g_big_ids[i];
+    return out > max ? max : out;
+#else
+    return plat_cpus(ids, max); /* no speed to prefer here: every CPU the process may use is one of the quickest */
+#endif
 }
 void plat_thread_cpus(const int* ids, int n) {
     cpu_set_t s;
@@ -370,6 +444,11 @@ void plat_thread_cpus(const int* ids, int n) {
 }
 #else
 int plat_cpus(int* ids, int max) {
+    (void)ids;
+    (void)max;
+    return 0;
+}
+int plat_cpus_big(int* ids, int max) {
     (void)ids;
     (void)max;
     return 0;

@@ -173,6 +173,7 @@ int plat_cpus(int* ids, int max) {
     memcpy(ids, snx_kct_host, sizeof *ids * (size_t)n);
     return n;
 }
+int plat_cpus_big(int* ids, int max) { return plat_cpus(ids, max); } /* here, one host CPU is as quick as any other */
 void plat_thread_cpus(const int* ids, int n) {
     int len = 0;
     pthread_mutex_lock(&snx_kct_lk);

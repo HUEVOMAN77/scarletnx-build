@@ -49,6 +49,10 @@ int plat_thread(PThreadFn fn, void* arg, size_t stack);
 void plat_thread_exit(void); /* ends the calling thread (one plat_thread started) */
 /* the host CPUs the process may run on, at most max of them, into ids; 0 where the runtime doesn't choose them */
 int plat_cpus(int* ids, int max);
+/* the quickest of plat_cpus' CPUs, at most max of them, into ids: a phone's CPUs are of more than one speed, and its
+   game's threads want the quick ones. 0 where the runtime can't tell one CPU's speed from another's, which leaves the
+   whole of plat_cpus' list as quick as any part of it */
+int plat_cpus_big(int* ids, int max);
 /* the calling thread runs only on the n host CPUs in ids */
 void plat_thread_cpus(const int* ids, int n);
 /* the host for the log's header, so a report needn't describe it: "<OS and version>, <CPU>, <n> threads, <n> GB RAM",

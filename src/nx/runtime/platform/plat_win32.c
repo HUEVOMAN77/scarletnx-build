@@ -156,6 +156,11 @@ int plat_cpus(int* ids, int max) {
     (void)max;
     return 0;
 }
+int plat_cpus_big(int* ids, int max) {
+    (void)ids;
+    (void)max;
+    return 0;
+}
 void plat_thread_cpus(const int* ids, int n) {
     (void)ids;
     (void)n;
