@@ -1,0 +1,5623 @@
+# The menu of Adrena in Latin American Spanish, by hand against po/scarletnx.pot.
+# SPDX-License-Identifier: GPL-3.0-or-later
+msgid ""
+msgstr ""
+"Project-Id-Version: ScarletNX\n"
+"Language: es-419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Language-Name: Español (Latinoamérica)\n"
+
+#: src/gui/android.c
+msgid "an exception that says nothing"
+msgstr "una excepción que no dice nada"
+
+#: src/gui/android.c
+msgid "No Android activity to ask."
+msgstr "No hay una activity de Android a la que preguntar."
+
+#: src/gui/android.c
+#, c-format
+msgid "MainActivity.%s did not run: %s"
+msgstr "MainActivity.%s no se ejecutó: %s"
+
+#: src/gui/android.c
+#, c-format
+msgid "MainActivity.%s did not run."
+msgstr "MainActivity.%s no se ejecutó."
+
+#: src/gui/apple.m
+msgid "The document picker did not open."
+msgstr "El selector de documentos no se abrió."
+
+#: src/gui/apple.m
+msgid "No window to show the picker over."
+msgstr "No hay una ventana sobre la que mostrar el selector."
+
+#: src/gui/browser.c
+#, c-format
+msgid "DLC %u"
+msgstr "DLC %u"
+
+#: src/gui/browser.c
+#, c-format
+msgid "DLC %s"
+msgstr "DLC %s"
+
+#: src/gui/browser.c
+#, c-format
+msgid "Update %s"
+msgstr "Actualización %s"
+
+#: src/gui/browser.c
+msgid "Update"
+msgstr "Actualización"
+
+#: src/gui/browser.c
+#, c-format
+msgid "%s is a link, which a mod cannot hold"
+msgstr "%s es un enlace, algo que un mod no puede contener"
+
+#: src/gui/browser.c
+#, c-format
+msgid "cannot copy %s to %s: %s"
+msgstr "no se puede copiar %s a %s: %s"
+
+#: src/gui/browser.c
+#, c-format
+msgid "%s is more than 128 folders deep"
+msgstr "%s tiene más de 128 carpetas de profundidad"
+
+#: src/gui/browser.c
+#, c-format
+msgid "cannot make %s: %s"
+msgstr "no se puede crear %s: %s"
+
+#: src/gui/browser.c
+#, c-format
+msgid "cannot open %s: %s"
+msgstr "no se puede abrir %s: %s"
+
+#: src/gui/browser.c
+#, c-format
+msgid "cannot take away %s, which a copy that stopped left: %s"
+msgstr "no se puede quitar %s, que dejó una copia que se detuvo: %s"
+
+#: src/gui/browser.c
+#, c-format
+msgid "cannot rename %s to %s: %s"
+msgstr "no se puede renombrar %s como %s: %s"
+
+#: src/gui/browser.c
+#, c-format
+msgid " (%s stays, part of the copy)"
+msgstr " (%s se queda, parte de la copia)"
+
+#: src/gui/browser.c
+#, c-format
+msgid "Cannot open %s: %s"
+msgstr "No se puede abrir %s: %s"
+
+#: src/gui/browser.c src/gui/main.c
+#, c-format
+msgid "Not enough memory to list %s."
+msgstr "No hay suficiente memoria para listar %s."
+
+#: src/gui/clean.c
+#, c-format
+msgid "Not read: %s"
+msgstr "No leído: %s"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Not written without [Deprecated]: %s"
+msgstr "No escrito sin [Deprecated]: %s"
+
+#: src/gui/clean.c
+msgid "[Deprecated] removed"
+msgstr "[Deprecated] eliminado"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Stays: %s is there"
+msgstr "Se queda: %s ya está ahí"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Not moved: %s is on another disk"
+msgstr "No movido: %s está en otro disco"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Not moved to %s: %s"
+msgstr "No movido a %s: %s"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Moved to %s"
+msgstr "Movido a %s"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Moves to %s"
+msgstr "Se mueve a %s"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Not moved: %s could not be made: %s"
+msgstr "No movido: no se pudo crear %s: %s"
+
+#: src/gui/clean.c
+#, c-format
+msgid "Not moved: it cannot be read: %s"
+msgstr "No movido: no se puede leer: %s"
+
+#: src/gui/clean.c
+msgid "Removed: it was empty"
+msgstr "Eliminado: estaba vacío"
+
+#: src/gui/editor.c
+#, c-format
+msgid "Select to type it: a whole number from %.0f to %.0f"
+msgstr "Selecciona para escribirlo: un entero de %.0f a %.0f"
+
+#: src/gui/editor.c
+#, c-format
+msgid "Select to type it: a number from %g to %g, three digits and two decimals at most"
+msgstr "Selecciona para escribirlo: un número de %g a %g, tres dígitos y dos decimales como máximo"
+
+#: src/gui/editor.c
+msgid "Select to pick it, or type it as #RRGGBB"
+msgstr "Selecciona para elegirlo, o escribelo como #RRGGBB"
+
+#: src/gui/editor.c
+msgid "Select to type it: its text"
+msgstr "Selecciona para escribirlo: su texto"
+
+#: src/gui/editor.c
+msgid "Select to type it: #RRGGBB"
+msgstr "Selecciona para escribirlo: #RRGGBB"
+
+#: src/gui/editor.c
+#, c-format
+msgid "%s is not a folder name: letters, digits, spaces, - _ and ., not starting with ."
+msgstr "%s no es un nombre de carpeta: letras, dígitos, espacios, - _ y ., sin empezar con ."
+
+#: src/gui/editor.c
+#, c-format
+msgid "%s is not a color #RRGGBB, as #1A2B3C"
+msgstr "%s no es un color #RRGGBB, como #1A2B3C"
+
+#: src/gui/editor.c
+#, c-format
+msgid "%s is not a whole number from 0 to %lu"
+msgstr "%s no es un entero de 0 a %lu"
+
+#: src/gui/editor.c
+#, c-format
+msgid "%s is not a whole number from %.0f to %.0f"
+msgstr "%s no es un entero de %.0f a %.0f"
+
+#: src/gui/editor.c
+#, c-format
+msgid "%s is not a number from %g to %g, two decimals at most"
+msgstr "%s no es un número de %g a %g, dos decimales como máximo"
+
+#: src/gui/editor.c
+#, c-format
+msgid "%s is more than %u bytes"
+msgstr "%s tiene más de %u bytes"
+
+#: src/gui/editor.c
+msgid "Not saved: ESC again leaves without it, Save keeps it"
+msgstr "No guardado: ESC de nuevo sale sin guardarlo, Save lo guarda"
+
+#: src/gui/editor.c
+#, c-format
+msgid "Only the digits of a whole number from %.0f to %.0f"
+msgstr "Solo los dígitos de un entero de %.0f a %.0f"
+
+#: src/gui/editor.c
+#, c-format
+msgid "Only the digits of a number from %g to %g, three digits and two decimals at most"
+msgstr "Solo los dígitos de un número de %g a %g, tres dígitos y dos decimales como máximo"
+
+#: src/gui/editor.c
+msgid "A folder name: letters, digits, spaces, - _ and ., not starting with ."
+msgstr "Un nombre de carpeta: letras, dígitos, espacios, - _ y ., sin empezar con ."
+
+#: src/gui/editor.c
+msgid "A color: #RRGGBB, as #1A2B3C"
+msgstr "Un color: #RRGGBB, como #1A2B3C"
+
+#: src/gui/editor.c
+#, c-format
+msgid "A whole number from 0 to %lu"
+msgstr "Un entero de 0 a %lu"
+
+#: src/gui/editor.c
+#, c-format
+msgid "A whole number from %.0f to %.0f; empty, the default %s"
+msgstr "Un entero de %.0f a %.0f; vacío, el valor por defecto %s"
+
+#: src/gui/editor.c
+#, c-format
+msgid "A whole number from %.0f to %.0f"
+msgstr "Un entero de %.0f a %.0f"
+
+#: src/gui/editor.c
+#, c-format
+msgid "A number from %g to %g, two decimals at most; empty, the default %s"
+msgstr "Un número de %g a %g, dos decimales como máximo; vacío, el valor por defecto %s"
+
+#: src/gui/editor.c
+#, c-format
+msgid "A number from %g to %g, two decimals at most"
+msgstr "Un número de %g a %g, dos decimales como máximo"
+
+#: src/gui/editor.c
+#, c-format
+msgid "Text, up to %u bytes"
+msgstr "Texto, hasta %u bytes"
+
+#: src/gui/editor.c
+msgid "Folder"
+msgstr "Carpeta"
+
+#: src/gui/editor.c src/gui/main.c
+msgid "Save"
+msgstr "Guardar"
+
+#: src/gui/editor.c src/gui/main.c
+#, c-format
+msgid "Not saved: %s could not be written"
+msgstr "No guardado: no se pudo escribir %s"
+
+#: src/gui/editor.c
+msgid "the themes folder"
+msgstr "la carpeta de temas"
+
+#: src/gui/editor.c
+#, c-format
+msgid "Saved in %s"
+msgstr "Guardado en %s"
+
+#: src/gui/gpu_driver.c
+msgid "Debug - CPU Memory"
+msgstr "Depuración - Memoria de CPU"
+
+#: src/gui/gpu_driver.c
+msgid "Use CPU memory (slower but more stable)"
+msgstr "Usar memoria de CPU (más lento pero más estable)"
+
+#: src/gui/gpu_driver.c
+msgid "Debug - No UBWC"
+msgstr "Depuración - Sin UBWC"
+
+#: src/gui/gpu_driver.c
+msgid "Disable UBWC compression for debugging"
+msgstr "Desactivar la compresión UBWC para depurar"
+
+#: src/gui/gpu_driver.c
+msgid "Debug - No Binning"
+msgstr "Depuración - Sin binning"
+
+#: src/gui/gpu_driver.c
+msgid "Disable binning optimization"
+msgstr "Desactivar la optimización de binning"
+
+#: src/gui/gpu_driver.c
+msgid "Capture - Renderpass"
+msgstr "Captura - Renderpass"
+
+#: src/gui/gpu_driver.c
+msgid "Capture command stream data for debugging"
+msgstr "Capturar datos del flujo de comandos para depurar"
+
+#: src/gui/gpu_driver.c
+msgid "Capture - First 100 Frames"
+msgstr "Captura - Los primeros 100 cuadros"
+
+#: src/gui/gpu_driver.c
+msgid "Capture command stream for first 100 frames only"
+msgstr "Capturar el flujo de comandos solo los primeros 100 cuadros"
+
+#: src/gui/gpu_driver.c
+msgid "Shader Debug"
+msgstr "Depuración de shaders"
+
+#: src/gui/gpu_driver.c
+msgid "Enable IR3 shader compiler debugging"
+msgstr "Activar la depuración del compilador de shaders IR3"
+
+#: src/gui/gpu_driver.c
+msgid "GPU Hang Trace"
+msgstr "Trazado de cuelgues de GPU"
+
+#: src/gui/gpu_driver.c
+msgid "Trace GPU progress for debugging hangs"
+msgstr "Trazar el avance de la GPU para depurar cuelgues"
+
+#: src/gui/gpu_driver.c
+msgid "Dev - UBWC Flag Hint"
+msgstr "Desarrollo - Pista de flag UBWC"
+
+#: src/gui/gpu_driver.c
+msgid "Enable TP UBWC flag hint for development"
+msgstr "Activar la pista de flag UBWC de TP para desarrollo"
+
+#: src/gui/gpu_driver.c
+msgid "Performance - Default"
+msgstr "Rendimiento - Por defecto"
+
+#: src/gui/gpu_driver.c
+msgid "Clear all debug options for performance"
+msgstr "Limpiar todas las opciones de depuración por rendimiento"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s is not a zip (%s)"
+msgstr "No agregado: %s no es un zip (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s's entry %u does not read (%s)"
+msgstr "No agregado: %s, su entrada %u, no se lee (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s's %s is %s; a driver's files are at the zip's top"
+msgstr "No agregado: %s de %s es %s; los archivos de un driver están en la raíz del zip"
+
+#: src/gui/gpu_driver.c
+msgid "a folder"
+msgstr "una carpeta"
+
+#: src/gui/gpu_driver.c
+msgid "not a file at the zip's top"
+msgstr "no es un archivo en la raíz del zip"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s unpacks to %llu bytes, over the %llu a driver takes"
+msgstr "No agregado: %s se descomprime a %llu bytes, más de los %llu que admite un driver"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s has no meta.json at its top"
+msgstr "No agregado: %s no tiene un meta.json en su raíz"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s's meta.json is %llu bytes, over the %d a driver's takes"
+msgstr "No agregado: el meta.json de %s tiene %llu bytes, más de los %d que admite el de un driver"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s's meta.json does not unpack (%s)"
+msgstr "No agregado: el meta.json de %s no se descomprime (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s: %s"
+msgstr "No agregado: %s: %s"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s has no %s, the library its meta.json names"
+msgstr "No agregado: %s no tiene %s, la biblioteca que nombra su meta.json"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s needs Android API %d; this device has API %d"
+msgstr "No agregado: %s necesita Android API %d; este dispositivo tiene API %d"
+
+#: src/gui/gpu_driver.c src/gui/main.c
+#, c-format
+msgid "Not added: %s"
+msgstr "No agregado: %s"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Already added: %s (%s/%s)"
+msgstr "Ya agregado: %s (%s/%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s/%s holds %s %s already; remove it first"
+msgstr "No agregado: %s/%s ya tiene %s %s; primero quitalo"
+
+#: src/gui/gpu_driver.c
+msgid "a package whose meta.json does not read,"
+msgstr "un paquete cuyo meta.json no se lee,"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: no memory for %s's paths"
+msgstr "No agregado: no hay memoria para las rutas de %s"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s could not be made (%s)"
+msgstr "No agregado: no se pudo crear %s (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s's %s does not unpack (%s)"
+msgstr "No agregado: %s de %s no se descomprime (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s's %s %s"
+msgstr "No agregado: %s de %s %s"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s could not be written (%s)"
+msgstr "No agregado: no se pudo escribir %s (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not added: %s could not become %s (%s)"
+msgstr "No agregado: %s no pudo convertirse en %s (%s)"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Added %s (%s), in %s/%s"
+msgstr "Agregado %s (%s), en %s/%s"
+
+#: src/gui/gpu_driver.c src/gui/main.c
+msgid "no driverVersion"
+msgstr "sin driverVersion"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Removed %s/%s"
+msgstr "Eliminado %s/%s"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not removed: %s is no driver's folder name"
+msgstr "No eliminado: %s no es un nombre de carpeta de driver"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not removed: %s is not there"
+msgstr "No eliminado: %s no está"
+
+#: src/gui/gpu_driver.c
+#, c-format
+msgid "Not removed: %s could not be deleted (%s)"
+msgstr "No eliminado: no se pudo borrar %s (%s)"
+
+#: src/gui/gpu_driver_fetch.c
+#, c-format
+msgid "GitHub says of %s: %s"
+msgstr "GitHub dice de %s: %s"
+
+#: src/gui/gpu_driver_fetch.c
+#, c-format
+msgid "%s's releases are not GitHub's list of them (%zu bytes)"
+msgstr "las versiones de %s no son la lista de GitHub (%zu bytes)"
+
+#: src/gui/gpu_driver_fetch.c
+#, c-format
+msgid "no memory for %s's %zu releases and %zu assets"
+msgstr "%s: no hay memoria para sus %zu versiones ni sus %zu archivos"
+
+#: src/gui/gpu_driver_fetch.c
+msgid "Unsupported"
+msgstr "No soportado"
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: select. Refresh. Back."
+msgstr "Toca: seleccionar. Actualizar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: select. Refresh."
+msgstr "Toca: seleccionar. Actualizar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: open. Drag: scroll. Refresh. Back."
+msgstr "Toca: abrir. Arrastrar: desplazar. Actualizar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: open. Drag: scroll. Refresh."
+msgstr "Toca: abrir. Arrastrar: desplazar. Actualizar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Play."
+msgstr "Jugar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Recompile."
+msgstr "Recompilar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Mods."
+msgstr "Mods."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "AOT pack."
+msgstr "Paquete AOT."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Save states."
+msgstr "Estados guardados."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Back."
+msgstr "Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Pick a keys file."
+msgstr "Elegir un archivo de keys."
+
+#: src/gui/main.c
+msgid "Pick a keys file"
+msgstr "Elegir un archivo de keys"
+
+#: src/gui/main.c
+msgid "tap the box to open the file picker"
+msgstr "toca el cuadro para abrir el selector de archivos"
+
+#: src/gui/main.c
+msgid "Pick a file"
+msgstr "Elegir un archivo"
+
+#: src/gui/main.c
+msgid "Tap to return to menu"
+msgstr "Toca para volver al menú"
+
+#: src/gui/main.c
+msgid "Tap here to abort and return to menu"
+msgstr "Toca acá para abortar y volver al menú"
+
+#: src/gui/main.c
+msgid "No games in recompiled/ or dumps/: put a game's .nro, .xci or .nsp in dumps/."
+msgstr "No hay juegos en recompiled/ ni en dumps/: coloca el .nro, .xci o .nsp de un juego en dumps/."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: change. Back."
+msgstr "Toca: cambiar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: change."
+msgstr "Toca: cambiar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Drag: change. Tap #RRGGBB: type. Tap outside: OK. Back: cancel."
+msgstr "Arrastrar: cambiar. Toca #RRGGBB: escribir. Toca afuera: OK. Atrás: cancelar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Drag: change. Tap #RRGGBB: type. Tap outside: OK."
+msgstr "Arrastrar: cambiar. Toca #RRGGBB: escribir. Toca afuera: OK."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: open. Back."
+msgstr "Toca: abrir. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: open."
+msgstr "Toca: abrir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Refresh. Back."
+msgstr "Actualizar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Refresh."
+msgstr "Actualizar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: open or change."
+msgstr "Toca: abrir o cambiar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: open or remove."
+msgstr "Toca: abrir o quitar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: add."
+msgstr "Toca: agregar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: reset."
+msgstr "Toca: restablecer."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: select. Tap again: press. Back."
+msgstr "Toca: seleccionar. Toca otra vez: presionar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: select. Tap again: press."
+msgstr "Toca: seleccionar. Toca otra vez: presionar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: rename. Back."
+msgstr "Toca: renombrar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: rename."
+msgstr "Toca: renombrar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: use, add or remove. Back."
+msgstr "Toca: usar, agregar o quitar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: downloads, or fetch again. Back."
+msgstr "Toca: descargas, o volver a buscar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: apply, type, remove or save. Back."
+msgstr "Toca: aplicar, escribir, quitar o guardar. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: use, add or remove."
+msgstr "Toca: usar, agregar o quitar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: downloads, or fetch again."
+msgstr "Toca: descargas, o volver a buscar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: apply, type, remove or save."
+msgstr "Toca: aplicar, escribir, quitar o guardar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: select."
+msgstr "Toca: seleccionar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Games."
+msgstr "Juegos."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Take out."
+msgstr "Extraer."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Back: abort."
+msgstr "Atrás: abortar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap again: play."
+msgstr "Toca otra vez: jugar."
+
+#: src/gui/main.c
+msgid "Back: to Games. Tap its row again: play"
+msgstr "Atrás: a Juegos. Toca su fila otra vez: jugar"
+
+#: src/gui/main.c
+msgid "Back: to Games"
+msgstr "Atrás: a Juegos"
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Arrows/mouse: move. Space/Enter/click: select."
+msgstr "Flechas/ratón: mover. Space/Enter/clic: seleccionar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: select. Enter/Space: open. Left/Right/PgUp/PgDown: scroll. F5: refresh."
+msgstr "Arriba/Abajo: seleccionar. Enter/Space: abrir. Izquierda/Derecha/PgUp/PgDown: desplazar. F5: actualizar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Arrows: select. Enter/Space: open. PgUp/PgDown: scroll. F5: refresh."
+msgstr "Flechas: seleccionar. Enter/Space: abrir. PgUp/PgDown: desplazar. F5: actualizar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "L: play."
+msgstr "L: jugar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "R: recompile."
+msgstr "R: recompilar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "M: mods."
+msgstr "M: mods."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "B: AOT pack."
+msgstr "B: paquete AOT."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "S: save states."
+msgstr "S: estados guardados."
+
+#: src/gui/main.c
+msgid "click the box (or Enter) to open the file picker"
+msgstr "haz clic en el cuadro (o Enter) para abrir el selector de archivos"
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Ctrl+V: paste. ESC: back."
+msgstr "Ctrl+V: pegar. ESC: atrás."
+
+#: src/gui/main.c
+msgid "Pick or drop a keys file"
+msgstr "Elegir o soltar un archivo de keys"
+
+#: src/gui/main.c
+msgid "Pick or drop a file"
+msgstr "Elegir o soltar un archivo"
+
+#: src/gui/main.c
+msgid "Press [ESC] to return to menu"
+msgstr "Presiona [ESC] para volver al menú"
+
+#: src/gui/main.c
+msgid "Press [ESC] to abort and return to menu"
+msgstr "Presiona [ESC] para abortar y volver al menú"
+
+#: src/gui/main.c
+msgid "No games in recompiled/, dumps/ or the libraries of Settings > App > Folders."
+msgstr "No hay juegos en recompiled/, dumps/ ni en las bibliotecas de Ajustes > App > Carpetas."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: key. Left/Right: change. Enter: edit. Ctrl+S: save. ESC: back."
+msgstr "Arriba/Abajo: tecla. Izquierda/Derecha: cambiar. Enter: editar. Ctrl+S: guardar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Left/Right: step 1. PgUp/PgDn: step 16. Enter: OK. ESC: cancel."
+msgstr "Arriba/Abajo: fila. Izquierda/Derecha: paso 1. PgUp/PgDn: paso 16. Enter: OK. ESC: cancelar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: setting. Left/Right: change. Enter: type. ESC: back."
+msgstr "Arriba/Abajo: ajuste. Izquierda/Derecha: cambiar. Enter: escribir. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Del: default."
+msgstr "Del: por defecto."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: group. Enter: open. ESC: back."
+msgstr "Arriba/Abajo: grupo. Enter: abrir. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Left/Right: change. Enter: change or open. ESC: back."
+msgstr "Arriba/Abajo: fila. Izquierda/Derecha: cambiar. Enter: cambiar o abrir. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: folder. F5: refresh. ESC: back."
+msgstr "Arriba/Abajo: carpeta. F5: actualizar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Enter: open or change."
+msgstr "Enter: abrir o cambiar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Del: delete."
+msgstr "Del: borrar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Enter: open or remove."
+msgstr "Enter: abrir o quitar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Enter: open."
+msgstr "Enter: abrir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Enter: add."
+msgstr "Enter: agregar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Enter: reset."
+msgstr "Enter: restablecer."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Arrows/pad: move, change. Enter/A: select. Del: default. ESC: back."
+msgstr "Flechas/mando: mover, cambiar. Enter/A: seleccionar. Del: por defecto. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: user. Left/Right: current user. Enter: rename. ESC: back."
+msgstr "Arriba/Abajo: usuario. Izquierda/Derecha: usuario actual. Enter: renombrar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Enter: use, add or remove. Del: remove. ESC: back."
+msgstr "Arriba/Abajo: fila. Enter: usar, agregar o quitar. Del: quitar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Enter: downloads, or fetch again. ESC: back."
+msgstr "Arriba/Abajo: fila. Enter: descargas, o volver a buscar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Enter: apply, type, remove or save. Del: remove. ESC: back."
+msgstr "Arriba/Abajo: fila. Enter: aplicar, escribir, quitar o guardar. Del: quitar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: queue."
+msgstr "Arriba/Abajo: cola."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tab: games."
+msgstr "Tab: juegos."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Del: take out."
+msgstr "Del: extraer."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "ESC: abort."
+msgstr "ESC: abortar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "ESC: games."
+msgstr "ESC: juegos."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Enter: play."
+msgstr "Enter: jugar."
+
+#: src/gui/main.c
+msgid "Press [ESC] to return to Games, Enter to play"
+msgstr "Presiona [ESC] para volver a Juegos, Enter para jugar"
+
+#: src/gui/main.c
+msgid "Press [ESC] to return to Games"
+msgstr "Presiona [ESC] para volver a Juegos"
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: move. A: select. Start: refresh. B: back."
+msgstr "D-pad: mover. A: seleccionar. Start: actualizar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: select. A: open. LT/RT: scroll. Start: refresh. B: back."
+msgstr "D-pad: seleccionar. A: abrir. LT/RT: desplazar. Start: actualizar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Right stick: play."
+msgstr "Stick derecho: jugar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Y: recompile."
+msgstr "Y: recompilar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "L3: mods."
+msgstr "L3: mods."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "R3: AOT pack."
+msgstr "R3: paquete AOT."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "X: save states."
+msgstr "X: estados guardados."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: pick a file. B: back."
+msgstr "A: elegir un archivo. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: key, change. A: edit. B: back."
+msgstr "D-pad: tecla, cambiar. A: editar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: row, step 1. LT/RT: step 16. A: OK. B: cancel."
+msgstr "D-pad: fila, paso 1. LT/RT: paso 16. A: OK. B: cancelar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: setting, change. A: type. B: back."
+msgstr "D-pad: ajuste, cambiar. A: escribir. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "X: default."
+msgstr "X: por defecto."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: group. A: open. B: back."
+msgstr "D-pad: grupo. A: abrir. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: row, change. A: change or open. B: back."
+msgstr "D-pad: fila, cambiar. A: cambiar o abrir. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: folder. Start: refresh. B: back."
+msgstr "D-pad: carpeta. Start: actualizar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: open or change."
+msgstr "A: abrir o cambiar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: open or remove."
+msgstr "A: abrir o quitar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: open."
+msgstr "A: abrir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "X: delete."
+msgstr "X: borrar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: add."
+msgstr "A: agregar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: reset."
+msgstr "A: restablecer."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: user, current user. A: rename. B: back."
+msgstr "D-pad: usuario, usuario actual. A: renombrar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: row. A: use, add or remove. X: remove. B: back."
+msgstr "D-pad: fila. A: usar, agregar o quitar. X: quitar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: row. A: downloads, or fetch again. B: back."
+msgstr "D-pad: fila. A: descargas, o volver a buscar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: row. A: apply, type, remove or save. X: remove. B: back."
+msgstr "D-pad: fila. A: aplicar, escribir, quitar o guardar. X: quitar. B: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "LB/RB: screen."
+msgstr "LB/RB: pantalla."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "D-pad: queue."
+msgstr "D-pad: cola."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "RB: games."
+msgstr "RB: juegos."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "X: take out."
+msgstr "X: extraer."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "B: abort."
+msgstr "B: abortar."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "B: games."
+msgstr "B: juegos."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "A: play."
+msgstr "A: jugar."
+
+#: src/gui/main.c
+#, c-format
+msgid "Disk: %s, %s free"
+msgstr "Disco: %s, %s libres"
+
+#: src/gui/main.c
+#, c-format
+msgid "Disk: counting, %s free"
+msgstr "Disco: contando, %s libres"
+
+#: src/gui/main.c
+msgid "Working folder:"
+msgstr "Carpeta de trabajo:"
+
+#: src/gui/main.c
+msgid "(unavailable)"
+msgstr "(no disponible)"
+
+#: src/gui/main.c
+msgid "Data"
+msgstr "Datos"
+
+#: src/gui/main.c
+msgid "Recompiled"
+msgstr "Recompilados"
+
+#: src/gui/main.c
+msgid "Extractions"
+msgstr "Extracciones"
+
+#: src/gui/main.c
+msgid "Logs"
+msgstr "Registros"
+
+#: src/gui/main.c
+msgid "Caches"
+msgstr "Cachés"
+
+#: src/gui/main.c
+msgid "Auto"
+msgstr "Auto"
+
+#: src/gui/main.c
+msgid "On"
+msgstr "Activado"
+
+#: src/gui/main.c
+msgid "Off"
+msgstr "Desactivado"
+
+#: src/gui/main.c
+msgid "Full"
+msgstr "Completo"
+
+#: src/gui/main.c
+msgid "Gentle"
+msgstr "Suave"
+
+#: src/gui/main.c
+msgid "Recent Games"
+msgstr "Juegos recientes"
+
+#: src/gui/main.c
+msgid "Dumps"
+msgstr "Dumps"
+
+#: src/gui/main.c
+msgid "Sort"
+msgstr "Ordenar"
+
+#: src/gui/main.c
+msgid "Title"
+msgstr "Título"
+
+#: src/gui/main.c
+msgid "Last opened"
+msgstr "Último abierto"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "View"
+msgstr "Vista"
+
+#: src/gui/main.c
+msgid "List"
+msgstr "Lista"
+
+#: src/gui/main.c
+msgid "Grid"
+msgstr "Cuadrícula"
+
+#: src/gui/main.c
+msgid "Icon size"
+msgstr "Tamaño del icono"
+
+#: src/gui/main.c
+msgid "Small"
+msgstr "Pequeño"
+
+#: src/gui/main.c
+msgid "Medium"
+msgstr "Mediano"
+
+#: src/gui/main.c
+msgid "Large"
+msgstr "Grande"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not kept for the next start: %s could not be written"
+msgstr "No guardado para el próximo inicio: no se pudo escribir %s"
+
+#: src/gui/main.c
+#, c-format
+msgid " (it keeps %s)"
+msgstr " (guarda %s)"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: language = %s read as %s, not written: %s"
+msgstr "%s: language = %s leído como %s, no escrito: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: language = %s is now %s"
+msgstr "%s: language = %s ahora es %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not used from %s: %s"
+msgstr "No usado desde %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: [folders] games = %s is now recompiled = %s"
+msgstr "%s: [folders] games = %s ahora es recompiled = %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: text_size = %s is now ui_scale = %s"
+msgstr "%s: text_size = %s ahora es ui_scale = %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: %s is no longer a UI scale: ui_scale = %d now"
+msgstr "%s: %s ya no es una escala de interfaz: ui_scale = %d ahora"
+
+#: src/gui/main.c
+#, c-format
+msgid "Recent Games not kept: %s could not be written."
+msgstr "Juegos recientes no guardados: no se pudo escribir %s."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tab: screen. F2: side box."
+msgstr "Tab: pantalla. F2: caja lateral."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Folders."
+msgstr "Carpetas."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "View."
+msgstr "Vista."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "P: folders."
+msgstr "P: carpetas."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "V: view."
+msgstr "V: vista."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "ESC: back."
+msgstr "ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "F1: help."
+msgstr "F1: ayuda."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Select: help."
+msgstr "Seleccionar: ayuda."
+
+#: src/gui/main.c
+#, c-format
+msgid "%s in queue"
+msgstr "%s en la cola"
+
+#: src/gui/main.c src/gui/ui.txt
+msgid "OK"
+msgstr "OK"
+
+#: src/gui/main.c
+msgid "FAILED"
+msgstr "FALLÓ"
+
+#: src/gui/main.c
+msgid "...FAILED"
+msgstr "...FALLÓ"
+
+#: src/gui/main.c
+msgid "...OK"
+msgstr "...OK"
+
+#: src/gui/main.c
+msgid "Aborting..."
+msgstr "Abortando..."
+
+#: src/gui/main.c
+msgid "Exit Adrena?"
+msgstr "Salir de Adrena?"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is compiling (%d%%), %d more in the queue: exiting stops them. Exit?"
+msgstr "%s se está compilando (%d%%), %d más en la cola: salir los detiene. Salir?"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is compiling (%d%%): exiting stops it. Exit?"
+msgstr "%s se está compilando (%d%%): salir lo detiene. Salir?"
+
+#: src/gui/main.c
+msgid "List the games in its subfolders too?"
+msgstr "Listar también los juegos en sus subcarpetas?"
+
+#: src/gui/main.c
+msgid "Outside the app, Android checks every file access: games may run slower."
+msgstr "Fuera de la app, Android revisa cada acceso a archivos: los juegos pueden ir más lentos."
+
+#: src/gui/main.c
+msgid "A compile goes: exiting Adrena stops it, its work lost."
+msgstr "Hay una compilación en curso: salir de Adrena la detiene y se pierde su trabajo."
+
+#: src/gui/main.c
+msgid "A game runs: exiting Adrena ends it."
+msgstr "Hay un juego en ejecución: salir de Adrena lo termina."
+
+#: src/gui/main.c
+msgid "Abort the compile? Its work is lost."
+msgstr "Abortar la compilación? Se pierde su trabajo."
+
+#: src/gui/main.c
+msgid "Abort the run?"
+msgstr "Abortar la ejecución?"
+
+#: src/gui/main.c
+msgid "Left by older versions"
+msgstr "Dejado por versiones anteriores"
+
+#: src/gui/main.c
+msgid "While the app is in testing, Android's Settings > Apps > Adrena > Storage > Clear storage takes the menu's files above, with every game, save and key in the app"
+msgstr "Mientras la app esté en pruebas, Ajustes > Aplicaciones > Adrena > Almacenamiento > Borrar datos de Android se lleva los archivos del menú de arriba, con cada juego, guardado y key de la app"
+
+#: src/gui/main.c
+msgid "counting"
+msgstr "contando"
+
+#: src/gui/main.c
+#, c-format
+msgid "Move Old Files: %d done, %d not"
+msgstr "Mover archivos viejos: %d hechos, %d no"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings: %d done, %d not"
+msgstr "Limpiar ajustes viejos: %d hechos, %d no"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings: %d done"
+msgstr "Limpiar ajustes viejos: %d hechos"
+
+#: src/gui/main.c
+#, c-format
+msgid "and %d more, which Share Log lists"
+msgstr "y %d más, que los lista Compartir registro"
+
+#: src/gui/main.c
+msgid "tap again"
+msgstr "toca otra vez"
+
+#: src/gui/main.c
+msgid "press again"
+msgstr "presiona otra vez"
+
+#: src/gui/main.c
+msgid "Continue"
+msgstr "Continuar"
+
+#: src/gui/main.c
+msgid "Abort"
+msgstr "Abortar"
+
+#: src/gui/main.c
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/gui/main.c src/gui/ui.txt
+msgid "Exit"
+msgstr "Salir"
+
+#: src/gui/main.c
+msgid "Only This Folder"
+msgstr "Solo esta carpeta"
+
+#: src/gui/main.c
+msgid "With Subfolders"
+msgstr "Con subcarpetas"
+
+#: src/gui/main.c
+msgid "Use Anyway"
+msgstr "Usar igual"
+
+#: src/gui/main.c
+msgid "Run Anyway"
+msgstr "Ejecutar igual"
+
+#: src/gui/main.c
+msgid "Clean"
+msgstr "Limpiar"
+
+#: src/gui/main.c
+msgid "Reset"
+msgstr "Restablecer"
+
+#: src/gui/main.c
+msgid "Remove"
+msgstr "Quitar"
+
+#: src/gui/main.c
+msgid "Move"
+msgstr "Mover"
+
+#: src/gui/main.c
+msgid "Delete"
+msgstr "Borrar"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Play"
+msgstr "Jugar"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Recompile"
+msgstr "Recompilar"
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Arrows/mouse: move. Space/Enter/click: select. F5: refresh. ESC: exit."
+msgstr "Flechas/ratón: mover. Space/Enter/clic: seleccionar. F5: actualizar. ESC: salir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "F2: side box."
+msgstr "F2: caja lateral."
+
+#: src/gui/main.c
+#, c-format
+msgid "user=%d is deprecated, and the Settings have no user_uid to write %s in"
+msgstr "user=%d está obsoleto, y los Ajustes no tienen un user_uid donde escribir %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "user=%d is deprecated: user_uid=%s, [user%d]'s, replaces it"
+msgstr "user=%d está obsoleto: lo reemplaza user_uid=%s, el de [user%d]"
+
+#: src/gui/main.c
+#, c-format
+msgid "No user shown: %s"
+msgstr "No se muestra ningún usuario: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s cannot be made: %s"
+msgstr "no se puede crear %s: %s"
+
+#: src/gui/main.c
+msgid "Cannot start the run: out of memory"
+msgstr "No se puede iniciar la ejecución: sin memoria"
+
+#: src/gui/main.c
+#, c-format
+msgid "the driver gave no answer in %d s"
+msgstr "el driver no dio respuesta en %d s"
+
+#: src/gui/main.c
+#, c-format
+msgid "the driver ended with status %d"
+msgstr "el driver terminó con estado %d"
+
+#: src/gui/main.c
+msgid "the driver ended without one"
+msgstr "el driver terminó sin uno"
+
+#: src/gui/main.c
+#, c-format
+msgid "Cannot find %s beside Adrena or on PATH."
+msgstr "No se encuentra %s junto a Adrena ni en el PATH."
+
+#: src/gui/main.c
+#, c-format
+msgid "The dumps' icons are not asked for (%s)"
+msgstr "Los iconos de los dumps no se piden (%s)"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s could not be drawn: the game shows Wimsy in grey"
+msgstr "%s no se pudo dibujar: el juego muestra a Wimsy en gris"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s's picture could not be drawn: Wimsy shows"
+msgstr "la imagen de %s no se pudo dibujar: aparece Wimsy"
+
+#: src/gui/main.c
+msgid "Who plays the games"
+msgstr "Quién juega los juegos"
+
+#: src/gui/main.c
+msgid "No user picked: the Settings have no user"
+msgstr "No se eligió usuario: los Ajustes no tienen usuario"
+
+#: src/gui/main.c
+#, c-format
+msgid "Cannot make %s: %s"
+msgstr "No se puede crear %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Opened %s"
+msgstr "Abierto %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Could not open %s: %s"
+msgstr "No se pudo abrir %s: %s"
+
+#: src/gui/main.c
+msgid "out of memory"
+msgstr "sin memoria"
+
+#: src/gui/main.c
+msgid "Dump"
+msgstr "Dump"
+
+#: src/gui/main.c
+msgid "Game"
+msgstr "Juego"
+
+#: src/gui/main.c src/common/utilities/setup.c
+msgid "Saves"
+msgstr "Guardados"
+
+#: src/gui/main.c src/gui/ui.txt
+msgid "Settings"
+msgstr "Ajustes"
+
+#: src/gui/main.c
+msgid "its dump is not known: the game was made before the recompile named it"
+msgstr "no se conoce su dump: el juego se hizo antes de que la recompilación lo nombrara"
+
+#: src/gui/main.c
+msgid "not known"
+msgstr "no conocido"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is not there yet"
+msgstr "%s todavía no está"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is out of the Files app's reach, which shows the app's Documents alone"
+msgstr "%s está fuera del alcance de la app Archivos, que solo muestra los Documentos de la app"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s has no cache to delete: no %s, no %s"
+msgstr "%s no tiene un caché que borrar: ni %s, ni %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Delete the caches of %s? The shader cache, %s (%s), and the code cache, %s (%s). The game makes them again as it runs; its saves, settings and dump stay."
+msgstr "Borrar los cachés de %s? El caché de shaders, %s (%s), y el caché de código, %s (%s). El juego los vuelve a hacer mientras corre; sus guardados, ajustes y dump se quedan."
+
+#: src/gui/main.c
+msgid "none"
+msgstr "ninguno"
+
+#: src/gui/main.c
+#, c-format
+msgid "Could not delete %s: %s"
+msgstr "No se pudo borrar %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Deleted the caches of %s: %s"
+msgstr "Se borraron los cachés de %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "GPU Driver: %s"
+msgstr "Driver de GPU: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Global (%s)"
+msgstr "Global (%s)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Mod %s"
+msgstr "Mod %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Cheat %s"
+msgstr "Cheat %s"
+
+#: src/gui/main.c
+msgid "No update"
+msgstr "Sin actualización"
+
+#: src/gui/main.c
+msgid "Add Mod"
+msgstr "Agregar mod"
+
+#: src/gui/main.c
+msgid "Open Mods Folder"
+msgstr "Abrir carpeta de mods"
+
+#: src/gui/main.c
+msgid "Add Cheats"
+msgstr "Agregar cheats"
+
+#: src/gui/main.c
+msgid "Open Cheats Folder"
+msgstr "Abrir carpeta de cheats"
+
+#: src/gui/main.c
+msgid "Open Folder"
+msgstr "Abrir carpeta"
+
+#: src/gui/main.c
+msgid "Clean Cache"
+msgstr "Borrar caché"
+
+#: src/gui/main.c
+msgid "Save States"
+msgstr "Estados guardados"
+
+#: src/gui/main.c
+msgid "Freedreno Settings"
+msgstr "Ajustes de Freedreno"
+
+#: src/gui/main.c
+msgid "  (Debug on)"
+msgstr "  (Depuración activa)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is not a folder of this device's storage"
+msgstr "No agregado: %s no es una carpeta del almacenamiento de este dispositivo"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is not a folder"
+msgstr "No agregado: %s no es una carpeta"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s has no name to give the mod"
+msgstr "No agregado: %s no tiene un nombre para el mod"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: the mod would be named %s, and the mods list hides a name that starts with a dot"
+msgstr "No agregado: el mod se llamaría %s, y la lista de mods oculta un nombre que empieza con un punto"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is in the mods folder already, %s"
+msgstr "No agregado: %s ya está en la carpeta de mods, %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s holds the mods folder %s, which it would copy into itself"
+msgstr "No agregado: %s contiene la carpeta de mods %s, que copiaría dentro de sí misma"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s has no exefs/ or romfs/ folder, which a mod is made of"
+msgstr "No agregado: %s no tiene una carpeta exefs/ ni romfs/, de lo que está hecho un mod"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: the mods folder has %s already: %s"
+msgstr "No agregado: la carpeta de mods ya tiene %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: cannot make %s: %s"
+msgstr "No agregado: no se puede crear %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Mod %s added: %s"
+msgstr "Mod %s agregado: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is not a file of this device's storage"
+msgstr "No agregado: %s no es un archivo del almacenamiento de este dispositivo"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is not a file"
+msgstr "No agregado: %s no es un archivo"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is not a .txt file, which cheats are"
+msgstr "No agregado: %s no es un archivo .txt, que son los cheats"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is %llu bytes, and a cheats file is text of %d bytes (1 MiB) at most"
+msgstr "No agregado: %s tiene %llu bytes, y un archivo de cheats es texto de %d bytes (1 MiB) como máximo"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: cannot read %s: %s"
+msgstr "No agregado: no se puede leer %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s has no cheat, no line that starts with [name]"
+msgstr "No agregado: %s no tiene ningún cheat, ninguna línea que empiece con [name]"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is not named <build ID>.txt, and the build ID of the main module the game plays with cannot be read from %s"
+msgstr "No agregado: %s no se llama <build ID>.txt, y el build ID del módulo principal con el que juega el juego no se puede leer de %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is for build ID %s, and the game plays with build ID %s: its cheats would never run"
+msgstr "No agregado: %s es para el build ID %s, y el juego juega con el build ID %s: sus cheats nunca se ejecutarían"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: the cheats folder has %s already: %s"
+msgstr "No agregado: la carpeta de cheats ya tiene %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: cannot write %s: %s"
+msgstr "No agregado: no se puede escribir %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Added %s: %zu cheats from %s, named by the build ID of the main module the game plays with"
+msgstr "Agregado %s: %zu cheats de %s, nombrados por el build ID del módulo principal con el que juega el juego"
+
+#: src/gui/main.c
+#, c-format
+msgid "Added %s: %zu cheats"
+msgstr "Agregado %s: %zu cheats"
+
+#: src/gui/main.c
+#, c-format
+msgid "Add Mod: the folder picker could not open: %s"
+msgstr "Agregar mod: el selector de carpetas no se pudo abrir: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Add Cheats: the file picker could not open: %s"
+msgstr "Agregar cheats: el selector de archivos no se pudo abrir: %s"
+
+#: src/gui/main.c
+msgid "Cheats"
+msgstr "Cheats"
+
+#: src/gui/main.c
+msgid "no reason given"
+msgstr "sin razón indicada"
+
+#: src/gui/main.c
+msgid "Add Mod: no folder was picked."
+msgstr "Agregar mod: no se eligió ninguna carpeta."
+
+#: src/gui/main.c
+msgid "Add Cheats: no file was picked."
+msgstr "Agregar cheats: no se eligió ningún archivo."
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s came back after the box it was picked for closed"
+msgstr "No agregado: %s volvió después de cerrarse la caja en la que se eligió"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is a dump: its recompiled game keeps its own GPU driver and Freedreno variables"
+msgstr "%s es un dump: su juego recompilado conserva su propio driver de GPU y sus variables de Freedreno"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is a dump: its recompiled game keeps the save states"
+msgstr "%s es un dump: su juego recompilado conserva los estados guardados"
+
+#: src/gui/main.c
+#, c-format
+msgid "\"%s\" always runs: a | in its name, which cheats_off= puts between two"
+msgstr "\"%s\" siempre corre: una | en su nombre, que cheats_off= pone entre dos"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: its updates, DLCs, mods and cheats kept"
+msgstr "%s: sus actualizaciones, DLCs, mods y cheats conservados"
+
+#: src/gui/main.c
+msgid "Icon size is the grid's: View is List"
+msgstr "El tamaño del icono es el de la cuadrícula: la Vista es Lista"
+
+#: src/gui/main.c
+msgid "Side panel"
+msgstr "Panel lateral"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: save states"
+msgstr "%s: estados guardados"
+
+#: src/gui/main.c
+#, c-format
+msgid "Slot %s  %s  %u:%02u:%02u"
+msgstr "Ranura %s  %s  %u:%02u:%02u"
+
+#: src/gui/main.c
+#, c-format
+msgid "Auto  %s  %u:%02u:%02u"
+msgstr "Auto  %s  %u:%02u:%02u"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s has no save states: F7 saves one while it plays, the menu's Save states page too."
+msgstr "%s no tiene estados guardados: F7 guarda uno mientras juega, y también la página de Estados guardados del menú."
+
+#: src/gui/main.c
+msgid "S lists the save states of a recompiled Switch game in focus."
+msgstr "S lista los estados guardados del juego de Switch recompilado enfocado."
+
+#: src/gui/main.c
+#, c-format
+msgid "It can't be played from that state: %s."
+msgstr "No se puede jugar desde ese estado: %s."
+
+#: src/gui/main.c
+#, c-format
+msgid "Delete the save state %s?"
+msgstr "Borrar el estado guardado %s?"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not deleted: %s could not be removed"
+msgstr "No borrado: no se pudo quitar %s"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS"
+msgstr "ADRENA  /  AJUSTES"
+
+#: src/gui/main.c
+msgid "ADRENA  /  COMPILE"
+msgstr "ADRENA  /  COMPILAR"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETUP"
+msgstr "ADRENA  /  PREPARACIÓN"
+
+#: src/gui/main.c
+#, c-format
+msgid "ADRENA  /  THEME EDITOR  /  %s"
+msgstr "ADRENA  /  EDITOR DE TEMAS  /  %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "ADRENA  /  SETTINGS  /  %s  /  PLAYER %d  /  %s"
+msgstr "ADRENA  /  AJUSTES  /  %s  /  JUGADOR %d  /  %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "ADRENA  /  SETTINGS  /  %s  /  %s"
+msgstr "ADRENA  /  AJUSTES  /  %s  /  %s"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS  /  FOLDERS"
+msgstr "ADRENA  /  AJUSTES  /  CARPETAS"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS"
+msgstr "ADRENA  /  AJUSTES  /  DRIVERS DE GPU"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS  /  GPU DRIVERS  /  DOWNLOAD"
+msgstr "ADRENA  /  AJUSTES  /  DRIVERS DE GPU  /  DESCARGA"
+
+#: src/gui/main.c
+msgid "ADRENA  /  SETTINGS  /  FREEDRENO SETTINGS"
+msgstr "ADRENA  /  AJUSTES  /  AJUSTES DE FREEDRENO"
+
+#: src/gui/main.c
+#, c-format
+msgid "Background recompile: %s"
+msgstr "Recompilación en segundo plano: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Taskbar: no progress shown (%s)"
+msgstr "Barra de tareas: no muestra progreso (%s)"
+
+#: src/gui/main.c
+msgid "Menu"
+msgstr "Menú"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c src/common/utilities/setup.c
+#, snx-key
+msgid "Games"
+msgstr "Juegos"
+
+#: src/gui/main.c
+msgid "Compile"
+msgstr "Compilar"
+
+#: src/gui/main.c
+#, c-format
+msgid "Compile %d%%"
+msgstr "Compilar %d%%"
+
+#: src/gui/main.c
+msgid "Compile FAILED"
+msgstr "Compilación FALLÓ"
+
+#: src/gui/main.c
+msgid "Compile OK"
+msgstr "Compilación OK"
+
+#: src/gui/main.c
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: src/gui/main.c
+msgid "Install"
+msgstr "Instalar"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c src/gui/ui.txt
+#, snx-key
+msgid "Folders"
+msgstr "Carpetas"
+
+#: src/gui/main.c
+msgid "Keys"
+msgstr "Keys"
+
+#: src/gui/main.c
+msgid "User"
+msgstr "Usuario"
+
+#: src/gui/main.c
+msgid "Notice"
+msgstr "Aviso"
+
+#: src/gui/main.c
+msgid "Status"
+msgstr "Estado"
+
+#: src/gui/main.c
+msgid "Recompiles a game's .nsp, .xci or .nro, then runs it"
+msgstr "Recompila el .nsp, .xci o .nro de un juego y luego lo ejecuta"
+
+#: src/gui/main.c
+msgid "Runs a Linux ARM program, 64 or 32-bit"
+msgstr "Ejecuta un programa de Linux ARM, de 64 o 32 bits"
+
+#: src/gui/main.c
+msgid "Recompiles a 3DS game, then runs it"
+msgstr "Recompila un juego de 3DS y luego lo ejecuta"
+
+#: src/gui/main.c
+msgid "Recompiles a PS Vita homebrew .vpk, then runs it"
+msgstr "Recompila un .vpk homebrew de PS Vita y luego lo ejecuta"
+
+#: src/gui/main.c
+msgid "Runs a GBA ROM on the emulated AGB board"
+msgstr "Ejecuta una ROM de GBA en la placa AGB emulada"
+
+#: src/gui/main.c
+msgid "Installs prod.keys, which games are extracted with"
+msgstr "Instala prod.keys, con lo que se extraen los juegos"
+
+#: src/gui/main.c
+msgid "Opens Adrena's page on GitHub, where its code and releases are"
+msgstr "Abre la página de Adrena en GitHub, donde están su código y sus versiones"
+
+#: src/gui/main.c
+msgid "Closes Adrena"
+msgstr "Sale de Adrena"
+
+#: src/gui/main.c
+msgid "Last output:"
+msgstr "Última salida:"
+
+#: src/gui/main.c
+#, c-format
+msgid "In use: %s"
+msgstr "En uso: %s"
+
+#: src/gui/main.c
+msgid "Show More"
+msgstr "Ver más"
+
+#: src/gui/main.c
+msgid "3DS game, ready to run"
+msgstr "Juego de 3DS, listo para ejecutar"
+
+#: src/gui/main.c
+msgid "Vita game, ready to run"
+msgstr "Juego de Vita, listo para ejecutar"
+
+#: src/gui/main.c
+msgid "GBA game, ready to run"
+msgstr "Juego de GBA, listo para ejecutar"
+
+#: src/gui/main.c
+msgid "Ready to run"
+msgstr "Listo para ejecutar"
+
+#: src/gui/main.c
+#, c-format
+msgid ". No icon: %s"
+msgstr ". Sin icono: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Ready to run, with %zu update(s), DLC(s), mod(s) or cheat(s) to pick from"
+msgstr "Listo para ejecutar, con %zu actualización(es), DLC(s), mod(s) o cheat(s) para elegir"
+
+#: src/gui/main.c
+msgid "3DS game, opened with scarletnx-3ds"
+msgstr "Juego de 3DS, abierto con scarletnx-3ds"
+
+#: src/gui/main.c
+msgid "Vita VPK, opened with scarletnx-vita"
+msgstr "VPK de Vita, abierto con scarletnx-vita"
+
+#: src/gui/main.c
+msgid "GBA ROM, played with scarletnx-agb"
+msgstr "ROM de GBA, jugado con scarletnx-agb"
+
+#: src/gui/main.c
+msgid "A dump, prepared when it runs"
+msgstr "Un dump, preparado cuando se ejecuta"
+
+#: src/gui/main.c
+msgid ", in the games/ an older version made: new games go to recompiled/"
+msgstr ", en el games/ que hizo una versión anterior: los juegos nuevos van a recompiled/"
+
+#: src/gui/main.c
+msgid "Linux ARM ELF, run with scarletnx-gnuabi"
+msgstr "ELF de Linux ARM, ejecutado con scarletnx-gnuabi"
+
+#: src/gui/main.c
+msgid "Add a folder of games or dumps in Settings > App > Folders (P)"
+msgstr "Agrega una carpeta de juegos o dumps en Ajustes > App > Carpetas (P)"
+
+#: src/gui/main.c
+msgid "No games"
+msgstr "Sin juegos"
+
+#: src/gui/main.c
+msgid "The recent games not shown"
+msgstr "Los juegos recientes no mostrados"
+
+#: src/gui/main.c
+msgid "...show more"
+msgstr "...ver más"
+
+#: src/gui/main.c
+msgid "  (games/)"
+msgstr "  (games/)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Compiling: %s%s%s"
+msgstr "Compilando: %s%s%s"
+
+#: src/gui/main.c
+msgid "Compiling: starting"
+msgstr "Compilando: empezando"
+
+#: src/gui/main.c
+#, c-format
+msgid "In the queue: %s"
+msgstr "En la cola: %s"
+
+#: src/gui/main.c
+msgid "Enter or the Compile tab: its output"
+msgstr "Enter o la pestaña Compilar: su salida"
+
+#: src/gui/main.c
+msgid "R on another game: it joins the queue"
+msgstr "R en otro juego: se suma a la cola"
+
+#: src/gui/main.c
+msgid "Made with: ?"
+msgstr "Hecho con: ?"
+
+#: src/gui/main.c
+#, c-format
+msgid "Made with: O%c, JIT only"
+msgstr "Hecho con: O%c, solo JIT"
+
+#: src/gui/main.c
+#, c-format
+msgid "Made with: O%c, AOT %s"
+msgstr "Hecho con: O%c, AOT %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Debug on: %s"
+msgstr "Depuración activa: %s"
+
+#: src/gui/main.c
+msgid "Needs Recompile"
+msgstr "Necesita recompilar"
+
+#: src/gui/main.c
+#, c-format
+msgid "JIT cache: %s, O%c"
+msgstr "Caché JIT: %s, O%c"
+
+#: src/gui/main.c
+#, c-format
+msgid "AOT build: O%c"
+msgstr "Compilación AOT: O%c"
+
+#: src/gui/main.c
+#, c-format
+msgid "AOT build: O%c, its JIT cache O%c: a pack needs one level"
+msgstr "Compilación AOT: O%c, su caché JIT O%c: un pack necesita un nivel"
+
+#: src/gui/main.c
+msgid "JIT cache: none yet. Play once to collect one."
+msgstr "Caché JIT: todavía no hay ninguno. Juega una vez para juntarlo."
+
+#: src/gui/main.c
+msgid "JIT cache: unreadable. Play once to rebuild it."
+msgstr "Caché JIT: no se puede leer. Juega una vez para reconstruirlo."
+
+#: src/gui/main.c
+#, c-format
+msgid "%zu game(s)"
+msgstr "%zu juego(s)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Installs to: %s"
+msgstr "Instala en: %s"
+
+#: src/gui/main.c
+msgid "No home folder"
+msgstr "Sin carpeta personal"
+
+#: src/gui/main.c
+#, c-format
+msgid "3DS keys to: %s"
+msgstr "Keys de 3DS en: %s"
+
+#: src/gui/main.c
+msgid "Installed"
+msgstr "Instaladas"
+
+#: src/gui/main.c
+msgid "Not installed"
+msgstr "No instaladas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Back to the menu in %d s"
+msgstr "Vuelve al menú en %d s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Back to the menu in %d s, or pick another file"
+msgstr "Vuelve al menú en %d s, o elige otro archivo"
+
+#: src/gui/main.c
+msgid "Keys installed here: installing again replaces them"
+msgstr "Keys instaladas acá: instalar de nuevo las reemplaza"
+
+#: src/gui/main.c
+#, c-format
+msgid "Keys in use: %s. Keys dropped here are read before them"
+msgstr "Keys en uso: %s. Las keys que sueltes acá se leen antes que ellas"
+
+#: src/gui/main.c
+msgid "Output"
+msgstr "Salida"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s, AOT pack  %s"
+msgstr "%s, paquete AOT  %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Waits in the queue: %s"
+msgstr "Espera en la cola: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Compiling %s: %d%%"
+msgstr "Compilando %s: %d%%"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s waits in the queue: %s"
+msgstr "%s espera en la cola: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s compiles now (%d%%)"
+msgstr "%s compila ahora (%d%%)"
+
+#: src/gui/main.c
+#, c-format
+msgid ", %d in the queue"
+msgstr ", %d en la cola"
+
+#: src/gui/main.c
+msgid "Queue"
+msgstr "Cola"
+
+#: src/gui/main.c
+msgid "Theme"
+msgstr "Tema"
+
+#: src/gui/main.c
+msgid "Built-in themes, then each themes/<name>/theme.ini"
+msgstr "Los temas integrados, y luego cada themes/<name>/theme.ini"
+
+#: src/gui/main.c
+msgid "UI scale"
+msgstr "Escala de la interfaz"
+
+#: src/gui/main.c
+msgid "1x to 4x. A new one asks to be kept"
+msgstr "De 1x a 4x. Una nueva pregunta si se guarda"
+
+#: src/gui/main.c
+msgid "Language"
+msgstr "Idioma"
+
+#: src/gui/main.c
+msgid "The launcher's language. Auto: the system's, else English"
+msgstr "El idioma del menú. Auto: el del sistema, si no inglés"
+
+#: src/gui/main.c
+msgid "Animations"
+msgstr "Animaciones"
+
+#: src/gui/main.c
+msgid "Screens and dialogs fade in and out, 0.15 s. Off: none"
+msgstr "Las pantallas y los diálogos aparecen y desaparecen con un fundido, 0.15 s. Off: ninguna"
+
+#: src/gui/main.c
+msgid "The panel beside the list. Auto: where it fits. On: under the list where it does not. F2 turns it off and on"
+msgstr "El panel junto a la lista. Auto: donde entra. On: debajo de la lista donde no entra. F2 lo apaga y enciende"
+
+#: src/gui/main.c
+msgid "Background recompile"
+msgstr "Recompilación en segundo plano"
+
+#: src/gui/main.c
+msgid "The Compile tab's: R's, B's and a game's first. Full: every core. Gentle: half of them, at a low priority. Either goes gently while a game plays"
+msgstr "La de la pestaña Compilar: la de R, la de B y la primera de un juego. Full: todos los núcleos. Gentle: la mitad, a baja prioridad. Cualquiera va suave mientras juega un juego"
+
+#: src/gui/main.c
+msgid "Theme Editor"
+msgstr "Editor de temas"
+
+#: src/gui/main.c
+msgid "This theme's keys with a preview, saved as themes/<name>/theme.ini"
+msgstr "Las teclas de este tema con una vista previa, guardadas como themes/<name>/theme.ini"
+
+#: src/gui/main.c
+msgid "The data and the extractions, and the libraries Games lists: recompiled games and dumps"
+msgstr "Los datos y las extracciones, y las bibliotecas que Juegos lista: juegos recompilados y dumps"
+
+#: src/gui/main.c
+msgid "GPU Drivers"
+msgstr "Drivers de GPU"
+
+#: src/gui/main.c
+msgid "Vulkan drivers for Adreno GPUs on Android, Turnip among them: add, remove, and the one games use"
+msgstr "Drivers Vulkan para GPUs Adreno en Android, entre ellos Turnip: agregar, quitar, y el que usan los juegos"
+
+#: src/gui/main.c
+msgid "Mesa's Freedreno and Turnip variables every game starts with (TU_DEBUG...), and their presets"
+msgstr "Las variables de Freedreno y Turnip de Mesa con las que arranca cada juego (TU_DEBUG...), y sus presets"
+
+#: src/gui/main.c
+msgid "Clean Old Settings"
+msgstr "Limpiar ajustes viejos"
+
+#: src/gui/main.c
+msgid "Removes the settings this version no longer reads. Asks first"
+msgstr "Quita los ajustes que esta versión ya no lee. Primero pregunta"
+
+#: src/gui/main.c
+msgid "Move Old Files"
+msgstr "Mover archivos viejos"
+
+#: src/gui/main.c
+msgid "Moves what an older version left to where this one looks. Asks first"
+msgstr "Mueve lo que dejó una versión anterior a donde lo busca esta. Primero pregunta"
+
+#: src/gui/main.c
+msgid "Reset to Defaults"
+msgstr "Restablecer valores por defecto"
+
+#: src/gui/main.c
+msgid "Every setting of the groups after App to its default. Asks first"
+msgstr "Cada ajuste de los grupos después de App a su valor por defecto. Primero pregunta"
+
+#: src/gui/main.c
+#, c-format
+msgid "%dx (%dx in this window)"
+msgstr "%dx (%dx en esta ventana)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Auto: %s"
+msgstr "Auto: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d custom, %d Extra(s)"
+msgstr "%d personalizadas, %d Extra"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d custom"
+msgstr "%d personalizadas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Defaults, %d Extra(s)"
+msgstr "Por defecto, %d Extra"
+
+#: src/gui/main.c
+msgid "Defaults"
+msgstr "Por defecto"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d set"
+msgstr "%d fijadas"
+
+#: src/gui/main.c
+msgid "None"
+msgstr "Ninguna"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d left"
+msgstr "%d quedaron"
+
+#: src/gui/main.c
+msgid "Nothing left"
+msgstr "No quedó nada"
+
+#: src/gui/main.c
+msgid "recompiled"
+msgstr "recompiled"
+
+#: src/gui/main.c
+msgid "dumps"
+msgstr "dumps"
+
+#: src/gui/main.c
+msgid "recompiled and dumps"
+msgstr "recompiled y dumps"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: each folder of an older version's lines read as %s, not written: %s"
+msgstr "%s: cada carpeta de las líneas de una versión anterior leídas como %s, no escrito: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: each folder of an older version's lines is in a library now: %s"
+msgstr "%s: cada carpeta de las líneas de una versión anterior ahora está en una biblioteca: %s"
+
+#: src/gui/main.c
+msgid "Dumps put here are listed (.nsp, .xci and .nro), its subfolders' too with + subfolders. Remove from Library takes it off, its files kept"
+msgstr "Los dumps que se pongan acá se listan (.nsp, .xci y .nro), y también los de sus subcarpetas con + subcarpetas. Quitar de la biblioteca lo saca, sus archivos se conservan"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not a folder: %s"
+msgstr "No es una carpeta: %s"
+
+#: src/gui/main.c
+msgid "(none)"
+msgstr "(ninguna)"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is the dumps library's Main row, taken off it: its Add to Library puts it back"
+msgstr "%s es la fila Principal de la biblioteca de dumps, sacada de ella: su Agregar a la biblioteca la devuelve"
+
+#: src/gui/main.c
+#, c-format
+msgid "Already in the dumps library: %s"
+msgstr "Ya está en la biblioteca de dumps: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Already in the recompiled library: %s"
+msgstr "Ya está en la biblioteca de recompilados: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "At most %d folders"
+msgstr "Máximo %d carpetas"
+
+#: src/gui/main.c
+msgid "Added to the recompiled library, with its subfolders"
+msgstr "Agregada a la biblioteca de recompilados, con sus subcarpetas"
+
+#: src/gui/main.c
+msgid "Added to the recompiled library"
+msgstr "Agregada a la biblioteca de recompilados"
+
+#: src/gui/main.c
+msgid "Added to the dumps library, with its subfolders"
+msgstr "Agregada a la biblioteca de dumps, con sus subcarpetas"
+
+#: src/gui/main.c
+msgid "Added to the dumps library"
+msgstr "Agregada a la biblioteca de dumps"
+
+#: src/gui/main.c
+#, c-format
+msgid "Folders: %s"
+msgstr "Carpetas: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s removed from the library. Its games stay in the folder"
+msgstr "%s quitada de la biblioteca. Sus juegos se quedan en la carpeta"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s removed from the library. Its games stay in the folder; new games go to an Extra"
+msgstr "%s quitada de la biblioteca. Sus juegos se quedan en la carpeta; los juegos nuevos van a un Extra"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in the Dumps Library again, but could not be made"
+msgstr "%s está en la Biblioteca de dumps otra vez, pero no se pudo crear"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in the Recompiled Library again, but could not be made"
+msgstr "%s está en la Biblioteca de recompilados otra vez, pero no se pudo crear"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in the Dumps Library again: Games lists its games"
+msgstr "%s está en la Biblioteca de dumps otra vez: Juegos lista sus juegos"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in the Recompiled Library again: Games lists its games"
+msgstr "%s está en la Biblioteca de recompilados otra vez: Juegos lista sus juegos"
+
+#: src/gui/main.c
+#, c-format
+msgid "Remove %s from the Dumps Library? Its games stay in the folder, which Adrena no longer makes as it starts."
+msgstr "Quitar %s de la Biblioteca de dumps? Sus juegos se quedan en la carpeta, que Adrena ya no crea al iniciar."
+
+#: src/gui/main.c
+#, c-format
+msgid "Remove %s from the Recompiled Library? Its games stay in the folder, and new games go to an Extra of it."
+msgstr "Quitar %s de la Biblioteca de recompilados? Sus juegos se quedan en la carpeta, y los juegos nuevos van a un Extra suyo."
+
+#: src/gui/main.c
+#, c-format
+msgid "Remove %s from the Recompiled Library? Its games stay in the folder."
+msgstr "Quitar %s de la Biblioteca de recompilados? Sus juegos se quedan en la carpeta."
+
+#: src/gui/main.c
+#, c-format
+msgid "Remove %s from the Dumps Library? Its games stay in the folder."
+msgstr "Quitar %s de la Biblioteca de dumps? Sus juegos se quedan en la carpeta."
+
+#: src/gui/main.c
+msgid "Not added"
+msgstr "No agregada"
+
+#: src/gui/main.c
+msgid "Display"
+msgstr "Pantalla"
+
+#: src/gui/main.c
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: src/gui/main.c
+msgid "3DS"
+msgstr ""
+
+#: src/gui/main.c
+msgid "Performance"
+msgstr "Rendimiento"
+
+#: src/gui/main.c
+msgid "Overlay"
+msgstr "Táctiles"
+
+#: src/gui/main.c
+msgid "Controllers"
+msgstr "Mandos"
+
+#: src/gui/main.c
+msgid "Network"
+msgstr "Red"
+
+#: src/gui/main.c
+msgid "Debug"
+msgstr "Depuración"
+
+#: src/gui/main.c
+msgid "App"
+msgstr "App"
+
+#: src/gui/main.c
+msgid "The theme, the menu's letters, the theme editor and the folders"
+msgstr "El tema, las letras del menú, el editor de temas y las carpetas"
+
+#: src/gui/main.c
+msgid "is not there"
+msgstr "no está"
+
+#: src/gui/main.c
+msgid "is not a folder"
+msgstr "no es una carpeta"
+
+#: src/gui/main.c
+msgid "cannot be written"
+msgstr "no se puede escribir"
+
+#: src/gui/main.c
+msgid "is on a disk that runs no programs (noexec)"
+msgstr "está en un disco que no ejecuta programas (noexec)"
+
+#: src/gui/main.c
+msgid "recompiled/, dumps/, themes/ and prod.keys"
+msgstr "recompiled/, dumps/, themes/ y prod.keys"
+
+#: src/gui/main.c
+msgid "The recompiled games"
+msgstr "Los juegos recompilados"
+
+#: src/gui/main.c
+msgid "Each dump's extraction"
+msgstr "La extracción de cada dump"
+
+#: src/gui/main.c
+msgid "The games' logs, threads.txt and recent.txt"
+msgstr "Los registros de los juegos, threads.txt y recent.txt"
+
+#: src/gui/main.c
+msgid "units/, the shader caches and the dumps' icons"
+msgstr "units/, los cachés de shaders y los iconos de los dumps"
+
+#: src/gui/main.c
+msgid "app.ini, which names the other folders, and each game's .ini: XDG_CONFIG_HOME moves it"
+msgstr "app.ini, que nombra las otras carpetas, y el .ini de cada juego: XDG_CONFIG_HOME lo mueve"
+
+#: src/gui/main.c
+msgid "app.ini, which names the other folders, and each game's .ini: a portable copy (.scarletnx beside the program) keeps its own"
+msgstr "app.ini, que nombra las otras carpetas, y el .ini de cada juego: una copia portátil (.scarletnx junto al programa) guarda la suya"
+
+#: src/gui/main.c
+#, c-format
+msgid "Could not make %s"
+msgstr "No se pudo crear %s"
+
+#: src/gui/main.c
+msgid "App Folders"
+msgstr "Carpetas de la app"
+
+#: src/gui/main.c
+msgid "Dumps Library"
+msgstr "Biblioteca de dumps"
+
+#: src/gui/main.c
+msgid "Recompiled Library"
+msgstr "Biblioteca de recompilados"
+
+#: src/gui/main.c
+msgid "Removes it from the library; its games stay in the folder"
+msgstr "La quita de la biblioteca; sus juegos se quedan en la carpeta"
+
+#: src/gui/main.c
+msgid "Pick, drop or paste a folder of recompiled games: Games lists them too"
+msgstr "Elige, suelta o pega una carpeta de juegos recompilados: Juegos también los lista"
+
+#: src/gui/main.c
+msgid "Pick, drop or paste a folder of dumps: Games lists them too"
+msgstr "Elige, suelta o pega una carpeta de dumps: Juegos también los lista"
+
+#: src/gui/main.c
+msgid "Main"
+msgstr "Principal"
+
+#: src/gui/main.c
+msgid "not listed"
+msgstr "no listada"
+
+#: src/gui/main.c
+msgid "outside the app"
+msgstr "fuera de la app"
+
+#: src/gui/main.c
+msgid "custom"
+msgstr "personalizada"
+
+#: src/gui/main.c
+msgid "default"
+msgstr "por defecto"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s, %s free"
+msgstr "%s, %s libres"
+
+#: src/gui/main.c
+msgid "read-only"
+msgstr "solo lectura"
+
+#: src/gui/main.c
+msgid "Add Folder"
+msgstr "Agregar carpeta"
+
+#: src/gui/main.c
+msgid "Extra"
+msgstr "Extra"
+
+#: src/gui/main.c
+msgid "not found"
+msgstr "no encontrada"
+
+#: src/gui/main.c
+msgid "+ subfolders"
+msgstr "+ subcarpetas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Logs and Caches not changed: %s, which the runs read them from, could not be written"
+msgstr "Registros y Cachés sin cambios: no se pudo escribir %s, de donde las ejecuciones los leen"
+
+#: src/gui/main.c
+#, c-format
+msgid "Used, not kept for the next start: %s could not be written"
+msgstr "Usados, no guardados para el próximo inicio: no se pudo escribir %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d launchers hold the run logs of %s: this one's runs keep none"
+msgstr "%d menús tienen los registros de ejecución de %s: las ejecuciones de este no guardan ninguna"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: %s. The folder before keeps what it has"
+msgstr "%s: %s. La carpeta anterior conserva lo que tiene"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: %s, the default"
+msgstr "%s: %s, la de por defecto"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s back to its default, %s? %s keeps what it has."
+msgstr "%s de vuelta a su valor por defecto, %s? %s conserva lo que tiene."
+
+#: src/gui/main.c
+#, c-format
+msgid "Not changed: %s %s"
+msgstr "Sin cambios: %s %s"
+
+#: src/gui/main.c
+msgid "Not changed"
+msgstr "Sin cambios"
+
+#: src/gui/main.c
+#, c-format
+msgid "They are the defaults: %s"
+msgstr "Ya son los valores por defecto: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Reset to Defaults? %s. Nothing is moved."
+msgstr "Restablecer valores por defecto? %s. No se mueve nada."
+
+#: src/gui/main.c
+msgid "Reset to Defaults: nothing was moved"
+msgstr "Restablecer valores por defecto: no se movió nada"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s folder %s %s. Settings > App > Folders picks another."
+msgstr "La carpeta %s %s %s. Ajustes > App > Carpetas elige otra."
+
+#: src/gui/main.c
+#, c-format
+msgid "Needs about %s, %s free."
+msgstr "Necesita unos %s, %s libres."
+
+#: src/gui/main.c
+#, c-format
+msgid "The folder picker could not open: %s"
+msgstr "El selector de carpetas no se pudo abrir: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Folders: the folder picker could not open: %s"
+msgstr "Carpetas: el selector de carpetas no se pudo abrir: %s"
+
+#: src/gui/main.c
+msgid "Drop it on the folder it takes the place of, or on a library's row"
+msgstr "Soltalo en la carpeta a la que reemplaza, o en la fila de una biblioteca"
+
+#: src/gui/main.c src/gui/settings.c
+msgid "All"
+msgstr "Todos"
+
+#: src/gui/main.c
+msgid "The settings of All, or of player 1 to 8"
+msgstr "Los ajustes de Todos, o del jugador 1 al 8"
+
+#: src/gui/main.c
+msgid "nickname of 1 to 32 bytes, no control character, no space at either end"
+msgstr "apodo de 1 a 32 bytes, sin caracteres de control, sin espacio al principio ni al final"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d: %s"
+msgstr "Usuario %d: %s"
+
+#: src/gui/main.c
+msgid "none in users.ini"
+msgstr "ninguno en users.ini"
+
+#: src/gui/main.c
+msgid "Current user"
+msgstr "Usuario actual"
+
+#: src/gui/main.c
+msgid "The user the games play as"
+msgstr "El usuario con el que juegan los juegos"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d"
+msgstr "Usuario %d"
+
+#: src/gui/main.c
+msgid "Its nickname, as the games show it: 1 to 32 bytes, no control character, no space at either end"
+msgstr "Su apodo, como lo muestran los juegos: 1 a 32 bytes, sin caracteres de control, sin espacio al principio ni al final"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d Mii"
+msgstr "Mii del usuario %d"
+
+#: src/gui/main.c
+msgid "Its Mii, which the games get as the user's and its picture shows unless it has a picture file"
+msgstr "Su Mii, que los juegos toman como el del usuario y cuya imagen se muestra salvo que tenga un archivo de imagen"
+
+#: src/gui/main.c
+msgid "System driver"
+msgstr "Driver del sistema"
+
+#: src/gui/main.c
+#, c-format
+msgid "No Vulkan loader: %s"
+msgstr "No hay cargador de Vulkan: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Vulkan did not start: VkResult %d"
+msgstr "Vulkan no inició: VkResult %d"
+
+#: src/gui/main.c
+msgid "Vulkan lists no GPU"
+msgstr "Vulkan no lista ninguna GPU"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s, Vulkan %u.%u.%u, driver %08x"
+msgstr "%s, Vulkan %u.%u.%u, driver %08x"
+
+#: src/gui/main.c
+msgid "This build of the launcher reads no Vulkan driver"
+msgstr "Esta compilación del menú no lee ningún driver Vulkan"
+
+#: src/gui/main.c
+msgid "The GPU driver Settings > App > GPU Drivers picks for every game"
+msgstr "El driver de GPU que Ajustes > App > Drivers de GPU elige para cada juego"
+
+#: src/gui/main.c
+#, c-format
+msgid "The system's own: %s"
+msgstr "El del sistema: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s/%s does not read: %s"
+msgstr "%s/%s no se lee: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s, %s, by %s, package %s, Android API %d or newer, in %s/%s. %s"
+msgstr "%s, %s, de %s, paquete %s, Android API %d o más nuevo, en %s/%s. %s"
+
+#: src/gui/main.c
+msgid "no vendor"
+msgstr "sin proveedor"
+
+#: src/gui/main.c
+msgid "no author"
+msgstr "sin autor"
+
+#: src/gui/main.c
+msgid "Download Driver"
+msgstr "Descargar driver"
+
+#: src/gui/main.c
+msgid "The releases of the driver repositories Eden lists, from GitHub: one picked is downloaded and added as Add Driver adds a zip. A GPU maker's own drivers are marked proprietary, no license"
+msgstr "Las versiones de los repositorios de drivers que Eden lista, de GitHub: la elegida se descarga y agrega como Agregar driver agrega un zip. Los drivers propios del fabricante de la GPU están marcados propietarios, sin licencia"
+
+#: src/gui/main.c
+msgid "Add Driver"
+msgstr "Agregar driver"
+
+#: src/gui/main.c
+msgid "A driver package's zip, a meta.json and the driver's libraries at its top as Turnip's releases are: unpacked into gpu_drivers/ of the user's data folder"
+msgstr "El zip de un paquete de driver, con un meta.json y las bibliotecas del driver en su raíz como en las versiones de Turnip: se descomprime en gpu_drivers/ de la carpeta de datos del usuario"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: its own GPU driver. %s"
+msgstr "%s: su propio driver de GPU. %s"
+
+#: src/gui/main.c
+#, c-format
+msgid " %zu more packages are not listed."
+msgstr " %zu paquetes más no se listan."
+
+#: src/gui/main.c
+#, c-format
+msgid "Not picked: %s/%s does not read: %s"
+msgstr "No elegida: %s/%s no se lee: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not picked: %s"
+msgstr "No elegida: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "GPU driver for every game: %s"
+msgstr "Driver de GPU para todos los juegos: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not kept: %s could not be written"
+msgstr "No guardado: no se pudo escribir %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: the GPU driver for every game (%s)"
+msgstr "%s: el driver de GPU para todos los juegos (%s)"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: GPU driver %s"
+msgstr "%s: driver de GPU %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Remove the driver %s? Games set to it will not start until another is picked."
+msgstr "Quitar el driver %s? Los juegos con él asignado no arrancarán hasta elegir otro."
+
+#: src/gui/main.c
+msgid "; the GPU driver for every game is the System driver now"
+msgstr "; el driver de GPU para todos los juegos ahora es el Driver del sistema"
+
+#: src/gui/main.c
+msgid "Driver package"
+msgstr "Paquete de driver"
+
+#: src/gui/main.c
+#, c-format
+msgid "Add Driver: the file picker could not open: %s"
+msgstr "Agregar driver: el selector de archivos no se pudo abrir: %s"
+
+#: src/gui/main.c
+msgid "No file was picked."
+msgstr "No se eligió ningún archivo."
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s is %lld bytes, over the %llu a driver takes"
+msgstr "No agregado: %s tiene %lld bytes, más de los %llu que admite un driver"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: %s does not read: %s"
+msgstr "No agregado: %s no se lee: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "GET %s: HTTP %d, %.200s"
+msgstr "GET %s: HTTP %d, %.200s"
+
+#: src/gui/main.c
+#, c-format
+msgid "GET %s: HTTP %d"
+msgstr "GET %s: HTTP %d"
+
+#: src/gui/main.c
+#, c-format
+msgid "Download Driver: no thread: %s"
+msgstr "Descargar driver: no hay hilo: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s, %zu downloads. %s"
+msgstr "%s, %zu descargas. %s"
+
+#: src/gui/main.c
+msgid "Latest, Recommended"
+msgstr "Última, Recomendada"
+
+#: src/gui/main.c
+msgid "Recommended"
+msgstr "Recomendada"
+
+#: src/gui/main.c
+msgid "Latest"
+msgstr "Última"
+
+#: src/gui/main.c
+msgid "Prerelease"
+msgstr "Prelanzamiento"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: %zu release"
+msgstr "%s: %zu versión"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: %zu releases"
+msgstr "%s: %zu versiones"
+
+#: src/gui/main.c
+msgid "No releases"
+msgstr "Sin versiones"
+
+#: src/gui/main.c
+msgid "Fetch Again"
+msgstr "Volver a buscar"
+
+#: src/gui/main.c
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: src/gui/main.c
+msgid "Failed"
+msgstr "Falló"
+
+#: src/gui/main.c
+msgid "Less"
+msgstr "Menos"
+
+#: src/gui/main.c
+msgid "Only its latest and the recommended release"
+msgstr "Solo su última versión y la recomendada"
+
+#: src/gui/main.c
+#, c-format
+msgid "More (%zu)"
+msgstr "Más (%zu)"
+
+#: src/gui/main.c
+#, c-format
+msgid "GPU: %s. Recommended: %s."
+msgstr "GPU: %s. Recomendado: %s."
+
+#: src/gui/main.c
+msgid "This build of the launcher has no HTTPS client: Add Driver takes a zip downloaded by hand"
+msgstr "Esta compilación del menú no tiene cliente HTTPS: Agregar driver toma un zip descargado a mano"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s has no download"
+msgstr "%s no tiene descarga"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s, %s (proprietary, no license)"
+msgstr "%s, %s (propietario, sin licencia)"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s downloads already: one at a time"
+msgstr "%s ya se está descargando: una a la vez"
+
+#: src/gui/main.c
+#, c-format
+msgid "Downloading %s..."
+msgstr "Descargando %s..."
+
+#: src/gui/main.c
+#, c-format
+msgid "Downloading %s: %s of %s (%d%%)"
+msgstr "Descargando %s: %s de %s (%d%%)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Downloading %s: %s"
+msgstr "Descargando %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not downloaded: %s"
+msgstr "No descargado: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: src/gui/main.c
+msgid "every variable cleared"
+msgstr "todas las variables borradas"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s=%s. A press removes it"
+msgstr "%s=%s. Una presión la quita"
+
+#: src/gui/main.c
+msgid "Variable Name (e.g., TU_DEBUG)"
+msgstr "Nombre de la variable (por ejemplo, TU_DEBUG)"
+
+#: src/gui/main.c
+msgid "Capitals, digits and _, starting TU_, FD_ or IR3_"
+msgstr "Mayúsculas, dígitos y _, empezando con TU_, FD_ o IR3_"
+
+#: src/gui/main.c
+msgid "Variable Value"
+msgstr "Valor de la variable"
+
+#: src/gui/main.c
+msgid "Its value, without ;"
+msgstr "Su valor, sin ;"
+
+#: src/gui/main.c
+msgid "Add Variable"
+msgstr "Agregar variable"
+
+#: src/gui/main.c
+msgid "The name and value typed above, set"
+msgstr "Fija el nombre y el valor escritos arriba"
+
+#: src/gui/main.c
+msgid "Clear All"
+msgstr "Borrar todas"
+
+#: src/gui/main.c
+msgid "Every variable taken out"
+msgstr "Saca todas las variables"
+
+#: src/gui/main.c
+#, c-format
+msgid "freedreno_env does not read: %s"
+msgstr "freedreno_env no se lee: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: its own Freedreno variables"
+msgstr "%s: sus propias variables de Freedreno"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: none of its own, the launcher's go"
+msgstr "%s: no tiene propias, van las del menú"
+
+#: src/gui/main.c
+msgid "Mesa's Freedreno and Turnip read these as a game starts (docs.mesa3d.org/drivers/freedreno.html). Save keeps them"
+msgstr "Mesa lee estas variables al arrancar un juego con Freedreno y Turnip (docs.mesa3d.org/drivers/freedreno.html). Guardar las conserva"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not saved: the variables take over %d bytes"
+msgstr "No guardado: las variables pasan de %d bytes"
+
+#: src/gui/main.c
+msgid "Freedreno configuration saved"
+msgstr "Configuración de Freedreno guardada"
+
+#: src/gui/main.c
+#, c-format
+msgid "Preset '%s' applied"
+msgstr "Preset '%s' aplicado"
+
+#: src/gui/main.c
+#, c-format
+msgid "Variable %s removed"
+msgstr "Variable %s quitada"
+
+#: src/gui/main.c
+msgid "Variable name cannot be empty"
+msgstr "El nombre de la variable no puede quedar vacío"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s's value \"%s\" has a ;, which ends it"
+msgstr "El valor de %s, \"%s\", tiene un ; que lo termina"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not added: the variables take %d bytes at most"
+msgstr "No agregada: las variables ocupan %d bytes como máximo"
+
+#: src/gui/main.c
+#, c-format
+msgid "Variable %s added"
+msgstr "Variable %s agregada"
+
+#: src/gui/main.c
+msgid "All Freedreno variables cleared"
+msgstr "Todas las variables de Freedreno se borraron"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d's Mii is not written: %s"
+msgstr "El Mii del usuario %d no se escribió: %s"
+
+#: src/gui/main.c
+msgid "no users/ folder"
+msgstr "no hay carpeta users/"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d's Mii is %s now"
+msgstr "El Mii del usuario %d ahora es %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d's new nickname is not written: %s"
+msgstr "El apodo nuevo del usuario %d no se escribió: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "User %d is %s now"
+msgstr "El usuario %d ahora es %s"
+
+#: src/gui/main.c
+msgid "Keep"
+msgstr "Guardar"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Back"
+msgstr "Atrás"
+
+#: src/gui/main.c
+#, c-format
+msgid "%dx needs a window %d pixels high: this one is %d"
+msgstr "La escala %dx necesita una ventana de %d píxeles de alto: esta tiene %d"
+
+#: src/gui/main.c
+#, c-format
+msgid "Keep this UI scale? Back to %s in %d s"
+msgstr "Guardar esta escala de interfaz? Vuelve a %s en %d s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is compiling (%d%%): %s waits until the queue ends"
+msgstr "%s se está compilando (%d%%): %s espera hasta que termine la cola"
+
+#: src/gui/main.c
+#, c-format
+msgid "gamepad_map's \"%s\" is not a control and the button it sends (south:B)"
+msgstr "\"%s\" de gamepad_map no es un control y el botón que envía (south:B)"
+
+#: src/gui/main.c
+#, c-format
+msgid "SDL mappings could not be read: %s"
+msgstr "Las asignaciones de SDL no se pudieron leer: %s"
+
+#: src/gui/main.c
+msgid "Any [default]"
+msgstr "Cualquiera [por defecto]"
+
+#: src/gui/main.c
+#, c-format
+msgid "Controllers cannot be read: %s"
+msgstr "Los mandos no se pudieron leer: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Press a button on player %d's controller. ESC keeps %s"
+msgstr "Presiona un botón en el mando del jugador %d. ESC deja %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Player %d: %s"
+msgstr "Jugador %d: %s"
+
+#: src/gui/main.c
+msgid "the controller pressed"
+msgstr "El mando presionado"
+
+#: src/gui/main.c
+#, c-format
+msgid "Player %d keeps %s"
+msgstr "El jugador %d deja %s"
+
+#: src/gui/main.c
+msgid "Looking for controllers..."
+msgstr "Buscando mandos..."
+
+#: src/gui/main.c
+msgid "Over 4x: this takes a lot of GPU memory, and a game may slow down or crash. Beyond this, severe graphical issues may occur"
+msgstr "Más de 4x: ocupa mucha memoria de GPU y un juego puede ir más lento o crashear. Más allá de esto pueden haber problemas gráficos graves"
+
+#: src/gui/main.c
+msgid "Under 0.5x: the picture may look very low quality. Beyond this, severe graphical issues may occur"
+msgstr "Menos de 0.5x: la imagen puede verse de muy baja calidad. Más allá de esto pueden haber problemas gráficos graves"
+
+#: src/gui/main.c
+msgid "Non-standard resolution, experimental."
+msgstr "Resolución no estándar, experimental."
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is not a nickname: %s"
+msgstr "%s no es un apodo: %s"
+
+#: src/gui/main.c
+msgid "Paste one local folder's path"
+msgstr "Pega la ruta de una carpeta local"
+
+#: src/gui/main.c
+msgid "Each library's Extras are listed after its Main"
+msgstr "Los Extra de cada biblioteca se listan después de su Principal"
+
+#: src/gui/main.c
+msgid "Data, Logs, Caches, Extractions and the recompiled library's Main"
+msgstr "Datos, Registros, Cachés, Extracciones y el Principal de la biblioteca de recompilados"
+
+#: src/gui/main.c
+msgid "The runtime listed no settings"
+msgstr "El runtime no listó ningún ajuste"
+
+#: src/gui/main.c
+msgid "For the next runs, over the game's .ini"
+msgstr "Para las próximas ejecuciones, por encima del .ini del juego"
+
+#: src/gui/main.c
+msgid "For the next runs. [default]: as the game's .ini says"
+msgstr "Para las próximas ejecuciones. [default]: como dice el .ini del juego"
+
+#: src/gui/main.c src/gui/settings.c
+msgid "[default]"
+msgstr "[default]"
+
+#: src/gui/main.c
+msgid "Custom >"
+msgstr "Personalized >"
+
+#: src/gui/main.c
+msgid "As All >"
+msgstr "Igual que Todos >"
+
+#: src/gui/main.c
+msgid "Nothing is moved"
+msgstr "No se mueve nada"
+
+#: src/gui/main.c
+msgid "The folder of themes/ it is saved in"
+msgstr "La carpeta de themes/ en la que se guarda"
+
+#: src/gui/main.c
+msgid "Ctrl+S saves too"
+msgstr "Ctrl+S también guarda"
+
+#: src/gui/main.c
+msgid "A nickname, 1 to 32 bytes, no control character, no space at either end"
+msgstr "Un apodo, 1 a 32 bytes, sin caracteres de control, sin espacio al principio ni al final"
+
+#: src/gui/main.c
+msgid "Preview"
+msgstr "Vista previa"
+
+#: src/gui/main.c
+msgid "A run (Ctrl+P: the menu)"
+msgstr "Una ejecución (Ctrl+P: el menú)"
+
+#: src/gui/main.c
+msgid "The menu (Ctrl+P: a run)"
+msgstr "El menú (Ctrl+P: una ejecución)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Saves in %s"
+msgstr "Guarda en %s"
+
+#: src/gui/main.c
+msgid "(no themes folder)"
+msgstr "(no hay carpeta de themes)"
+
+#: src/gui/main.c
+msgid "was"
+msgstr "era"
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: choose. Back."
+msgstr "Toca: elegir. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Tap: choose."
+msgstr "Toca: elegir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Type the nickname. Back."
+msgstr "Escribe el apodo. Atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Type the nickname."
+msgstr "Escribe el apodo."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: choose. Enter: next. ESC: back."
+msgstr "Arriba/Abajo: elegir. Enter: siguiente. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: choose. Enter: next. ESC: exit."
+msgstr "Arriba/Abajo: elegir. Enter: siguiente. ESC: salir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Type the nickname. Enter: done. ESC: back."
+msgstr "Escribe el apodo. Enter: listo. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Left/Right: choose. Enter: OK. ESC: exit."
+msgstr "Izquierda/Derecha: elegir. Enter: OK. ESC: salir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Left/Right: change. Enter: change. ESC: back."
+msgstr "Arriba/Abajo: fila. Izquierda/Derecha: cambiar. Enter: cambiar. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Left/Right: change. Enter: change. ESC: exit."
+msgstr "Arriba/Abajo: fila. Izquierda/Derecha: cambiar. Enter: cambiar. ESC: salir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Left/Right: change. Enter: open. ESC: back."
+msgstr "Arriba/Abajo: fila. Izquierda/Derecha: cambiar. Enter: abrir. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Left/Right: change. Enter: open. ESC: exit."
+msgstr "Arriba/Abajo: fila. Izquierda/Derecha: cambiar. Enter: abrir. ESC: salir."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Enter: next. ESC: back."
+msgstr "Arriba/Abajo: fila. Enter: siguiente. ESC: atrás."
+
+#. Keys: "Key: what it does." sentences. Keep each key, or its translation in this file, and each ~
+#: src/gui/main.c
+#, snx-keys
+msgid "Up/Down: row. Enter: next. ESC: exit."
+msgstr "Arriba/Abajo: fila. Enter: siguiente. ESC: salir."
+
+#: src/gui/main.c
+msgid "The system's random number generator failed: no uid for a new user"
+msgstr "Falló el generador de números aleatorios del sistema: no hay uid para un usuario nuevo"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: the setup asks again"
+msgstr "%s: la preparación vuelve a preguntar"
+
+#: src/gui/main.c
+#, c-format
+msgid "The setup was not kept, so it asks again: %s"
+msgstr "La preparación no se guardó, así que vuelve a preguntar: %s"
+
+#: src/gui/main.c
+msgid "no folder for setup.ini"
+msgstr "no hay carpeta para setup.ini"
+
+#: src/gui/main.c
+#, c-format
+msgid "No user written: %s"
+msgstr "No se escribió ningún usuario: %s"
+
+#: src/gui/main.c
+msgid "No folder was picked."
+msgstr "No se eligió ninguna carpeta."
+
+#: src/gui/main.c
+msgid "Cannot install prod.keys: neither USERPROFILE nor HOME is set"
+msgstr "No se puede instalar prod.keys: no está definido ni USERPROFILE ni HOME"
+
+#: src/gui/main.c
+msgid "Cannot install prod.keys: HOME is not set"
+msgstr "No se puede instalar prod.keys: HOME no está definido"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not installed: %s"
+msgstr "No instaladas: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Installed prod.keys and title.keys in %s"
+msgstr "Se instalaron prod.keys y title.keys en %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Installed prod.keys in %s"
+msgstr "Se instalaron prod.keys en %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "; aes_keys.txt to %s"
+msgstr "; aes_keys.txt a %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "This copy is portable: to install it, first move away %s"
+msgstr "Esta copia es portátil: para instalarla, primero saca %s"
+
+#: src/gui/main.c
+msgid "Skip stops on this page: it has no default to take"
+msgstr "Saltar se queda en esta página: no tiene un valor por defecto que tomar"
+
+#: src/gui/main.c
+msgid "Portable"
+msgstr "Portátil"
+
+#: src/gui/main.c
+msgid "Change Recompiled Folder"
+msgstr "Cambiar la carpeta de recompilados"
+
+#: src/gui/main.c
+msgid "Add a folder"
+msgstr "Agregar una carpeta"
+
+#: src/gui/main.c
+msgid "Use These"
+msgstr "Usar estas"
+
+#: src/gui/main.c
+msgid "Browse..."
+msgstr "Examinar..."
+
+#: src/gui/main.c
+msgid "Later"
+msgstr "Más tarde"
+
+#: src/gui/main.c
+msgid "Overwrite"
+msgstr "Sobrescribir"
+
+#: src/gui/main.c
+msgid "Next"
+msgstr "Siguiente"
+
+#: src/gui/main.c
+msgid "Skip"
+msgstr "Saltar"
+
+#: src/gui/main.c
+msgid "Changed since the last version"
+msgstr "Cambiado desde la última versión"
+
+#: src/gui/main.c
+msgid "Changed in older versions"
+msgstr "Cambiado en versiones anteriores"
+
+#: src/gui/main.c
+msgid "Install Type"
+msgstr "Tipo de instalación"
+
+#: src/gui/main.c
+#, c-format
+msgid "Nickname: %s_"
+msgstr "Apodo: %s_"
+
+#: src/gui/main.c
+msgid "users.ini is not a list of users"
+msgstr "users.ini no es una lista de usuarios"
+
+#: src/gui/main.c
+#, c-format
+msgid "users.ini has %d user"
+msgstr "users.ini tiene %d usuario"
+
+#: src/gui/main.c
+#, c-format
+msgid "users.ini has %d users"
+msgstr "users.ini tiene %d usuarios"
+
+#: src/gui/main.c
+msgid "Tip: --no-setup skips the setup"
+msgstr "Consejo: --no-setup salta la preparación"
+
+#: src/gui/main.c
+msgid "Tip: games keep their own language: Settings > Display > Language"
+msgstr "Consejo: cada juego conserva su propio idioma: Ajustes > Pantalla > Idioma"
+
+#: src/gui/main.c
+msgid "Tip: a portable copy is a folder you can copy"
+msgstr "Consejo: una copia portátil es una carpeta que se puede copiar"
+
+#: src/gui/main.c
+msgid "Tip: Settings > App > Folders changes them"
+msgstr "Consejo: Ajustes > App > Carpetas las cambia"
+
+#: src/gui/main.c
+msgid "Tip: Menu > Install Keys changes them"
+msgstr "Consejo: Menú > Instalar keys las cambia"
+
+#: src/gui/main.c
+msgid "Tip: nickname of 1 to 32 bytes, no control character, no space at either end"
+msgstr "Consejo: apodo de 1 a 32 bytes, sin caracteres de control, sin espacio al principio ni al final"
+
+#: src/gui/main.c
+msgid "before"
+msgstr "antes"
+
+#: src/gui/main.c
+msgid "now"
+msgstr "ahora"
+
+#: src/gui/main.c
+msgid "Not moved. See docs/DEPRECATIONS.md"
+msgstr "No movido. Ver docs/DEPRECATIONS.md"
+
+#: src/gui/main.c
+#, c-format
+msgid "Changed %d/%d"
+msgstr "Cambiado %d/%d"
+
+#: src/gui/main.c
+#, c-format
+msgid "uid %s, of the saves of %d game"
+msgstr "uid %s, de los guardados de %d juego"
+
+#: src/gui/main.c
+#, c-format
+msgid "uid %s, of the saves of %d games"
+msgstr "uid %s, de los guardados de %d juegos"
+
+#: src/gui/main.c
+#, c-format
+msgid "uid %s, random"
+msgstr "uid %s, aleatorio"
+
+#: src/gui/main.c
+#, c-format
+msgid "one new user, the uid of the saves of %d game"
+msgstr "un usuario nuevo, el uid de los guardados de %d juego"
+
+#: src/gui/main.c
+#, c-format
+msgid "one new user, the uid of the saves of %d games"
+msgstr "un usuario nuevo, el uid de los guardados de %d juegos"
+
+#: src/gui/main.c
+msgid "one new user, random uid"
+msgstr "un usuario nuevo, uid aleatorio"
+
+#: src/gui/main.c
+msgid "(no home folder)"
+msgstr "(sin carpeta personal)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Now: portable, its files in %s"
+msgstr "Ahora: portátil, sus archivos en %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Now: installed, its files in %s"
+msgstr "Ahora: instalada, sus archivos en %s"
+
+#: src/gui/main.c
+msgid "settings"
+msgstr "ajustes"
+
+#: src/gui/main.c
+msgid "data"
+msgstr "datos"
+
+#: src/gui/main.c
+msgid "logs"
+msgstr "registros"
+
+#: src/gui/main.c
+msgid "caches"
+msgstr "cachés"
+
+#: src/gui/main.c
+msgid "found"
+msgstr "encontrada"
+
+#: src/gui/main.c
+msgid "missing"
+msgstr "faltante"
+
+#: src/gui/main.c
+msgid "everything"
+msgstr "todo"
+
+#: src/gui/main.c
+msgid "there: this copy is portable"
+msgstr "ahí: esta copia es portátil"
+
+#: src/gui/main.c
+msgid "beside the program, made then"
+msgstr "junto al programa, creada entonces"
+
+#: src/gui/main.c
+msgid " (not listed)"
+msgstr " (no listada)"
+
+#: src/gui/main.c
+msgid " + subfolders"
+msgstr " + subcarpetas"
+
+#: src/gui/main.c
+msgid "games are extracted with it"
+msgstr "con la que se extraen los juegos"
+
+#: src/gui/main.c
+msgid "only some .nsp need it"
+msgstr "solo algunos .nsp la necesitan"
+
+#: src/gui/main.c
+msgid "only encrypted 3DS games need it"
+msgstr "solo los juegos de 3DS cifrados la necesitan"
+
+#: src/gui/main.c
+msgid "nickname"
+msgstr "apodo"
+
+#: src/gui/main.c
+msgid "First User"
+msgstr "Primer usuario"
+
+#: src/gui/main.c
+msgid "old file: users.ini.old"
+msgstr "archivo viejo: users.ini.old"
+
+#: src/gui/main.c
+msgid "Settings > App"
+msgstr "Ajustes > App"
+
+#: src/gui/main.c
+msgid "Library folders"
+msgstr "Carpetas de la biblioteca"
+
+#: src/gui/main.c
+msgid "Closing Adrena"
+msgstr "Cerrando Adrena"
+
+#: src/gui/main.c
+msgid "Kept for the next start:"
+msgstr "Guardado para el próximo inicio:"
+
+#: src/gui/main.c
+msgid "Nothing to keep: no file of the menu's"
+msgstr "No hay nada que guardar: ningún archivo del menú"
+
+#: src/gui/main.c
+msgid "the game wrote no log"
+msgstr "el juego no escribió ningún registro"
+
+#: src/gui/main.c
+#, c-format
+msgid "the game wrote no log since it started; the newest is %s"
+msgstr "el juego no escribió ningún registro desde que empezó; el más nuevo es %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "The game stopped: %s"
+msgstr "El juego se detuvo: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not written without %s"
+msgstr "No escrito sin %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Removed %s"
+msgstr "Quitado %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not moved: run it from its dump once, which makes %s, then move its saves (docs/DEPRECATIONS.md)"
+msgstr "No movido: ejecutalo una vez desde su dump, que crea %s, y después mueve sus guardados (docs/DEPRECATIONS.md)"
+
+#: src/gui/main.c
+#, c-format
+msgid "Not moved: %s is not in the data folder, which these settings go by"
+msgstr "No movido: %s no está en la carpeta de datos, a la que se rigen estos ajustes"
+
+#: src/gui/main.c
+msgid "Nothing left by an older version"
+msgstr "No quedó nada de una versión anterior"
+
+#: src/gui/main.c
+#, c-format
+msgid "None of the %d can move: the box says why"
+msgstr "Ninguno de los %d se puede mover: el cuadro dice por qué"
+
+#: src/gui/main.c
+#, c-format
+msgid "Move Old Files? %d move, %d stay where they are"
+msgstr "Mover archivos viejos? Se mueven %d, %d se quedan donde están"
+
+#: src/gui/main.c
+#, c-format
+msgid "Move Old Files? %d move"
+msgstr "Mover archivos viejos? Se mueven %d"
+
+#: src/gui/main.c
+msgid "Nothing to clean: no [Deprecated] in a game's .ini, no old keys"
+msgstr "No hay nada que limpiar: ningún [Deprecated] en el .ini de un juego, ni keys viejas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings? [Deprecated] in %d .ini, %d old keys"
+msgstr "Limpiar ajustes viejos? [Deprecated] en %d .ini, %d keys viejas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings? [Deprecated] in %d .ini, %d old key"
+msgstr "Limpiar ajustes viejos? [Deprecated] en %d .ini, %d key vieja"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings? [Deprecated] in %d .ini"
+msgstr "Limpiar ajustes viejos? [Deprecated] en %d .ini"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings? %d old keys"
+msgstr "Limpiar ajustes viejos? %d keys viejas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Clean Old Settings? %d old key"
+msgstr "Limpiar ajustes viejos? %d key vieja"
+
+#: src/gui/main.c
+msgid "Every setting is at its default"
+msgstr "Cada ajuste está en su valor por defecto"
+
+#: src/gui/main.c
+#, c-format
+msgid "Reset to Defaults? %d settings change"
+msgstr "Restablecer valores por defecto? Cambian %d ajustes"
+
+#: src/gui/main.c
+#, c-format
+msgid "Reset to Defaults? %d setting changes"
+msgstr "Restablecer valores por defecto? Cambia %d ajuste"
+
+#: src/gui/main.c
+#, c-format
+msgid "Cleaned: %d done, %d not"
+msgstr "Limpio: %d hechos, %d no"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d settings back to their defaults"
+msgstr "%d ajustes volvieron a sus valores por defecto"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d setting back to its default"
+msgstr "%d ajuste volvió a su valor por defecto"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d moved, %d not"
+msgstr "%d movidos, %d no"
+
+#: src/gui/main.c
+msgid "Aborted with ESC."
+msgstr "Abortado con ESC."
+
+#: src/gui/main.c
+#, c-format
+msgid "Program ended abnormally (status %d)."
+msgstr "El programa terminó mal (estado %d)."
+
+#: src/gui/main.c
+#, c-format
+msgid "The run ended with status %d."
+msgstr "La ejecución terminó con estado %d."
+
+#: src/gui/main.c
+msgid "Ready"
+msgstr "Listo"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: into which folder of the recompiled library?"
+msgstr "%s: a qué carpeta de la biblioteca de recompilados?"
+
+#: src/gui/main.c
+#, c-format
+msgid "  %s free"
+msgstr "  %s libres"
+
+#: src/gui/main.c
+#, c-format
+msgid "  custom, %s free"
+msgstr "  personalizada, %s libres"
+
+#: src/gui/main.c
+#, c-format
+msgid "  default, %s free"
+msgstr "  por defecto, %s libres"
+
+#: src/gui/main.c
+msgid "Share Zip"
+msgstr "Compartir zip"
+
+#: src/gui/main.c src/gui/ui.txt
+msgid "Share Log"
+msgstr "Compartir registro"
+
+#: src/gui/main.c
+msgid "Open Logs Folder"
+msgstr "Abrir carpeta de registros"
+
+#: src/gui/main.c
+msgid "Change Folder"
+msgstr "Cambiar carpeta"
+
+#: src/gui/main.c
+msgid "Reset to Default"
+msgstr "Restablecer valor por defecto"
+
+#: src/gui/main.c
+msgid "Remove from Library"
+msgstr "Quitar de la biblioteca"
+
+#: src/gui/main.c
+msgid "Subfolders"
+msgstr "Subcarpetas"
+
+#: src/gui/main.c
+msgid "Add to Library"
+msgstr "Agregar a la biblioteca"
+
+#: src/gui/main.c
+msgid "Use"
+msgstr "Usar"
+
+#: src/gui/main.c
+msgid "How to share the logs?"
+msgstr "Cómo compartir los registros?"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: its subfolders' games are listed too"
+msgstr "%s: también se listan los juegos de sus subcarpetas"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: its own games alone are listed, not its subfolders'"
+msgstr "%s: solo se listan sus propios juegos, no los de sus subcarpetas"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s has no folder to open"
+msgstr "%s no tiene una carpeta que abrir"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is compiled already, in %s"
+msgstr "%s ya está compilado, en %s"
+
+#: src/gui/main.c
+msgid "That path is not a readable file. Try again or press ESC."
+msgstr "Esa ruta no es un archivo legible. Intenta de nuevo o presiona ESC."
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is compiling (%d%%): the game plays once the queue ends"
+msgstr "%s se está compilando (%d%%): el juego juega cuando termina la cola"
+
+#: src/gui/main.c
+msgid "the selected driver"
+msgstr "el driver seleccionado"
+
+#: src/gui/main.c
+msgid "The Recompiled Library's Main is off and no Extra of it can take a game: Add to Library on its Main, or add a folder to it, in Settings > App > Folders"
+msgstr "El Principal de la Biblioteca de recompilados está apagado y ningún Extra suyo puede tomar un juego: Agregar a la biblioteca en su Principal, o agregarle una carpeta, en Ajustes > App > Carpetas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Gentle until it ends: %s"
+msgstr "Suave hasta que termine: %s"
+
+#: src/gui/main.c
+msgid "Gentle, a game plays"
+msgstr "Suave, hay un juego jugando"
+
+#: src/gui/main.c
+#, c-format
+msgid ", %d threads"
+msgstr ", %d hilos"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s joins the queue: %s. %s compiles now (%d%%)"
+msgstr "%s se suma a la cola: %s. %s compila ahora (%d%%)"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is not in the queue: it holds %d compiles, and its run %d options at most"
+msgstr "%s no está en la cola: admite %d compilaciones, y su ejecución %d opciones como máximo"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in the queue already"
+msgstr "%s ya está en la cola"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: compiled, but no game of %s names it as its source, so it does not play"
+msgstr "%s: compilado, pero ningún juego de %s lo nombra como su fuente, así que no juega"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: compiled, Enter on it plays it"
+msgstr "%s: compilado, Enter sobre él lo juega"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s: aborted with ESC"
+msgstr "%s: abortado con ESC"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d min %d s"
+msgstr "%d min %d s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d s"
+msgstr "%d s"
+
+#: src/gui/main.c
+#, c-format
+msgid "AOT pack build failed (status %d)."
+msgstr "La compilación del paquete AOT falló (estado %d)."
+
+#: src/gui/main.c
+#, c-format
+msgid "AOT pack built from %d cached function%s."
+msgstr "Paquete AOT construido a partir de %d funciones de caché%s."
+
+#: src/gui/main.c
+msgid "AOT pack built, but no cached function matched the game."
+msgstr "Paquete AOT construido, pero ninguna función de caché coincidió con el juego."
+
+#: src/gui/main.c
+msgid "AOT pack built."
+msgstr "Paquete AOT construido."
+
+#: src/gui/main.c
+#, c-format
+msgid "Compile failed (status %d)."
+msgstr "La compilación falló (estado %d)."
+
+#: src/gui/main.c
+#, c-format
+msgid "Compiled in %s."
+msgstr "Compilado en %s."
+
+#: src/gui/main.c
+#, c-format
+msgid "Recompile failed (status %d)."
+msgstr "La recompilación falló (estado %d)."
+
+#: src/gui/main.c
+#, c-format
+msgid "Recompiled in %s."
+msgstr "Recompilado en %s."
+
+#: src/gui/main.c
+msgid "AOT pack built"
+msgstr "Paquete AOT construido"
+
+#: src/gui/main.c
+msgid "Compiled"
+msgstr "Compilado"
+
+#: src/gui/main.c
+msgid "SDL gave no reason"
+msgstr "SDL no dio razón"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s compiles now: ESC aborts it, Del takes out one waiting"
+msgstr "%s compila ahora: ESC la aborta, Del saca una en espera"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s taken out of the queue"
+msgstr "%s sacado de la cola"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s's line taken off the queue"
+msgstr "la línea de %s sacada de la cola"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is gone (%s): it left the recent games."
+msgstr "%s ya no está (%s): salió de los juegos recientes."
+
+#: src/gui/main.c
+msgid "No game in focus to recompile."
+msgstr "No hay un juego enfocado para recompilar."
+
+#: src/gui/main.c
+msgid "R recompiles games: a Linux program runs as it is."
+msgstr "R recompila los juegos: un programa de Linux corre como está."
+
+#: src/gui/main.c
+msgid "No game in focus to play."
+msgstr "No hay un juego enfocado para jugar."
+
+#: src/gui/main.c
+msgid "B builds an AOT pack for a prepared Switch game in focus."
+msgstr "B construye un paquete AOT para un juego de Switch preparado enfocado."
+
+#: src/gui/main.c
+msgid "No JIT cache for this game yet. Play it once to collect one."
+msgstr "Todavía no hay caché JIT para este juego. Juégalo una vez para juntarlo."
+
+#: src/gui/main.c
+msgid "The JIT cache is unreadable. Play it once to rebuild it."
+msgstr "El caché JIT no se puede leer. Juégalo una vez para reconstruirlo."
+
+#: src/gui/main.c
+#, c-format
+msgid "The JIT cache's level (JIT optimization O%c) and the game's AOT optimization O%c differ. An AOT pack needs them equal: set Optimization level to O%c before building, or set JIT optimization to O%c and play once to make a matching cache."
+msgstr "El nivel del caché JIT (optimización JIT O%c) y la optimización AOT del juego O%c difieren. Un paquete AOT los necesita iguales: pon Nivel de optimización en O%c antes de construir, o pon la optimización JIT en O%c y juega una vez para hacer un caché que coincida."
+
+#: src/gui/main.c
+msgid "M opens the mods and cheats of a recompiled Switch game in focus."
+msgstr "M abre los mods y cheats de un juego de Switch recompilado enfocado."
+
+#: src/gui/main.c
+msgid "Cannot install aes_keys.txt: neither USERPROFILE nor HOME is set"
+msgstr "No se puede instalar aes_keys.txt: no está definido ni USERPROFILE ni HOME"
+
+#: src/gui/main.c
+msgid "Cannot install aes_keys.txt: HOME is not set"
+msgstr "No se puede instalar aes_keys.txt: HOME no está definido"
+
+#: src/gui/main.c
+msgid "aes_keys.txt installed: encrypted 3DS games can be decrypted now."
+msgstr "aes_keys.txt instalado: los juegos de 3DS cifrados ya se pueden descifrar."
+
+#: src/gui/main.c
+msgid "prod.keys installed: games can be extracted now."
+msgstr "prod.keys instalado: los juegos ya se pueden extraer."
+
+#: src/gui/main.c
+#, c-format
+msgid "Cannot install %s: %s"
+msgstr "No se puede instalar %s: %s"
+
+#: src/gui/main.c
+msgid "Please drop a readable file named prod.keys or aes_keys.txt."
+msgstr "Por favor suelta un archivo legible llamado prod.keys o aes_keys.txt."
+
+#: src/gui/main.c
+#, c-format
+msgid "This file could not be read. Pick prod.keys or aes_keys.txt again, from the device's storage (%s)."
+msgstr "No se pudo leer este archivo. Elige prod.keys o aes_keys.txt de nuevo, desde el almacenamiento del dispositivo (%s)."
+
+#: src/gui/main.c
+#, c-format
+msgid "This file is not prod.keys or aes_keys.txt. Pick the keys file (%s)."
+msgstr "Este archivo no es prod.keys ni aes_keys.txt. Elige el archivo de keys (%s)."
+
+#: src/gui/main.c
+#, c-format
+msgid "Cannot read this file by its path. Check that Adrena may access the device's files in Android's settings, then pick it from the device's storage (%s)."
+msgstr "No se puede leer este archivo por su ruta. Revisá que Adrena pueda acceder a los archivos del dispositivo en los ajustes de Android, y después elegilo desde el almacenamiento del dispositivo (%s)."
+
+#: src/gui/main.c
+#, c-format
+msgid "The picked file could not be read as prod.keys or aes_keys.txt (%s)."
+msgstr "El archivo elegido no se pudo leer como prod.keys ni como aes_keys.txt (%s)."
+
+#: src/gui/main.c
+#, c-format
+msgid "The picked file is not prod.keys or aes_keys.txt (%s)."
+msgstr "El archivo elegido no es prod.keys ni aes_keys.txt (%s)."
+
+#: src/gui/main.c
+#, c-format
+msgid "Pick the file from this computer's storage (%s)."
+msgstr "Elige el archivo del almacenamiento de esta computadora (%s)."
+
+#: src/gui/main.c
+#, c-format
+msgid "%s opens with %s: cannot find %s beside Adrena or on PATH."
+msgstr "%s se abre con %s: no se encuentra %s junto a Adrena ni en el PATH."
+
+#: src/gui/main.c
+#, c-format
+msgid "%s opens with %s, not %s."
+msgstr "%s se abre con %s, no con %s."
+
+#: src/gui/main.c
+msgid "Drop one local file path, not a list or remote URL."
+msgstr "Suelta la ruta de un archivo local, no una lista ni una URL remota."
+
+#: src/gui/main.c
+msgid "the launcher's log has no folder in Documents"
+msgstr "el registro del menú no tiene una carpeta en Documentos"
+
+#: src/gui/main.c
+msgid "Settings > App > Folders' Logs names no folder"
+msgstr "Registros de Ajustes > App > Carpetas no nombra ninguna carpeta"
+
+#: src/gui/main.c
+#, c-format
+msgid "The logs could not be saved: cannot make %s: %s"
+msgstr "Los registros no se pudieron guardar: no se puede crear %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "The logs could not be saved: %s, of what was shared before, could not be deleted: %s"
+msgstr "Los registros no se pudieron guardar: no se pudo borrar %s, de lo compartido antes: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "The logs could not be saved: %s"
+msgstr "Los registros no se pudieron guardar: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "The log could not be saved to %s: %s"
+msgstr "El registro no se pudo guardar en %s: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in %s, opened"
+msgstr "%s está en %s, abierto"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s is in %s; %s"
+msgstr "%s está en %s; %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s It is in Settings > App > Folders."
+msgstr "%s Está en Ajustes > App > Carpetas."
+
+#: src/gui/main.c
+msgid "Not enough memory to list the games in their groups."
+msgstr "No hay suficiente memoria para listar los juegos en sus grupos."
+
+#: src/gui/main.c
+msgid "Not enough memory to sort the games by the last opened: by title."
+msgstr "No hay suficiente memoria para ordenar los juegos por el último abierto: por título."
+
+#: src/gui/main.c
+#, c-format
+msgid "Games is not watched for new games (%s): F5 lists them"
+msgstr "Juegos no está siendo vigilado para juegos nuevos (%s): F5 los lista"
+
+#: src/gui/main.c
+msgid "Not saved: Ctrl+S saves it, ESC again leaves without it"
+msgstr "No guardado: Ctrl+S lo guarda, ESC de nuevo sale sin guardarlo"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "A"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "B"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "X"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Y"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Cross"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Circle"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Square"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Triangle"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "LB"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "RB"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "LT"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "RT"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Start"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "L3"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "R3"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Right stick"
+msgstr "Stick derecho"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "ESC"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Tab"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Enter"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Space"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "click"
+msgstr "clic"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Tap"
+msgstr "Toca"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Up"
+msgstr "Arriba"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Down"
+msgstr "Abajo"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Left"
+msgstr "Izquierda"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Right"
+msgstr "Derecha"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "PgUp"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "PgDn"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "PgDown"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Del"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Take out"
+msgstr "Extraer"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "L"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "R"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "AOT pack"
+msgstr "Paquete AOT"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "M"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Mods"
+msgstr "Mods"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "P"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "V"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "S"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Save states"
+msgstr "Estados guardados"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Ctrl+S"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Ctrl+V"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "F5"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "F2"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "F1"
+msgstr ""
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Select"
+msgstr "Seleccionar"
+
+#. A key of the foot's sentences, which a click finds by this word
+#: src/gui/main.c
+#, snx-key
+msgid "Refresh"
+msgstr "Actualizar"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s%s %s is not there"
+msgstr "%s%s %s no está allí"
+
+#: src/gui/main.c
+#, c-format
+msgid "%s%s %s, made when needed"
+msgstr "%s%s %s, se crea cuando se necesita"
+
+#: src/gui/main.c
+msgid "Data, Recompiled, Extractions, Logs and Caches are there"
+msgstr "Data, Recompiled, Extractions, Logs y Caches están allí"
+
+#: src/gui/main.c
+#, c-format
+msgid "Refreshed: %s; dumps/ and %d Extra(s), %d not found"
+msgstr "Actualizado: %s; dumps/ y %d Extra, %d no encontradas"
+
+#: src/gui/main.c
+#, c-format
+msgid "Refreshed: %zu games"
+msgstr "Actualizados: %zu juegos"
+
+#: src/gui/main.c
+msgid "Drop one local folder"
+msgstr "Suelta una sola carpeta local"
+
+#: src/gui/main.c
+#, c-format
+msgid "Cannot find the folder Adrena runs from: %s"
+msgstr "No se encuentra la carpeta desde la que Adrena se ejecuta: %s"
+
+#: src/gui/main.c
+#, c-format
+msgid "Cannot make the menu's font: %s"
+msgstr "No se puede crear la fuente del menú: %s"
+
+#: src/gui/main.c
+msgid "Cannot start the menu: out of memory"
+msgstr "No se puede iniciar el menú: sin memoria"
+
+#: src/gui/main.c
+msgid "Cannot find the folder of the app's libraries"
+msgstr "No se encuentra la carpeta de las bibliotecas de la app"
+
+#: src/gui/main.c
+msgid "No user shown: out of memory"
+msgstr "No se muestra el usuario: sin memoria"
+
+#: src/gui/main.c
+#, c-format
+msgid "%d to move, %d staying: --migrate=yes moves them"
+msgstr "%d para mover, %d se quedan: --migrate=yes los mueve"
+
+#: src/gui/model.c
+msgid "RAM and CPU: unavailable"
+msgstr "RAM y CPU: no disponibles"
+
+#: src/gui/model.c
+#, c-format
+msgid "RAM %s  CPU %.0f%% (%.1f cores)"
+msgstr "RAM %s  CPU %.0f%% (%.1f núcleos)"
+
+#: src/gui/model.c
+msgid "The game's .ini settings, the launcher's for the next runs, and its theme"
+msgstr "Los ajustes .ini del juego, los del launcher para las próximas ejecuciones y su tema"
+
+#: src/gui/model.c
+msgid "Saves the logs as one zip or as scarletnx.log in a folder it opens to share from, or opens their folder"
+msgstr "Guarda los logs como un zip o como scarletnx.log en una carpeta que abre para compartirlos, o abre esa carpeta"
+
+#: src/gui/model.c
+msgid "Where the app keeps each kind of its files, and the libraries: each folder opened or changed"
+msgstr "Dónde guarda la app cada tipo de archivo y las bibliotecas: cada carpeta abierta o cambiada"
+
+#: src/gui/process_posix.c
+#, c-format
+msgid "Cannot start the run: %s"
+msgstr "No se puede iniciar la ejecución: %s"
+
+#: src/gui/process_posix.c
+msgid "A run is already going"
+msgstr "Ya hay una ejecución en curso"
+
+#: src/gui/process_posix.c
+#, c-format
+msgid "Cannot launch driver: %s"
+msgstr "No se puede lanzar el driver: %s"
+
+#: src/gui/process_posix.c
+msgid "the driver runs on a thread of the app, at the app's priority"
+msgstr "el driver corre en un hilo de la app, con la prioridad de la app"
+
+#: src/gui/process_win32.c
+msgid "A driver is already running"
+msgstr "Ya hay un driver en marcha"
+
+#: src/gui/process_win32.c
+#, c-format
+msgid "Cannot start the run (Windows error %lu)"
+msgstr "No se puede iniciar la ejecución (error de Windows %lu)"
+
+#: src/gui/process_win32.c
+#, c-format
+msgid "Windows error %lu"
+msgstr "Error de Windows %lu"
+
+#: src/gui/queue.c
+#, c-format
+msgid "%dth"
+msgstr "%d.º"
+
+#: src/gui/queue.c
+#, c-format
+msgid "%dst"
+msgstr "%d.º"
+
+#: src/gui/queue.c
+#, c-format
+msgid "%dnd"
+msgstr "%d.º"
+
+#: src/gui/queue.c
+#, c-format
+msgid "%drd"
+msgstr "%d.º"
+
+#: src/gui/queue.c
+msgid "next"
+msgstr "siguiente"
+
+#: src/gui/settings.c
+msgid "Its own page, as in the game's menu"
+msgstr "Su propia página, como en el menú del juego"
+
+#: src/gui/settings.c
+msgid "Every row of this page at once"
+msgstr "Todas las filas de esta página a la vez"
+
+#: src/gui/settings.c
+#, c-format
+msgid "%s=.ini is no longer a value of %s: %s=%s now"
+msgstr "%s=.ini ya no es un valor de %s: ahora %s=%s"
+
+#: src/gui/settings.c
+#, c-format
+msgid "%s=%s is the default of %s: no run is given it over the game's .ini"
+msgstr "%s=%s es el valor por defecto de %s: ninguna ejecución lo recibe por encima del .ini del juego"
+
+#: src/gui/settings.c
+msgid "Mixed"
+msgstr "Mezclado"
+
+#: src/gui/steps.c
+msgid "EXTRACT"
+msgstr "EXTRAER"
+
+#: src/gui/steps.c
+msgid "RECOMPILE"
+msgstr "RECOMPILAR"
+
+#: src/gui/steps.c
+msgid "BUILD"
+msgstr "COMPILAR"
+
+#: src/gui/steps.c
+msgid "LAUNCH"
+msgstr "EJECUTAR"
+
+#: src/gui/steps.c
+msgid "READY"
+msgstr "LISTO"
+
+#: src/gui/steps.c
+msgid "GPU"
+msgstr ""
+
+#: src/gui/steps.c
+msgid "--:-- left"
+msgstr "--:-- restantes"
+
+#: src/gui/steps.c
+#, c-format
+msgid "%u:%02u:%02u left"
+msgstr "%u:%02u:%02u restantes"
+
+#: src/gui/steps.c
+#, c-format
+msgid "%02u:%02u left"
+msgstr "%02u:%02u restantes"
+
+#: src/gui/theme.c
+msgid "the name the menu's Theme item shows"
+msgstr "el nombre que muestra el item Tema del menú"
+
+#: src/gui/theme.c
+msgid "who made it"
+msgstr "quién lo hizo"
+
+#: src/gui/theme.c
+msgid "the background"
+msgstr "el fondo"
+
+#: src/gui/theme.c
+msgid "text; the head's and footer's bar"
+msgstr "el texto; la barra de la cabecera y del pie"
+
+#: src/gui/theme.c
+msgid "hints, secondary text, rules"
+msgstr "pistas, texto secundario, líneas"
+
+#: src/gui/theme.c
+msgid "the focused line, or its band"
+msgstr "la línea enfocada, o su franja"
+
+#: src/gui/theme.c
+msgid "the item chosen, the run's head"
+msgstr "el item elegido, la cabecera de la ejecución"
+
+#: src/gui/theme.c
+msgid "warnings, the ESC line, a failed run, missing keys"
+msgstr "advertencias, la línea de ESC, una ejecución fallida, las keys que faltan"
+
+#: src/gui/theme.c
+msgid "the boxes' frames, a filled box, the grid and the title's shadow"
+msgstr "los marcos de las cajas, una caja rellena, la grilla y la sombra del título"
+
+#: src/gui/theme.c
+msgid "the abort question in the console layout"
+msgstr "la pregunta de interrupción en la consola"
+
+#: src/gui/theme.c
+msgid "a diff's added lines, as failure its removed ones; no screen uses it yet"
+msgstr "las líneas agregadas de un diff, en un fallo las quitadas; ninguna pantalla la usa todavía"
+
+#: src/gui/theme.c
+msgid "bar: the tabs and the title on a band of ink"
+msgstr "bar: las pestañas y el título sobre una franja de tinta"
+
+#: src/gui/theme.c
+msgid "a line under the head"
+msgstr "una línea bajo la cabecera"
+
+#: src/gui/theme.c
+msgid "the title's letters, times the text's, 1 to 3"
+msgstr "las letras del título, veces las del texto, de 1 a 3"
+
+#: src/gui/theme.c
+msgid "a shadow under the title's letters, in the dim color"
+msgstr "una sombra bajo las letras del título, en el color tenue"
+
+#: src/gui/theme.c
+msgid "the user at the head's right, their nickname and picture in a box: none, square or round"
+msgstr "el usuario a la derecha de la cabecera, su apodo y foto en una caja: ninguno, cuadrada o redonda"
+
+#: src/gui/theme.c
+msgid "the menu's title"
+msgstr "el título del menú"
+
+#: src/gui/theme.c
+msgid "the games/ list's title"
+msgstr "el título de la lista games/"
+
+#: src/gui/theme.c
+msgid "the keys screen's title"
+msgstr "el título de la pantalla de keys"
+
+#: src/gui/theme.c
+msgid "a run's title until the game loads"
+msgstr "el título de una ejecución hasta que carga el juego"
+
+#: src/gui/theme.c
+msgid "a run's title once the runner's banner came"
+msgstr "el título de una ejecución cuando ya llegó el cartel del runner"
+
+#: src/gui/theme.c
+msgid "before each item"
+msgstr "antes de cada item"
+
+#: src/gui/theme.c
+msgid "the focused box in the focus color, or on a band of it"
+msgstr "la caja enfocada en el color de foco, o sobre una franja de ese color"
+
+#: src/gui/theme.c
+msgid "the boxes outlined or filled"
+msgstr "las cajas con contorno o rellenas"
+
+#: src/gui/theme.c
+msgid "a text too long for its box over its rows, or on one that slides"
+msgstr "un texto demasiado largo para su caja, en sus filas o en una que se desliza"
+
+#: src/gui/theme.c
+msgid "in the margin, beside the focused box"
+msgstr "en el margen, junto a la caja enfocada"
+
+#: src/gui/theme.c
+msgid "a question: default, a box in the middle; yorha, at the foot, its choices at its right above it"
+msgstr "una pregunta: default, una caja en el medio; yorha, al pie, sus opciones a su derecha y arriba"
+
+#: src/gui/theme.c
+msgid "a faint grid on the page, in the dim color"
+msgstr "una grilla tenue sobre la página, en el color tenue"
+
+#: src/gui/theme.c
+msgid "in a box with a bar at its left, or on the page"
+msgstr "en una caja con una barra a su izquierda, o sobre la página"
+
+#: src/gui/theme.c
+msgid "over the foot's rows, or on one row that slides"
+msgstr "sobre las filas del pie, o en una fila que se desliza"
+
+#: src/gui/theme.c
+msgid "bar: on a band of ink; none: no Status box"
+msgstr "bar: sobre una franja de tinta; none: sin caja de Estado"
+
+#: src/gui/theme.c
+msgid "a line over the foot"
+msgstr "una línea sobre el pie"
+
+#: src/gui/theme.c
+msgid "the keys in a box with a bar at its left, or on the page"
+msgstr "las keys en una caja con una barra a su izquierda, o sobre la página"
+
+#: src/gui/theme.c
+msgid "steps: the loading screen, in the colors of the keys below"
+msgstr "steps: la pantalla de carga, con los colores de las keys de abajo"
+
+#: src/gui/theme.c
+msgid "the loading screen's background"
+msgstr "el fondo de la pantalla de carga"
+
+#: src/gui/theme.c
+msgid "its text, the cursor, the ring's turning bar"
+msgstr "su texto, el cursor, la barra que gira del anillo"
+
+#: src/gui/theme.c
+msgid "older steps, the name, the inner ring"
+msgstr "los pasos viejos, el nombre, el anillo interior"
+
+#: src/gui/theme.c
+msgid "the outer ring, the bar's empty segments"
+msgstr "el anillo exterior, los segmentos vacíos de la barra"
+
+#: src/gui/theme.c
+msgid "a failed step, a failed run"
+msgstr "un paso fallido, una ejecución fallida"
+
+#: src/gui/theme.c
+msgid "a run being aborted, the question"
+msgstr "una ejecución que se interrumpe, la pregunta"
+
+#: src/gui/theme.c
+msgid "faint lines over the page"
+msgstr "líneas tenues sobre la página"
+
+#: src/gui/theme.c
+msgid "the progress bar and its percentage"
+msgstr "la barra de progreso y su porcentaje"
+
+#: src/gui/theme.c
+msgid "each step's other lines under it"
+msgstr "las otras líneas de cada paso, debajo"
+
+#: src/gui/theme.c
+msgid "a done step's lines folded away"
+msgstr "las líneas de un paso terminado, plegadas"
+
+#: src/gui/theme.c
+msgid "the turning ring"
+msgstr "el anillo que gira"
+
+#: src/gui/theme.c
+msgid "a running step's progress: amount (1.2 / 4.0 GB), percent, time left"
+msgstr "el progreso del paso en curso: cantidad (1.2 / 4.0 GB), porcentaje, tiempo restante"
+
+#: src/gui/theme.c
+msgid "on its row"
+msgstr "en su fila"
+
+#: src/gui/theme.c
+msgid "before the line"
+msgstr "antes de la línea"
+
+#: src/gui/theme.c
+msgid "after it"
+msgstr "después"
+
+#: src/gui/theme.c
+msgid "blinking at blink_ms"
+msgstr "parpadea cada blink_ms"
+
+#: src/gui/theme.c
+msgid "the keys screen's drop line"
+msgstr "la línea de arrastre de la pantalla de keys"
+
+#: src/gui/theme.c
+msgid "the ESC line after a run"
+msgstr "la línea de ESC tras una ejecución"
+
+#: src/gui/theme.c
+msgid "the ESC line after a failed run"
+msgstr "la línea de ESC tras una ejecución fallida"
+
+#: src/gui/theme.c
+msgid "a run being aborted"
+msgstr "una ejecución que se interrumpe"
+
+#: src/gui/theme.c
+msgid "what comes after a fade out, from black"
+msgstr "lo que viene tras un fade out, desde negro"
+
+#: src/gui/theme.c
+msgid "the menu as a run starts, a run ESC leaves"
+msgstr "el menú cuando arranca una ejecución, una ejecución de la que ESC sale"
+
+#: src/gui/theme.c
+msgid "how a step's line comes in"
+msgstr "cómo entra la línea de un paso"
+
+#: src/gui/theme.c
+msgid "slide and fade's length"
+msgstr "la duración del deslizamiento y del fundido"
+
+#: src/gui/theme.c
+msgid "a character of the running line, any other line whole"
+msgstr "un carácter de la línea en curso; el resto de cualquier otra línea"
+
+#: src/gui/theme.c
+msgid "sync: one line at a time"
+msgstr "sync: una línea a la vez"
+
+#: src/gui/theme.c
+msgid "the cursor's, the prompt's and Install Keys' blink"
+msgstr "el parpadeo del cursor, del aviso y de Install Keys"
+
+#: src/gui/theme.c
+msgid "a line too long for its row slides a column each"
+msgstr "una línea más larga que su fila desliza una columna cada vez"
+
+#: src/gui/theme.c
+msgid "behind the drawing"
+msgstr "detrás del dibujo"
+
+#: src/gui/theme.c
+msgid "how long; 0: none"
+msgstr "cuánto dura; 0: ninguno"
+
+#: src/gui/theme.c
+msgid "how many boots in 100 show this theme's splash; the others show the default's"
+msgstr "de cada 100 arranques, cuántos muestran el splash de este tema; los demás muestran el del tema default"
+
+#: src/gui/theme.c
+msgid "a color as #RRGGBB"
+msgstr "un color como #RRGGBB"
+
+#: src/gui/theme.c
+msgid "true or false"
+msgstr "true o false"
+
+#: src/gui/theme.c
+#, c-format
+msgid "a whole number from 0 to %lu"
+msgstr "un entero de 0 a %lu"
+
+#: src/gui/theme.c
+#, c-format
+msgid "one line of at most %lu characters"
+msgstr "una línea de a lo sumo %lu caracteres"
+
+#: src/gui/theme.c
+msgid " or "
+msgstr " o "
+
+#: src/gui/theme.c
+#, c-format
+msgid "[%s] %s = %s is not %s: it keeps %s"
+msgstr "[%s] %s = %s no es %s: se queda con %s"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[%s] %s = %s is more than %lu: it takes %lu"
+msgstr "[%s] %s = %s es más que %lu: toma %lu"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[theme] format = %s is not a whole number from 1: it keeps %lu"
+msgstr "[theme] format = %s no es un entero desde 1: se queda con %lu"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[theme] base = %s is not a built-in theme (default or yorha): it starts from %s"
+msgstr "[theme] base = %s no es un tema interno (default o yorha): empieza desde %s"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[theme] layout = %s is not menu, loading, plain, debug or skip: it starts from %s"
+msgstr "[theme] layout = %s no es menu, loading, plain, debug ni skip: empieza desde %s"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[%s] %s = %s is not a key of a theme"
+msgstr "[%s] %s = %s no es una clave de un tema"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[body] %s = %s does nothing: ui.txt lays out the lists now (delete it)"
+msgstr "[body] %s = %s no hace nada: ui.txt ya arma las listas (bórralo)"
+
+#: src/gui/theme.c
+#, c-format
+msgid "[%s] %s = %s does nothing: ui.txt lays out the screens now (delete it)"
+msgstr "[%s] %s = %s no hace nada: ui.txt ya arma las pantallas (bórralo)"
+
+#: src/gui/theme.c
+#, c-format
+msgid "%s could not be read (out of memory): it shows %s"
+msgstr "%s no se pudo leer (sin memoria): se muestra %s"
+
+#: src/gui/theme.c
+#, c-format
+msgid "No themes/%s/theme.ini could be read: it shows %s"
+msgstr "No se pudo leer ningún themes/%s/theme.ini: se muestra %s"
+
+#: src/gui/ui.txt
+msgid "Load Switch NSP/XCI/NRO"
+msgstr "Cargar NSP/XCI/NRO de Switch"
+
+#: src/gui/ui.txt
+msgid "Load Linux ARM ELF"
+msgstr "Cargar ELF de Linux ARM"
+
+#: src/gui/ui.txt
+msgid "Load 3DS game"
+msgstr "Cargar juego de 3DS"
+
+#: src/gui/ui.txt
+msgid "Load Vita VPK"
+msgstr "Cargar VPK de Vita"
+
+#: src/gui/ui.txt
+msgid "Load GBA ROM"
+msgstr "Cargar ROM de GBA"
+
+#: src/gui/ui.txt
+msgid "Install Keys"
+msgstr "Instalar Keys"
+
+#: src/gui/ui.txt
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/common/utilities/setup.c
+msgid "Game settings"
+msgstr "Ajustes del juego"
+
+#: src/common/utilities/setup.c
+msgid "removed or renamed keys in a game's .ini"
+msgstr "claves quitadas o renombradas en el .ini de un juego"
+
+#: src/common/utilities/setup.c
+msgid "under [Deprecated]: Clean Old Settings takes them"
+msgstr "debajo de [Deprecated]: Limpiar Ajustes Viejos las saca"
+
+#: src/common/utilities/setup.c
+msgid "An option"
+msgstr "Una opción"
+
+#: src/common/utilities/setup.c
+msgid "An installed copy's files"
+msgstr "Los archivos de una copia instalada"
+
+#: src/common/utilities/setup.c
+msgid "the scarletnx folders of ~/.config, ~/.local/state and ~/.cache"
+msgstr "las carpetas scarletnx de ~/.config, ~/.local/state y ~/.cache"
+
+#: src/common/utilities/setup.c
+msgid "games/<Game>, <Game>_data/ side by side"
+msgstr "games/<Game> y <Game>_data/, lado a lado"
+
+#: src/common/utilities/setup.c
+msgid "games/<id>/, a folder each"
+msgstr "games/<id>/, una carpeta cada uno"
+
+#: src/common/utilities/setup.c
+msgid "The launcher's files"
+msgstr "Los archivos del launcher"
+
+#: src/common/utilities/setup.c
+msgid "gui/ in the data folder"
+msgstr "gui/ en la carpeta de datos"
+
+#: src/common/utilities/setup.c
+msgid "the config and state folders"
+msgstr "las carpetas de config y de estado"
+
+#: src/common/utilities/setup.c
+msgid "A portable copy"
+msgstr "Una copia portable"
+
+#: src/common/utilities/setup.c
+msgid "games/ beside the program"
+msgstr "games/ junto al programa"
+
+#: src/common/utilities/setup.c
+msgid ".scarletnx/ beside the program"
+msgstr ".scarletnx/ junto al programa"
+
+#: src/common/utilities/setup.c
+msgid "the app's own files"
+msgstr "los archivos propios de la app"
+
+#: src/common/utilities/setup.c
+msgid "the data folder's config/ and state/"
+msgstr "config/ y state/ de la carpeta de datos"
+
+#: src/common/utilities/setup.c
+msgid "A build tree's files"
+msgstr "Los archivos de un árbol de build"
+
+#: src/common/utilities/setup.c
+msgid "games/, work/ and the keys in its checkout"
+msgstr "games/, work/ y las keys en su checkout"
+
+#: src/common/utilities/setup.c
+msgid "the user's data folder"
+msgstr "la carpeta de datos del usuario"
+
+#: src/common/utilities/setup.c
+msgid "Account saves"
+msgstr "Guardados de cuenta"
+
+#: src/common/utilities/setup.c
+msgid "Recompiled games"
+msgstr "Juegos recompilados"
+
+#: src/common/utilities/setup.c
+msgid "games/ in the data folder"
+msgstr "games/ en la carpeta de datos"
+
+#: src/common/utilities/setup.c
+msgid "recompiled/, and dumps/ for the dumps"
+msgstr "recompiled/, y dumps/ para los dumps"
+
+#: src/common/utilities/setup.c
+msgid "The launcher's folders of games"
+msgstr "Las carpetas de juegos del launcher"
+
+#: src/common/utilities/setup.c
+msgid "a line of folders.txt, a path alone"
+msgstr "una línea de folders.txt, una ruta sola"
+
+#: src/common/utilities/setup.c
+msgid "each folder in the recompiled or the dumps library, as its games say"
+msgstr "cada carpeta de la biblioteca recompiled o dumps, según lo dicen sus juegos"
+
+#: src/common/utilities/setup.c
+msgid "The launcher's Text size"
+msgstr "El tamaño de texto del launcher"
+
+#: src/common/utilities/setup.c
+msgid "text_size = in app.ini"
+msgstr "text_size = en app.ini"
+
+#: src/common/utilities/setup.c
+msgid "ui_scale =, shown as UI scale"
+msgstr "ui_scale =, se muestra como UI scale"
+
+#: src/common/utilities/setup.c
+msgid "A theme's lists"
+msgstr "Las listas de un tema"
+
+#: src/common/utilities/setup.c
+msgid "[body] gap and scroll in its theme.ini"
+msgstr "[body] gap y scroll en su theme.ini"
+
+#: src/common/utilities/setup.c
+msgid "nothing: ui.txt lays out every list"
+msgstr "nada: ui.txt arma todas las listas"
+
+#: src/common/utilities/setup.c
+msgid "A theme's screens"
+msgstr "Las pantallas de un tema"
+
+#: src/common/utilities/setup.c
+msgid "[head] place, [tips] place and [body] sizing in its theme.ini"
+msgstr "[head] place, [tips] place y el sizing de [body] en su theme.ini"
+
+#: src/common/utilities/setup.c
+msgid "nothing: ui.txt lays out every screen"
+msgstr "nada: ui.txt arma todas las pantallas"
+
+#: src/common/utilities/setup.c
+msgid "Options"
+msgstr "Opciones"
+
+#: src/common/utilities/setup.c
+msgid "SLP vectorizer"
+msgstr "Vectorizador SLP"
+
+#: src/common/utilities/setup.c
+msgid "LLVM's, on in the recompile and the JIT"
+msgstr "El de LLVM, activo en la recompilación y en el JIT"
+
+#: src/common/utilities/setup.c
+msgid "off, as LLVM 23 can break a module with it: Settings > Debug turns it on"
+msgstr "apagado, porque LLVM 23 puede romper un módulo con él: Ajustes > Depuración lo enciende"
+
+#: src/common/utilities/setup.c
+msgid "The launcher's UI scale"
+msgstr "La escala de UI del launcher"
+
+#: src/common/utilities/setup.c
+msgid "Auto, and 0.25, 0.5 and 0.75 of it"
+msgstr "Auto, y 0.25, 0.5 y 0.75 de ella"
+
+#: src/common/utilities/setup.c
+msgid "1x to 4x: the number Auto gave that screen"
+msgstr "de 1x a 4x: el número que Auto le dio a esa pantalla"
+
+#: src/common/utilities/setup.c
+msgid "each game's own, in its <id>_data/save/"
+msgstr "el de cada juego, en su <id>_data/save/"
+
+#: src/common/utilities/setup.c
+msgid "the data folder's save/, by user and title: Move Old Files moves them"
+msgstr "save/ de la carpeta de datos, por usuario y título: Mover Archivos Viejos los mueve"
+
+#: src/common/utilities/setup.c
+msgid "Environment variables"
+msgstr "Variables de entorno"
+
+#: src/common/utilities/setup.c
+msgid "SNX_WW, SNX_HOST_PAGE, VITA_LOCKSTEP and others set for a run"
+msgstr "SNX_WW, SNX_HOST_PAGE, VITA_LOCKSTEP y otras que se fijan para una ejecución"
+
+#: src/common/utilities/setup.c
+msgid "settings and the drivers' options; a variable still set works, and the run says so"
+msgstr "los ajustes y las opciones de los drivers; una variable que siga puesta funciona, y la ejecución lo avisa"
+
+#: src/common/utilities/setup.c
+msgid "Fullscreen and Show controls"
+msgstr "Pantalla completa y Mostrar controles"
+
+#: src/common/utilities/setup.c
+msgid "Off, On, or each game's .ini, shown as Off [default]"
+msgstr "Off, On o el .ini de cada juego, que se muestra como Off [default]"
+
+#: src/common/utilities/setup.c
+msgid "Off or On, given to every run: Off on a computer, On on a phone"
+msgstr "Off u On, que recibe toda ejecución: Off en una computadora, On en un teléfono"
+
+#: src/common/utilities/setup.c
+msgid "A setting's default"
+msgstr "El valor por defecto de un ajuste"
+
+#: src/common/utilities/setup.c
+msgid "a value of its own, [default], beside the same value picked"
+msgstr "un valor propio, [default], junto al mismo valor elegido"
+
+#: src/common/utilities/setup.c
+msgid "[default] on that value, which no run is given: the game's .ini keeps it"
+msgstr "[default] en ese valor, que ninguna ejecución recibe: el .ini del juego lo guarda"
+
+#: src/nx/runtime/settings.txt
+msgid "gdbstub"
+msgstr ""
+
+#: src/nx/runtime/settings.txt
+msgid "GDB stub"
+msgstr ""
+
+#: src/nx/runtime/settings.txt
+msgid "Enables gdbstub on port 1234"
+msgstr "Activa gdbstub en el puerto 1234"
+
+#: src/nx/runtime/settings.txt
+msgid "Extract to tmpfs"
+msgstr "Extraer a tmpfs"
+
+#: src/nx/runtime/settings.txt
+msgid "Extract to tmpfs, in memory (the temporary folder's scarletnx/work/<title ID>), which the game reads its RomFS from"
+msgstr "Extrae a tmpfs, en memoria (scarletnx/work/<title ID> de la carpeta temporal), y de ahí el juego lee su RomFS"
+
+#: src/nx/runtime/settings.txt
+msgid "Extract game container"
+msgstr "Extraer el contenedor del juego"
+
+#: src/nx/runtime/settings.txt
+msgid "Extract dump"
+msgstr "Extraer el dump"
+
+#: src/nx/runtime/settings.txt
+msgid "Extract a dump's ExeFS and RomFS into its game's folder. Off, the game reads them from the dump"
+msgstr "Extrae el ExeFS y el RomFS de un dump a la carpeta de su juego. Off, el juego los lee del dump"
+
+#: src/nx/runtime/settings.txt
+msgid "Tracy capture"
+msgstr "Captura de Tracy"
+
+#: src/nx/runtime/settings.txt
+msgid "Records Switch runs to captures/ beside the game, and opens the trace in the profiler when the run ends. Off, the client does not start; F10 starts a 60-second capture. tracy-capture must be on PATH, and the runtime must be built with SNX_TRACY"
+msgstr "Registra las ejecuciones de Switch en captures/ junto al juego y abre la traza en el profiler cuando terminan. Off, el cliente no arranca; F10 inicia una captura de 60 segundos. tracy-capture debe estar en PATH y el runtime debe compilarse con SNX_TRACY"
+
+#: src/nx/runtime/settings.txt
+msgid "Optimization level"
+msgstr "Nivel de optimización"
+
+#: src/nx/runtime/settings.txt
+msgid "LLVM's optimization of the game's code when it is recompiled: 0 none, 3 the most, z the smallest. A game made already keeps its code until it is recompiled. Only an AOT pack built from the game's JIT cache needs it to match JIT optimization"
+msgstr "La optimización de LLVM del código del juego al recompilarlo: 0 ninguna, 3 la máxima, z el más chico. Un juego ya creado conserva su código hasta que se recompila. Solo un Paquete AOT hecho desde la caché JIT del juego necesita que coincida con la optimización del JIT"
+
+#: src/nx/runtime/settings.txt
+msgid "LLVM batch"
+msgstr "Lote de LLVM"
+
+#: src/nx/runtime/settings.txt
+msgid "What LLVM runs over each code unit once its functions are cleaned, when the game is recompiled: full, the passes of the optimization level; ipo, only inlining and a cleanup after it, which recompiles in about two thirds of the time for slightly bigger code, up to a third faster or slower than full's depending on the code (a 64-bit game's). Not at -O0. A game made already keeps its code until it is recompiled"
+msgstr "Lo que LLVM pasa por cada unidad de código cuando sus funciones ya están limpias, al recompilar el juego: full, los passes del nivel de optimización; ipo, solo inlining y una limpieza después, que recompila en cerca de dos tercios del tiempo con código apenas más grande, hasta un tercio más rápido o más lento que el de full según el código (el de un juego de 64 bits). No va con -O0. Un juego ya creado conserva su código hasta que se recompila"
+
+#: src/nx/runtime/settings.txt
+msgid "AOT threads"
+msgstr "Hilos de AOT"
+
+#: src/nx/runtime/settings.txt
+msgid "The threads compiling the game's code when it is recompiled: 0 (Auto) = the cores with the last quarter left free, so the machine stays responsive; N = that many"
+msgstr "Los hilos que compilan el código del juego al recompilarlo: 0 (Auto) = los núcleos, dejando libre el último cuarto para que la máquina siga respondiendo; N = esa cantidad"
+
+#: src/nx/runtime/settings.txt
+msgid "Unit size"
+msgstr "Tamaño de unidad"
+
+#: src/nx/runtime/settings.txt
+msgid "The instructions a code unit takes, whole functions at a time, when the game is recompiled: each is compiled on its own, and a smaller one takes less memory at once, which a phone needs (Android's allocator ran out at 90000 on several threads, and iOS ends an app at its limit). A game made already keeps its units until it is recompiled"
+msgstr "Las instrucciones que toma cada unidad de código, de funciones enteras a la vez, al recompilar el juego: cada una se compila sola, y una más chica usa menos memoria de golpe, lo que un teléfono necesita (el asignador de Android se quedó sin memoria con 90000 en varios hilos, e iOS cierra una app al llegar a su límite). Un juego ya creado conserva sus unidades hasta que se recompila"
+
+#: src/nx/runtime/settings.txt
+msgid "Unit cache limit"
+msgstr "Límite de la caché de unidades"
+
+#: src/nx/runtime/settings.txt
+msgid "The most the cache of compiled code units may hold, in GB: units/ of the cache folder, where every recompile finds the units it compiled before. Past it the units reused longest ago are removed. 0 = no limit. Either way the cache always leaves a tenth of its disk free, at most 10 GB, removing its oldest units for a new one"
+msgstr "Lo máximo que puede guardar la caché de unidades de código compiladas, en GB: units/ de la carpeta de caché, donde cada recompilación encuentra las unidades que compiló antes. Pasado el límite se quitan las unidades hace más tiempo no usadas. 0 = sin límite. En ambos casos la caché siempre deja libre una décima parte de su disco, como mucho 10 GB, y quita sus unidades más viejas para meter una nueva"
+
+#: src/nx/runtime/settings.txt
+msgid "Instruction combining"
+msgstr "Combinar instrucciones"
+
+#: src/nx/runtime/settings.txt
+msgid "Combines instructions into fewer, simpler ones (instcombine)"
+msgstr "Une instrucciones en otras más simples y en menor cantidad (instcombine)"
+
+#: src/nx/runtime/settings.txt
+msgid "Inlining"
+msgstr ""
+
+#: src/nx/runtime/settings.txt
+msgid "Inlines calls into their callers (inline)"
+msgstr "Mete las llamadas dentro de sus llamadores (inline)"
+
+#: src/nx/runtime/settings.txt
+msgid "Scalar replacement of aggregates"
+msgstr "Reemplazo escalar de agregados"
+
+#: src/nx/runtime/settings.txt
+msgid "Splits stack objects into values kept in registers (sroa)"
+msgstr "Parte los objetos de la pila en valores que quedan en registros (sroa)"
+
+#: src/nx/runtime/settings.txt
+msgid "Global value numbering"
+msgstr "Numeración global de valores"
+
+#: src/nx/runtime/settings.txt
+msgid "Removes redundant computations and loads (gvn)"
+msgstr "Quita cómputos y lecturas repetidas (gvn)"
+
+#: src/nx/runtime/settings.txt
+msgid "Control flow simplification"
+msgstr "Simplificación del flujo de control"
+
+#: src/nx/runtime/settings.txt
+msgid "Merges, removes and simplifies basic blocks (simplifycfg)"
+msgstr "Fusiona, quita y simplifica bloques básicos (simplifycfg)"
+
+#: src/nx/runtime/settings.txt
+msgid "Loop unrolling pass"
+msgstr "Pass de desenrollado de bucles"
+
+#: src/nx/runtime/settings.txt
+msgid "Unrolls loops with known trip counts (loop-unroll)"
+msgstr "Desenrolla los bucles de vueltas conocidas (loop-unroll)"
+
+#: src/nx/runtime/settings.txt
+msgid "Loop vectorization pass"
+msgstr "Pass de vectorización de bucles"
+
+#: src/nx/runtime/settings.txt
+msgid "Vectorizes loops with SIMD instructions (loop-vectorize)"
+msgstr "Vectoriza los bucles con instrucciones SIMD (loop-vectorize)"
+
+#: src/nx/runtime/settings.txt
+msgid "SLP vectorization pass"
+msgstr "Pass de vectorización SLP"
+
+#: src/nx/runtime/settings.txt
+msgid "Packs independent scalar instructions into SIMD ones (slp-vectorizer)"
+msgstr "Agrupa instrucciones escalares independientes en instrucciones SIMD (slp-vectorizer)"
+
+#: src/nx/runtime/settings.txt
+msgid "Loop invariant code motion"
+msgstr "Movimiento de código invariante del bucle"
+
+#: src/nx/runtime/settings.txt
+msgid "Hoists computations that do not change across a loop out of it (licm)"
+msgstr "Saca del bucle los cómputos que no cambian entre sus vueltas (licm)"
+
+#: src/nx/runtime/settings.txt
+msgid "Loop vectorization"
+msgstr "Vectorización de bucles"
+
+#: src/nx/runtime/settings.txt
+msgid "Whether the pipeline vectorizes loops (LLVMPassBuilderOptionsSetLoopVectorization)"
+msgstr "Si el pipeline vectoriza los bucles (LLVMPassBuilderOptionsSetLoopVectorization)"
+
+#: src/nx/runtime/settings.txt
+msgid "SLP vectorization"
+msgstr "Vectorización SLP"
+
+#: src/nx/runtime/settings.txt
+msgid "Whether the pipeline packs scalar instructions into SIMD ones (LLVMPassBuilderOptionsSetSLPVectorization)"
+msgstr "Si el pipeline agrupa instrucciones escalares en instrucciones SIMD (LLVMPassBuilderOptionsSetSLPVectorization)"
+
+#: src/nx/runtime/settings.txt
+msgid "Loop unrolling"
+msgstr "Desenrollado de bucles"
+
+#: src/nx/runtime/settings.txt
+msgid "Whether the pipeline unrolls loops (LLVMPassBuilderOptionsSetLoopUnrolling)"
+msgstr "Si el pipeline desenrolla los bucles (LLVMPassBuilderOptionsSetLoopUnrolling)"
+
+#: src/nx/runtime/settings.txt
+msgid "Fast instruction selection"
+msgstr "Selección rápida de instrucciones"
+
+#: src/nx/runtime/settings.txt
+msgid "Whether code generation selects instructions with FastISel, quicker and worse (LLVMSetTargetMachineFastISel)"
+msgstr "Si la generación de código elige las instrucciones con FastISel, más rápido y con peor resultado (LLVMSetTargetMachineFastISel)"
+
+#: src/nx/runtime/settings.txt
+msgid "Global instruction selection"
+msgstr "Selección global de instrucciones"
+
+#: src/nx/runtime/settings.txt
+msgid "Whether code generation selects instructions with GlobalISel (LLVMSetTargetMachineGlobalISel)"
+msgstr "Si la generación de código elige las instrucciones con GlobalISel (LLVMSetTargetMachineGlobalISel)"
+
+#: src/nx/runtime/settings.txt
+msgid "Inliner threshold"
+msgstr "Umbral del inliner"
+
+#: src/nx/runtime/settings.txt
+msgid "How large a function the inliner inlines; LLVM picks one for the level until it is set (LLVMPassBuilderOptionsSetInlinerThreshold)"
+msgstr "Qué tan grande puede ser una función que el inliner mete adentro; LLVM elige un tamaño según el nivel hasta que se lo fija (LLVMPassBuilderOptionsSetInlinerThreshold)"
+
+#: src/nx/runtime/settings.txt
+msgid "Launch"
+msgstr "Ejecución"
+
+#: src/nx/runtime/settings.txt
+msgid "LLVM Internals"
+msgstr "Internos de LLVM"
