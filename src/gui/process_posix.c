@@ -368,7 +368,10 @@ bool gui_process_start(GuiProcess* process, const char* const* argv, char* error
             failure[1] = 3;
         }
         if (fcntl(3, F_SETFD, FD_CLOEXEC)) goto child_failed;
-#if defined(__linux__) && defined(SYS_close_range)
+        /* Android's seccomp filter for apps traps close_range with SIGSYS on several
+           releases, which would kill this child rather than return an error, so the
+           loop alone closes the descriptors there. */
+#if defined(__linux__) && defined(SYS_close_range) && !defined(__ANDROID__)
         if (syscall(SYS_close_range, 4u, ~0u, 0u))
 #endif
             for (int fd = 4; fd < max_fd; ++fd) close(fd);
