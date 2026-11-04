@@ -65,8 +65,12 @@ int main(void) {
     assert(gui_adreno_model("Adreno (TM) 830") == 830 && gui_adreno_model("Adreno (TM) A32") == 32);
     assert(gui_adreno_model("Adreno (TM) 610") == 610 && !gui_adreno_model("Mali-G78") &&
            !gui_adreno_model("Adreno (TM) 6xx") && !gui_adreno_model("Turnip Adreno (TM) 830"));
+    /* the models Qualcomm gives a letter of their own, the 778G's among them, and one letter only */
+    assert(gui_adreno_model("Adreno (TM) 642L") == 642 && gui_adreno_model("Adreno (TM) 644 ") == 644 &&
+           !gui_adreno_model("Adreno (TM) 6xxL") && !gui_adreno_model("Adreno (TM) 642LL"));
     assert(!strcmp(gui_driver_recommended(830), "GameHub Adreno 8xx") &&
            !strcmp(gui_driver_recommended(610), "Mr. Purple EOL-24.3.4") &&
+           !strcmp(gui_driver_recommended(642), "Mr. Purple T19") &&
            !strcmp(gui_driver_recommended(740), "Mr. Purple T23") &&
            !strcmp(gui_driver_recommended(32), "KIMCHI Latest") && !strcmp(gui_driver_recommended(0), "Unsupported") &&
            !strcmp(gui_driver_recommended(950), "Unsupported"));

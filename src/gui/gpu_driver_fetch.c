@@ -116,7 +116,7 @@ void gui_driver_releases_free(GuiDriverReleases* r) {
 
 int gui_adreno_model(const char* gpu_name) {
     const char* p;
-    int model = 0;
+    int model = 0, digits = 0;
     /* the format Eden reads: Adreno (TM) <model>, an A before the model on Adreno's A series */
     if (strncmp(gpu_name, "Adreno ", 7)) return 0;
     p = strchr(gpu_name + 7, ' ');
@@ -124,7 +124,15 @@ int gui_adreno_model(const char* gpu_name) {
     ++p;
     if (*p == 'A') ++p;
     if (!snx_is_digit((unsigned char)*p)) return 0;
-    for (; snx_is_digit((unsigned char)*p) && model < 100000; ++p) model = model * 10 + (*p - '0');
+    for (; snx_is_digit((unsigned char)*p) && digits < 6; ++p) {
+        model = model * 10 + (*p - '0');
+        ++digits;
+    }
+    /* Eden's parse stops here, so the models Qualcomm ships with a letter of its own read as no model at all: a
+       Snapdragon 778G's "Adreno (TM) 642L" was left without a recommendation. Two digits or more keeps a family's
+       "6xx" out, which is no model either */
+    if (digits < 2) return 0;
+    if (snx_is_alpha((unsigned char)*p)) ++p;
     return *p && *p != ' ' ? 0 : model;
 }
 /* Eden's picks by model (DriverFetcherFragment.kt), each as the repository its release is in and a part of that
