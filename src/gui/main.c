@@ -184,7 +184,7 @@ typedef struct {
 /* the focused game's runtime JIT cache: none to show, no cache yet, one read, one unreadable */
 enum { GUI_AOT_NONE, GUI_AOT_NO_CACHE, GUI_AOT_CACHE, GUI_AOT_BAD };
 #define GUI_ICONS     96  /* the games' icons kept drawn: a page's rows and the recent ones, with room */
-#define GUI_ICON_SIDE 128 /* the pixels square they are drawn at, scaled to their rows */
+#define GUI_ICON_SIDE 256 /* the pixels square they are drawn at, scaled to their rows: as wide as a large tile's */
 /* a game's icon as its rows show it: its program's path, and its texture; NULL for a game without one */
 typedef struct {
     char* path;
@@ -1355,11 +1355,12 @@ static const struct {
      {SNX_TR_NOOP("Small"), SNX_TR_NOOP("Medium"), SNX_TR_NOOP("Large")}}};
 /* option i's words: two or three */
 static int option_words(int i) { return option_keys[i].words[2] ? 3 : 2; }
-/* Icon size's tiles in pixels at 1x, a cell 8 by 16: Small 8 cells by 3 rows and 8px, Medium ui.txt's GamesGrid
-   (0: 12 by 4 and 8px), Large 16 by 6 and 8px */
+/* Icon size's tiles in pixels at 1x, a cell 8 by 16: tall enough for a cover to fill a tile's width and leave its
+   name room under it. Small 8 cells by 5 rows and 8px, Medium ui.txt's GamesGrid (0: 12 by 6 and 8px, its cover a
+   little in from either side), Large 16 by 9 and 8px */
 static const struct {
     int w, h;
-} icon_tiles[3] = {{8 * 8, 3 * 16 + 8}, {0, 0}, {16 * 8, 6 * 16 + 8}};
+} icon_tiles[3] = {{8 * 8, 5 * 16 + 8}, {0, 0}, {16 * 8, 9 * 16 + 8}};
 /* the option a key of app.ini's [app] sets, -1 for none; the index of value among its words, -1 for none */
 static int option_of(const char* key) {
     int i;
@@ -1377,12 +1378,15 @@ static bool recent_on(const App* app) { return app->options[GUI_OPTION_RECENT] =
 static bool dumps_on(const App* app) { return app->options[GUI_OPTION_DUMPS] == 0; }
 static bool by_last_opened(const App* app) { return app->options[GUI_OPTION_SORT] == 1; }
 static bool games_grid(const App* app) { return app->options[GUI_OPTION_VIEW] == 1; }
-/* the options before app.ini names them: each its first word, Icon size Medium, but on iOS (ios) Recent Games and
-   Dumps off, as a phone keeps the games made in the app's recompiled/, which Games lists whole (a second list of them
-   only repeats it), and prepares a dump from the Menu */
+/* the options before app.ini names them: each its first word, Icon size Medium but Grid on a screen of fingers, and on
+   iOS (ios) Recent Games and Dumps off, as a phone keeps the games made in the app's recompiled/, which Games lists
+   whole (a second list of them only repeats it), and prepares a dump from the Menu */
 static void games_defaults(App* app, bool ios) {
     memset(app->options, 0, sizeof app->options);
     app->options[GUI_OPTION_ICONS] = 1; /* Medium */
+#ifdef SNX_TOUCH_UI
+    app->options[GUI_OPTION_VIEW] = 1; /* a phone shows its games as covers, not as lines of letters */
+#endif
     if (ios) app->options[GUI_OPTION_RECENT] = app->options[GUI_OPTION_DUMPS] = 1;
 }
 /* Settings > App's picks and Games' options written to app_file: 0, else nonzero, said by the caller */
@@ -3377,7 +3381,7 @@ void ui_draw_tile(App* app, GuiRect r, const char* text, const void* image, unsi
         r = gui_rect(r.x + s, r.y + s, r.w - 2 * s, r.h - 2 * s);
     cw = cell_w(app);
     ch = cell_h(app);
-    side = SDL_min(r.w - 4 * s, r.h - ch - 6 * s);
+    side = SDL_min(r.w - cw, r.h - ch - 6 * s); /* a game's art, square, as wide as the tile lets it be */
     cols = gui_text_cols(text);
     room = (r.w - cw) / cw;
     ink = rgb(failing || inverted      ? t->page

@@ -1712,8 +1712,8 @@ static void grid_view(App* app, const char* temporary) {
     free(kept);
     render(app);
     shows(app, "- View          < Grid >", yellow);
-    { /* under it, the grid's own, Icon size: Medium, ui.txt's tiles; Right Large, 16 cells by 6 rows and 8px, which the
-         grid places, draws and hits; Left back, and again Small, 8 by 3 and 8px; each kept at once */
+    { /* under it, the grid's own, Icon size: Medium, ui.txt's tiles; Right Large, 16 cells by 9 rows and 8px, which the
+         grid places, draws and hits; Left back, and again Small, 8 by 5 and 8px; each kept at once */
         GuiGamesBoxes sized;
         UiFlow tiles;
         GuiRect at[3];
@@ -1731,7 +1731,7 @@ static void grid_view(App* app, const char* temporary) {
         free(kept);
         games_boxes(app, &sized);
         grid_flow(app, &sized, &tiles);
-        assert(tiles.tile_w == 16 * cell_w(app) && tiles.tile_h == 6 * cell_h(app) + 8 * app->scale);
+        assert(tiles.tile_w == 16 * cell_w(app) && tiles.tile_h == 9 * cell_h(app) + 8 * app->scale);
         for (int i = 0; i < 3; ++i) assert(ui_flow_next(&tiles, games_row_label(app, (size_t)i), &at[i]));
         assert(!games_row_label(app, 2) && at[2].w == 16 * cell_w(app));
         assert(ui_games_grid_hit(app, sized.grid_rects, app->scale, sized.grid_lists, at[2].x + at[2].w - 1,
@@ -1746,7 +1746,7 @@ static void grid_view(App* app, const char* temporary) {
         free(kept);
         games_boxes(app, &sized);
         grid_flow(app, &sized, &tiles);
-        assert(tiles.tile_w == 8 * cell_w(app) && tiles.tile_h == 3 * cell_h(app) + 8 * app->scale);
+        assert(tiles.tile_w == 8 * cell_w(app) && tiles.tile_h == 5 * cell_h(app) + 8 * app->scale);
         key(app, SDLK_RIGHT); /* Medium again, for what follows */
         assert(app->options[GUI_OPTION_ICONS] == 1);
     }
@@ -1779,7 +1779,7 @@ static void grid_view(App* app, const char* temporary) {
     assert(label[0] && !label[1] && !label[4] && label[5] && !label[6] && label[13] && !label[15]);
     games_boxes(app, &g);
     ui_games_grid_flow(g.grid_rects, app->scale, UI_GAMES_GRID_TILES, &f);
-    assert(f.cols >= 4 && f.tile_w == 12 * cell_w(app) && f.tile_h == 4 * cell_h(app) + 8 * app->scale &&
+    assert(f.cols >= 4 && f.tile_w == 12 * cell_w(app) && f.tile_h == 6 * cell_h(app) + 8 * app->scale &&
            f.gap == 8 * app->scale && f.row_h == item_h(app));
     { /* the grid in the wide list's place: three fifths of the screen, the side box the rest */
         GuiPlace p;
@@ -1814,8 +1814,8 @@ static void grid_view(App* app, const char* temporary) {
         assert(find_text(app, "game c", yellow, 1, &x, &y)); /* the focus: the newest recent game */
         shows(app, "9 game(s)", rgb(app->theme.soft));       /* one page, no page's number */
         hides(app, "Page 1/1", rgb(app->theme.soft));
-        { /* its icon a square in the middle of its top, over the tile's own colour */
-            int side = SDL_min(tile.w - 4 * app->scale, tile.h - cell_h(app) - 6 * app->scale);
+        { /* its cover a square in the middle of its top, as wide as the tile lets it be, over the tile's own colour */
+            int side = SDL_min(tile.w - cell_w(app), tile.h - cell_h(app) - 6 * app->scale);
             SDL_Color back = pixel(app, (float)(tile.x + 2), (float)(tile.y + tile.h / 2));
             SDL_Color in = pixel(app, (float)(tile.x + tile.w / 2), (float)(tile.y + 2 * app->scale + side / 2));
             SDL_Color beside =
@@ -1903,8 +1903,9 @@ static void grid_view(App* app, const char* temporary) {
         text_px_is(app, box.x + box.w - 2 * cell_w(app), ui_text_y(app, box), "\x1e\x1f", soft, page);
     }
     /* big letters: the lines that show fewer than there are; the focus on the last game, the lines from a line's
-       first so it shows, the first lines scrolled out, the last line at the bottom (the first cut where it is) */
-    app->menu.text_size = 4;
+       first so it shows, the first lines scrolled out, the last line at the bottom (the first cut where it is). Three
+       is the largest letters whose cover still fits whole in the list's height, at a window of 1280 by 800 */
+    app->menu.text_size = 3;
     layout(app);
     app->browser.selected = app->browser.head + app->games.count - 1;
     games_boxes(app, &g);
@@ -1975,8 +1976,8 @@ static void grid_view(App* app, const char* temporary) {
         app->clock = 0;
     }
     /* the pointer on a tile of a line that shows moves no line, where a key puts the focus's line in the middle: at a
-       size five lines show at, the focus on a game by the keys, the last tile shown hovered, then Left and Right back
-       to it */
+       size that scrolls with two lines still showing, the focus on a game by the keys, the last tile shown hovered,
+       then Left and Right back to it */
     app->menu.text_size = 2;
     layout(app);
     app->browser.selected = app->browser.head + 4;

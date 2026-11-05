@@ -59,7 +59,7 @@
 		max_rows = 64
 		row_gap = 8px
 		tile_width = 12cols
-		tile_height = 4rows + 8px
+		tile_height = 6rows + 8px
 		android.row_height = 48px
 	}
 }
