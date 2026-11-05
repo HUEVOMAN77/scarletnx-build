@@ -13966,8 +13966,13 @@ static void launch(App* app, char* absolute, bool prepared) {
     }
     /* Play from a save state: the runtime loads it before the game's first frame */
     if (app->menu.selected == GUI_SWITCH && !make && app->state_load) argv[n++] = app->state_load;
-    /* Debug's SLP vectorizer, which R's recompile takes too: a run passes it with the game's settings */
-    if (app->menu.selected == GUI_SWITCH && make) n += gui_settings_one(s, "slp_vectorizer", argv + n);
+    /* Debug's SLP vectorizer and NCE, which R's recompile takes too: a run passes them with the game's settings.
+       NCE decides whether the pack holds the code ahead of time, so a recompile that leaves it out makes an empty
+       pack of a game picked to recompile without it, and NVN then finds no loader to take */
+    if (app->menu.selected == GUI_SWITCH && make) {
+        n += gui_settings_one(s, "slp_vectorizer", argv + n);
+        n += gui_settings_one(s, "nce", argv + n);
+    }
     /* Extract dump, which both drivers take, for a run and for R's recompile: off, nothing is extracted */
     if ((app->menu.selected == GUI_3DS || (app->menu.selected == GUI_SWITCH && make)) && gui_settings_extract(s))
         argv[n++] = gui_settings_extract(s);
