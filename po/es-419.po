@@ -211,7 +211,7 @@ msgstr "%s tiene más de %u bytes"
 
 #: src/gui/editor.c
 msgid "Not saved: ESC again leaves without it, Save keeps it"
-msgstr "No guardado: ESC de nuevo sale sin guardarlo, Save lo guarda"
+msgstr "No guardado: ESC de nuevo sale sin guardarlo, Guardar lo guarda"
 
 #: src/gui/editor.c
 #, c-format
@@ -2079,7 +2079,7 @@ msgstr "Carpetas"
 
 #: src/gui/main.c
 msgid "Keys"
-msgstr "Keys"
+msgstr "Teclas"
 
 #: src/gui/main.c
 msgid "User"
@@ -2501,7 +2501,7 @@ msgstr "No quedó nada"
 
 #: src/gui/main.c
 msgid "recompiled"
-msgstr "recompiled"
+msgstr "recompilados"
 
 #: src/gui/main.c
 msgid "dumps"
@@ -2509,7 +2509,7 @@ msgstr "dumps"
 
 #: src/gui/main.c
 msgid "recompiled and dumps"
-msgstr "recompiled y dumps"
+msgstr "recompilados y dumps"
 
 #: src/gui/main.c
 #, c-format
@@ -3409,15 +3409,15 @@ msgstr "Para las próximas ejecuciones, por encima del .ini del juego"
 
 #: src/gui/main.c
 msgid "For the next runs. [default]: as the game's .ini says"
-msgstr "Para las próximas ejecuciones. [default]: como dice el .ini del juego"
+msgstr "Para las próximas ejecuciones. [por defecto]: como dice el .ini del juego"
 
 #: src/gui/main.c src/gui/settings.c
 msgid "[default]"
-msgstr "[default]"
+msgstr "[por defecto]"
 
 #: src/gui/main.c
 msgid "Custom >"
-msgstr "Personalized >"
+msgstr "Personalizado >"
 
 #: src/gui/main.c
 msgid "As All >"
@@ -5396,7 +5396,7 @@ msgstr "Pantalla completa y Mostrar controles"
 
 #: src/common/utilities/setup.c
 msgid "Off, On, or each game's .ini, shown as Off [default]"
-msgstr "Off, On o el .ini de cada juego, que se muestra como Off [default]"
+msgstr "Off, On o el .ini de cada juego, que se muestra como Off [por defecto]"
 
 #: src/common/utilities/setup.c
 msgid "Off or On, given to every run: Off on a computer, On on a phone"
@@ -5408,11 +5408,11 @@ msgstr "El valor por defecto de un ajuste"
 
 #: src/common/utilities/setup.c
 msgid "a value of its own, [default], beside the same value picked"
-msgstr "un valor propio, [default], junto al mismo valor elegido"
+msgstr "un valor propio, [por defecto], junto al mismo valor elegido"
 
 #: src/common/utilities/setup.c
 msgid "[default] on that value, which no run is given: the game's .ini keeps it"
-msgstr "[default] en ese valor, que ninguna ejecución recibe: el .ini del juego lo guarda"
+msgstr "[por defecto] en ese valor, que ninguna ejecución recibe: el .ini del juego lo guarda"
 
 #: src/nx/runtime/settings.txt
 msgid "gdbstub"
