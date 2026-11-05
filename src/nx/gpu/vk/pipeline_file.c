@@ -728,11 +728,11 @@ void pf_open(PFile* pf, const char* path, const char* key, size_t guest, PfLoad*
             LOG("vulkan: %s: the records past %lu of its %lu bytes were cut short or changed, and are dropped\n", path,
                 (unsigned long)used, (unsigned long)size);
     } else if (buf && (old_head = pf_same_guest(buf, size, key, guest)) != 0)
-        LOG("vulkan: %s is of another build or driver: its shaders are translated again and its pipelines made "
-            "again\n",
+        LOG("vulkan: %s is of another driver, GPU or translation of the runtime's own: its shaders are translated again "
+            "and its pipelines made again\n",
             path);
     else if (length > 0)
-        LOG("vulkan: %s is of another build, GPU or driver, or unreadable: started over\n", path);
+        LOG("vulkan: %s is of another GPU or driver, or unreadable: started over\n", path);
     if (view.data) {
         /* A repair or rebuild must retain its bytes before truncating the file. The warm path needs none afterwards.
            Unmap before opening for writes, also for Windows, whose read-only mapping excludes write handles. */
@@ -826,7 +826,7 @@ void pf_open_mapped(PFile* pf, const char* path, const char* key, PfEach each, v
             at += PF_REC + len;
         }
     } else if (size)
-        LOG("vulkan: %s is of another build, GPU or driver: started over\n", path);
+        LOG("vulkan: %s is of another GPU, driver or translation of the runtime's own: started over\n", path);
     if (!at || at < size) {
         /* started over (its header alone), or rewritten without what a crash cut short: written beside it and moved
            over it, so another run that has it mapped keeps reading the old one */

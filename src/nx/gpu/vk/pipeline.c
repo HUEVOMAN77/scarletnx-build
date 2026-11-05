@@ -1542,12 +1542,19 @@ static void pf_load_pipe(void* ctx, const u64 m[5], const void* key, u32 keylen)
    field or a key word (vk_shader_get's mask) comes to mean something else, so that the records of an earlier build
    are dropped rather than made into pipelines and shaders of the wrong state */
 #define PF_GUEST_VERSION 1
+/* PF_SPIRV_VERSION: what this runtime's translation of a program's SPIR-V is. Raise it when the same guest code would
+   come out as different SPIR-V (the translator, what vk_shader_get keys a shader by, ShaderInfo's meaning), so the
+   files of the builds before it translate again rather than keep what they hold.
+   The key holds no commit, compiler or host for that: a build that changes none of what the translator reads keeps the
+   cache its games warmed, and a game's first run after an update of the app is not the run that pays for every shader
+   translated and every pipeline made again (an Android device takes minutes for one game's thousands) */
+#define PF_SPIRV_VERSION 1
 /* The file's key: whatever changes the SPIR-V translation makes or what a PipeKey means. First its guest part, which
    the PF_SOURCE and PF_PIPE records depend on (pf_open): the device; the features and limits the translator,
    vk_shader_get and pipe_create consult; the sizes of what those records hold whole. Then the rest, which only the
-   SPIR-V and ShaderInfo of the PF_SHADER records depend on: the build (commit, compiler, host), and for a tree with
-   changes, which has one commit for every build of it, the runtime's own file; the driver. The guest part's length
-   goes in *guest */
+   SPIR-V and ShaderInfo of the PF_SHADER records depend on: the driver, and PF_SPIRV_VERSION for what the runtime's
+   own code translates to. A tree with changes, which has one commit for every build of it, adds the runtime's own
+   file, which says what none of the rest can. The guest part's length goes in *guest */
 static void pf_key(char* out, size_t n, size_t* guest) {
     const VkPhysicalDeviceProperties* d = &g_vk.props;
     const char* commit = snx_build_commit();
@@ -1598,9 +1605,10 @@ static void pf_key(char* out, size_t n, size_t* guest) {
                  (unsigned)sizeof(PfSource), (unsigned)sizeof(PfPipe), (unsigned)sizeof(ShXfb));
     *guest = g > 0 && (size_t)g < n ? (size_t)g : 0;
     if (*guest)
-        snprintf(out + *guest, n - *guest, " %s%s driver=%u api=%u uuid=%s ftz=%d quad=%d sizes=%u,%u vertex_bounds=%d",
-                 snx_build_info(), exe, d->driverVersion, d->apiVersion, uuid, g_vk_ftz, g_shader_quad,
-                 (unsigned)sizeof(ShaderInfo), (unsigned)sizeof(PfShader), g_vk.has_vertex_robustness2);
+        snprintf(out + *guest, n - *guest,
+                 " driver=%u api=%u uuid=%s ftz=%d quad=%d sizes=%u,%u vertex_bounds=%d spirv=%u%s", d->driverVersion,
+                 d->apiVersion, uuid, g_vk_ftz, g_shader_quad, (unsigned)sizeof(ShaderInfo), (unsigned)sizeof(PfShader),
+                 g_vk.has_vertex_robustness2, (unsigned)PF_SPIRV_VERSION, exe);
 }
 
 void vk_pipeline_file_key(char* out, size_t n, size_t* guest) { pf_key(out, n, guest); }
