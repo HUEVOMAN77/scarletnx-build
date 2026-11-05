@@ -353,7 +353,7 @@ int main(int argc, char** argv) {
         free(cached);
         ini = snx_path_join(out, "named nro/named nro.ini");
         cached = (char*)snx_read_file(ini, &size);
-        check(cached && !strncmp(cached, "; ScarletNX settings for Named by NACP\n", 39), "its settings' head");
+        check(cached && !strncmp(cached, "; Adrena settings for Named by NACP\n", 36), "its settings' head");
         free(cached);
         icon = snx_path_join(out, "named nro/named nro_data/icon.jpg"); /* what Games shows on its row */
         cached = (char*)snx_read_file(icon, &size);
