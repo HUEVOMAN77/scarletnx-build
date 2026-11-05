@@ -13762,6 +13762,20 @@ static void made_answer(App* app, bool taken, bool second) {
     app->menu.selected = item;
 }
 static void queue_show(App* app, int i);
+/* the keys in the folder of the dump at path, which the driver looks for only beside its data folder and in
+   ~/.switch: prod.keys and title.keys made, in found[0] and found[1], each NULL where its folder has none */
+static void dump_keys(const char* path, char* found[2]) {
+    static const char* const names[2] = {"prod.keys", "title.keys"};
+    char* folder = path ? snx_dirname(path) : NULL;
+    int i;
+    found[0] = found[1] = NULL;
+    for (i = 0; folder && i < 2; ++i) {
+        char* file = snx_path_join(folder, names[i]);
+        if (file && snx_is_file(file)) found[i] = file;
+        else free(file);
+    }
+    free(folder);
+}
 static void launch(App* app, char* absolute, bool prepared) {
     int queued;
     if (!absolute || !snx_is_file(absolute)) {
@@ -13914,8 +13928,9 @@ static void launch(App* app, char* absolute, bool prepared) {
     }
     /* the driver, the file, the settings, --repo and its folder, the picked games and extraction folders, NULL */
     GuiSettings* s = settings_of(app);
-    const char** argv = (const char**)snx_alloc((size_t)(s->count + 19) * sizeof(*argv));
+    const char** argv = (const char**)snx_alloc((size_t)(s->count + 23) * sizeof(*argv));
     char* out = NULL; /* a dump's extraction in the picked extractions folder */
+    char* keys[2]; /* prod.keys and title.keys beside the dump (dump_keys) */
     /* what runs, and what R makes: the program Play runs; the queue and Recent go by the file opened */
     char* run = run_program(app, absolute, prepared);
     size_t n = 1;
@@ -13960,6 +13975,20 @@ static void launch(App* app, char* absolute, bool prepared) {
         argv[n++] = "--data";
         argv[n++] = app->data_dir;
     }
+    /* a dump whose keys came with it, in its folder: the driver would look for them only beside the data folder or in
+       ~/.switch and would stop on the dump saying nothing about the keys it missed */
+    if (app->menu.selected == GUI_SWITCH && !prepared) {
+        dump_keys(absolute, keys);
+        if (keys[0]) {
+            argv[n++] = "--keys";
+            argv[n++] = keys[0];
+        }
+        if (keys[1]) {
+            argv[n++] = "--title-keys";
+            argv[n++] = keys[1];
+        }
+    } else
+        keys[0] = keys[1] = NULL;
     /* a CIA's game is a folder of the recompiled library as a Switch game is, named after its title ID, its saves in
        it */
     if (folders && (app->place[GUI_PLACE_GAMES] || app->dest_out)) {
@@ -13986,6 +14015,8 @@ static void launch(App* app, char* absolute, bool prepared) {
         free(argv);
         free(run);
         free(out);
+        free(keys[0]);
+        free(keys[1]);
         free(app->dest_out); /* the run's, which argv held until here: a next one asks again */
         app->dest_out = NULL;
         free(driver);
@@ -14010,6 +14041,8 @@ static void launch(App* app, char* absolute, bool prepared) {
     free(game_option); /* argv held it until the process started */
     free(run);
     free(out);
+    free(keys[0]);
+    free(keys[1]);
     free(app->dest_out); /* the run's, which argv held until here: a next one asks again */
     app->dest_out = NULL;
     gui_steps_reset(&app->steps);
