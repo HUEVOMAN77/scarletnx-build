@@ -1235,7 +1235,7 @@ extern VkShaderStageFlags g_vk_subgroup_stages;
    descriptors cost the driver twice the time to bind (one game's 6,700 draws a frame), so only an indexed shader's has
    them */
 extern VkDescriptorSetLayout g_vk_dslayout[2][5];
-extern u32 g_vk_stage_sets; /* sets in the pipeline layout: 5, or 2 without the tessellation and geometry stages */
+extern u32 g_vk_stage_sets; /* sets in the pipeline layout: 5, or 4 with no room for geometry, or 2 for its own sets */
 /* the stages that read the push constants: every graphics stage reads the viewport/depth parameters in pc[0..3]
    (the last one before rasterization applies them); fragment reads the alpha test in pc[4..6] and sprite T flip
    in pc[7] */

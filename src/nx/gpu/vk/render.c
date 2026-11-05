@@ -2327,8 +2327,11 @@ static int draw_shaders(const DsState* ds, u32 topology, DrawShaders* o) {
     tcs_on = p->on >> 2 & 1;
     tes_on = p->on >> 3 & 1;
     gs_on = p->on >> 4 & 1;
-    if ((tcs_on || tes_on || gs_on) && g_vk_stage_sets < 5) {
-        LOG_LIMIT(1, "vulkan: this GPU binds too few descriptor sets for tessellation and geometry (draw skipped)\n");
+    /* each stage binds its own set, numbered as shader_vk_set numbers it: the sets the layout has decide which of
+       these stages a draw of this device's GPU may run */
+    if ((tcs_on && g_vk_stage_sets < 3) || (tes_on && g_vk_stage_sets < 4) || (gs_on && g_vk_stage_sets < 5)) {
+        LOG_LIMIT(1, "vulkan: this GPU binds %u descriptor sets, too few for %s (draw skipped)\n", g_vk_stage_sets,
+                  gs_on && g_vk_stage_sets < 5 ? "the geometry program" : "tessellation");
         return 0;
     }
     if (tcs_on != tes_on) {

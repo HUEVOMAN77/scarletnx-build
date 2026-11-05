@@ -262,8 +262,12 @@ void vk_pipeline_init(void) {
                                               VK_SHADER_STAGE_FRAGMENT_BIT, VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT,
                                               VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT,
                                               VK_SHADER_STAGE_GEOMETRY_BIT};
-    /* the tessellation and geometry stages' sets come after the first two, where the device binds that many */
-    g_vk_stage_sets = g_vk.props.limits.maxBoundDescriptorSets >= 5 ? 5 : 2;
+    /* the sets of the stages between vertex and fragment come after the first two, as many as the device binds: 4
+       carries tessellation (its programs take sets 2 and 3), 5 also geometry (set 4) */
+    u32 bindable = g_vk.props.limits.maxBoundDescriptorSets;
+    g_vk_stage_sets = bindable >= 5 ? 5 : bindable >= 4 ? 4 : 2;
+    LOG("vulkan: the device binds %u descriptor sets, %u used: tessellation %s, geometry %s\n", bindable,
+        g_vk_stage_sets, g_vk_stage_sets >= 4 ? "draws" : "skipped", g_vk_stage_sets >= 5 ? "draws" : "skipped");
     for (int s = 0; s < 5; s++) {
         VkDescriptorSetLayoutBinding b[SNX_VKB_END];
         u32 count = 0;
