@@ -422,6 +422,10 @@ typedef struct App {
     bool hovering;            /* a mouse or a pen over the window, at hover_x, hover_y of the render: a key of the foot
                                  under it that a click would press is drawn lit */
     float hover_x, hover_y;
+    bool pressing; /* a mouse button or a finger down, at press_x, press_y of the render: the row or tile under it
+                      sinks while it holds, and comes back as it lifts. An animation: off, nothing sinks */
+    float press_x, press_y;
+    Uint64 press_ms; /* where it went down: SDL_GetTicks, or the test's clock, for how long it has held */
     /* the focus last put by the pointer (a mouse, a pen, a tap), not a key, a pad, the wheel or a drag: a list keeps
        its first row as last shown (firsts, a GUI_LIST_* each) while the focus shows; a key's goes in its middle */
     bool pointed;
@@ -2202,13 +2206,31 @@ static void render_steps(App* app) {
     steps_draw(app, &v, false, "", "");
 }
 /* the whole window darkened, alpha of 255, the cutout beside the text too: the fades, and a box over the screen */
-#define GUI_FADE_MS 150 /* a screen's fade in, a box's shade coming or going */
+#define GUI_FADE_MS 150    /* a screen's fade in, a box's shade coming or going */
+#define GUI_STAGGER_MS 8   /* a row of the screen's fade in starting this much after the one above it */
+#define GUI_STAGGER_MAX 6  /* rows start one after the other up to this, the rest with it: all end together */
+#define GUI_PRESS_MS 1200  /* a row or tile a pointer holds sinks this long at most: a lift that never arrived */
 static void shade(App* app, Uint8 alpha);
-/* how far a fade from at is, 0 to GUI_FADE_MS long: 1 done (or none: animations off, never started) */
+/* a fade this far through, eased: most of it in its first half, settling slowly. 0 and 1 stay themselves, so a screen
+   that has not started or has finished fading is drawn exactly as it was before it */
+static float eased(float t) {
+    float left = 1.0f - (t < 0.0f ? 0.0f : t > 1.0f ? 1.0f : t);
+    return 1.0f - left * left * left;
+}
+/* how far a fade from at is, GUI_FADE_MS long: 1 done (or none: animations off, never started) */
 static float faded(const App* app, Uint64 at) {
     Uint64 now = now_ms(app);
     if (app->animations_off || !at || now >= at + GUI_FADE_MS) return 1.0f;
-    return (float)(now > at ? now - at : 0) / (float)GUI_FADE_MS;
+    return eased((float)(now > at ? now - at : 0) / (float)GUI_FADE_MS);
+}
+/* the same a GUI_STAGGER_MS * GUI_STAGGER_MAX late at the most, over the time left of GUI_FADE_MS: one row of the
+   screen coming in after another, the last of them still done within GUI_FADE_MS of the screen */
+static float faded_row(const App* app, Uint64 at, int row) {
+    Uint64 now = now_ms(app);
+    int late = SDL_min(row, GUI_STAGGER_MAX) * GUI_STAGGER_MS;
+    if (app->animations_off || !at || now >= at + GUI_FADE_MS) return 1.0f;
+    if (now < at + (Uint64)late) return 0.0f;
+    return eased((float)(now - at - (Uint64)late) / (float)(GUI_FADE_MS - GUI_STAGGER_MAX * GUI_STAGGER_MS));
 }
 /* a box's shade over the screen under it, coming in as the box opens */
 static void box_shade(App* app) {
@@ -2247,6 +2269,7 @@ static void fades_mark(App* app) {
                  app->left_shown || app->dests_shown || app->picks_shown || app->help_shown;
     if (mark != app->screen_was && app->screen_was) app->switch_ms = SDL_max(now_ms(app), 1);
     if (boxed != app->boxed_was) app->box_ms = SDL_max(now_ms(app), 1);
+    if (mark != app->screen_was || boxed != app->boxed_was) app->pressing = false; /* what it pressed left with it */
     app->screen_was = mark;
     app->boxed_was = boxed;
 }
@@ -2254,12 +2277,19 @@ static void fades_mark(App* app) {
 static void fades_draw(App* app) {
     float in = faded(app, app->switch_ms), out = faded(app, app->box_ms);
     SDL_Rect safe;
-    int width, height;
+    int width, height, band, y;
     if (in < 1.0f) {
         SDL_GetRenderViewport(app->renderer, &safe);
         SDL_GetRenderOutputSize(app->renderer, &width, &height);
         SDL_SetRenderViewport(app->renderer, NULL);
-        fill(app, 0, 0, (float)width, (float)height, app->theme.page, (Uint8)(255 * (1.0f - in)));
+        band = cell_h(app); /* the page lifting off the screen a row at a time, from its top */
+        if (band < 1) band = height;
+        for (y = 0; y < height; y += band) {
+            float part = faded_row(app, app->switch_ms, y / band);
+            if (part >= 1.0f) continue;
+            fill(app, 0, (float)y, (float)width, (float)SDL_min(band, height - y), app->theme.page,
+                 (Uint8)(255 * (1.0f - part)));
+        }
         SDL_SetRenderViewport(app->renderer, &safe);
     }
     if (out < 1.0f && !app->boxed_was) shade(app, (Uint8)(128 * (1.0f - out)));
@@ -2270,11 +2300,13 @@ static void overlay(App* app) {
     Uint64 now = now_ms(app);
     float a = 0;
     if (entering(app))
-        a = (float)(now > app->entering_ms ? now - app->entering_ms : 0) / (float)theme->fade_out_ms;
-    else if (app->leaving_ms && theme->fade_out_ms)
-        a = SDL_min(1.0f, (float)(now > app->leaving_ms ? now - app->leaving_ms : 0) / (float)theme->fade_out_ms);
-    else if (app->fade_ms && theme->fade_in_ms && now < app->fade_ms + theme->fade_in_ms)
-        a = 1.0f - (float)(now > app->fade_ms ? now - app->fade_ms : 0) / (float)theme->fade_in_ms;
+        a = eased((float)(now > app->entering_ms ? now - app->entering_ms : 0) / (float)theme->fade_out_ms);
+    else if (app->leaving_ms && theme->fade_out_ms) {
+        float gone = (float)(now > app->leaving_ms ? now - app->leaving_ms : 0) / (float)theme->fade_out_ms;
+        a = eased(gone > 1.0f ? 1.0f : gone);
+    } else if (app->fade_ms && theme->fade_in_ms && now < app->fade_ms + theme->fade_in_ms) {
+        a = 1.0f - eased((float)(now > app->fade_ms ? now - app->fade_ms : 0) / (float)theme->fade_in_ms);
+    }
     if (a > 0) shade(app, (Uint8)(a * 255));
 }
 static bool jobs_live(const App* app);
@@ -3261,6 +3293,15 @@ static GuiRect row_drawn(App* app, GuiRect (*row)(const GuiRect*, int, int, size
     r.y -= list->shift;
     return r;
 }
+static bool in_rect(GuiRect r, float x, float y);
+/* the box a pointer is holding down: it sinks for as long as it does, and its row or tile is drawn a scale thinner so
+   it reads as pressed. An animation: with them off nothing holds, and the screen is the screen */
+static bool pressed(const App* app, GuiRect r) {
+    return app->pressing && !app->animations_off && now_ms(app) < app->press_ms + GUI_PRESS_MS &&
+           in_rect(r, app->press_x, app->press_y);
+}
+/* what a pressed box drew, sunk towards the page's colour - its frame, its fill, its letters and its art alike */
+static void sink(App* app, GuiRect r) { fill_round_at(app, r, app->theme.page, corner(app, r), 60); }
 void ui_draw_row(App* app, GuiRect r, const char* text, unsigned icon, const void* image, unsigned color, unsigned attr,
                  bool focused) {
     const GuiTheme* t = &app->theme;
@@ -3270,6 +3311,7 @@ void ui_draw_row(App* app, GuiRect r, const char* text, unsigned icon, const voi
         (attr & UI_ATTR_FAILURE) && !((attr & UI_ATTR_BLINK) && t->blink_ms && (now_ms(app) / t->blink_ms) % 2);
     int off = (attr & UI_ATTR_OFF) != 0;
     GuiRect b = ui_row_box(app, r);
+    int press;
     char label[400];
     if (attr & UI_ATTR_LABEL) { /* between rows, as "Recent Games": no box, no marker */
         row_text_in(app, b, b.x, ui_text_y(app, b), text, focused, rgb(t->soft));
@@ -3284,6 +3326,8 @@ void ui_draw_row(App* app, GuiRect r, const char* text, unsigned icon, const voi
         row_text_in(app, r, r.x + cell_w(app) / 2, ui_text_y(app, r), text, focused, rgb(filled ? t->page : t->ink));
         return;
     }
+    press = pressed(app, b); /* a row under a pointer that holds: its box in, its marker, image and text with it */
+    if (press) b = gui_rect(b.x + app->scale, b.y + app->scale, b.w - 2 * app->scale, b.h - 2 * app->scale);
     snprintf(label, sizeof label, "%s%s%s%s", t->marker, gui_icon_utf8(icon, glyph), icon ? " " : "", text);
     if (failing || inverted)
         fill_round(app, b, failing ? t->failure : off ? t->soft : t->focus, corner(app, b));
@@ -3310,6 +3354,7 @@ void ui_draw_row(App* app, GuiRect r, const char* text, unsigned icon, const voi
     }
     if (focused && t->cursor[0]) text_in(app, r, r.x, ui_text_y(app, b), t->cursor, rgb(t->focus));
     row_arrows(app, b, ui_text_y(app, b), attr, rgb(failing || inverted ? t->page : t->soft));
+    if (press) sink(app, b);
 }
 /* a label of a scene of ui.txt, in the soft colour unless it names one */
 void ui_draw_label(App* app, GuiRect r, const char* text, unsigned color) {
@@ -3325,17 +3370,25 @@ void ui_draw_tile(App* app, GuiRect r, const char* text, const void* image, unsi
     int failing =
         (attr & UI_ATTR_FAILURE) && !((attr & UI_ATTR_BLINK) && t->blink_ms && (now_ms(app) / t->blink_ms) % 2);
     int off = (attr & UI_ATTR_OFF) != 0;
-    int s = app->scale, cw = cell_w(app), ch = cell_h(app), side = SDL_min(r.w - 4 * s, r.h - ch - 6 * s);
-    int cols = gui_text_cols(text), room = (r.w - cw) / cw;
-    SDL_Color ink = rgb(failing || inverted      ? t->page
-                        : off                    ? t->soft
-                        : attr & UI_ATTR_WARNING ? t->warning
-                        : attr & UI_ATTR_ACTIVE  ? t->active
-                        : look                   ? t->focus
-                                                 : ui_colour(app, color, t->ink));
-    SDL_Color soft = rgb(failing || inverted ? t->page : t->soft);
-    GuiRect in = gui_rect(r.x + cw / 2, r.y, r.w - cw, r.h); /* half a cell either side */
-    int rad = corner(app, r);
+    int press = pressed(app, r), s = app->scale, cw, ch, side, cols, room, rad;
+    SDL_Color ink, soft;
+    GuiRect in; /* half a cell either side */
+    if (press) /* a tile under a pointer that holds: in, its art and its name with it */
+        r = gui_rect(r.x + s, r.y + s, r.w - 2 * s, r.h - 2 * s);
+    cw = cell_w(app);
+    ch = cell_h(app);
+    side = SDL_min(r.w - 4 * s, r.h - ch - 6 * s);
+    cols = gui_text_cols(text);
+    room = (r.w - cw) / cw;
+    ink = rgb(failing || inverted      ? t->page
+              : off                    ? t->soft
+              : attr & UI_ATTR_WARNING ? t->warning
+              : attr & UI_ATTR_ACTIVE  ? t->active
+              : look                   ? t->focus
+                                       : ui_colour(app, color, t->ink));
+    soft = rgb(failing || inverted ? t->page : t->soft);
+    in = gui_rect(r.x + cw / 2, r.y, r.w - cw, r.h);
+    rad = corner(app, r);
     if (failing || inverted)
         fill_round(app, r, failing ? t->failure : off ? t->soft : t->focus, rad);
     else if (filled)
@@ -3347,6 +3400,7 @@ void ui_draw_tile(App* app, GuiRect r, const char* text, const void* image, unsi
     }
     row_text_in(app, in, cols < room ? r.x + (r.w - cols * cw) / 2 : in.x, r.y + r.h - ch - 2 * s, text, focused, ink);
     row_arrows(app, r, r.y + 2 * s, attr, soft);
+    if (press) sink(app, r);
 }
 const char* ui_tr(const char* english) { return snx_tr(english); }
 /* The keys of a screen: "Keys: what they do." sentences, each drawn as the keys, inverted (the theme's focus bar) or in
@@ -16807,6 +16861,11 @@ static bool pointer_leaves(const SDL_Event* e) {
            e->type == SDL_EVENT_FINGER_UP || e->type == SDL_EVENT_PEN_UP;
 }
 static void event_take(App* app, const SDL_Event* e);
+/* a pointer down at the window's x, y: which row or tile is under it is settled as it draws, from where it went down */
+static void press_at(App* app, float window_x, float window_y) {
+    app->pressing = SDL_RenderCoordinatesFromWindow(app->renderer, window_x, window_y, &app->press_x, &app->press_y);
+    app->press_ms = now_ms(app);
+}
 static void event(App* app, const SDL_Event* e) {
     if (input_seen(app, e) || pads_event(app, e)) return;
     event_take(app, e);
@@ -16814,6 +16873,8 @@ static void event(App* app, const SDL_Event* e) {
 }
 static void event_take(App* app, const SDL_Event* e) {
     GuiKey key;
+    if (e->type == SDL_EVENT_FINGER_UP || e->type == SDL_EVENT_FINGER_CANCELED)
+        app->pressing = false; /* whatever takes it below, its row or tile comes back up */
     /* the window closed: asked first while a run goes, unless it asks already; else the screen of what is kept */
     if (e->type == SDL_EVENT_QUIT || e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED) {
         if ((app->menu.running || app->finished || jobs_live(app)) && !app->aborting && !app->closing_ms &&
@@ -17003,7 +17064,8 @@ static void event_take(App* app, const SDL_Event* e) {
         app->finger_x = e->tfinger.x;
         app->finger_y = e->tfinger.y;
         SDL_GetWindowSize(app->window, &w, &h);
-        app->pick_press = 0;                     /* the finger's own, not a mouse's whose lift was missed */
+        app->pick_press = 0; /* the finger's own, not a mouse's whose lift was missed */
+        press_at(app, e->tfinger.x * (float)w, e->tfinger.y * (float)h);
         if (app->editing && app->editor.picking) /* the picker's bars take a finger as it goes down, to drag */
             pointer(app, e->tfinger.x * (float)w, e->tfinger.y * (float)h, true, true);
         else if (on_slider(app, e->tfinger.x * (float)w, e->tfinger.y * (float)h)) { /* so does UI scale's slider */
@@ -17021,6 +17083,7 @@ static void event_take(App* app, const SDL_Event* e) {
     if (e->type == SDL_EVENT_FINGER_MOTION && finger_id(&e->tfinger) == app->finger) {
         int w, h;
         SDL_GetWindowSize(app->window, &w, &h);
+        app->press_ms = now_ms(app); /* still holding: its row or tile stays sunk */
         if (app->pick_press)
             pointer(app, e->tfinger.x * (float)w, e->tfinger.y * (float)h, false, true);
         else if (games_scrolls(app) && !box_shown(app))
@@ -17078,6 +17141,7 @@ static void event_take(App* app, const SDL_Event* e) {
     }
     if (e->type == SDL_EVENT_WINDOW_MOUSE_LEAVE) {
         app->hovering = false;
+        app->pressing = false; /* its lift went to another window, or to none */
         return;
     }
     /* a notch of the wheel is a row, the way the system turns it: a box's over the screen first */
@@ -17120,10 +17184,12 @@ static void event_take(App* app, const SDL_Event* e) {
         return;
     }
     if (e->type == SDL_EVENT_MOUSE_BUTTON_DOWN && e->button.button == SDL_BUTTON_LEFT) {
+        press_at(app, e->button.x, e->button.y);
         pointer(app, e->button.x, e->button.y, true, false);
         return;
     }
     if (e->type == SDL_EVENT_MOUSE_BUTTON_UP && e->button.button == SDL_BUTTON_LEFT) {
+        app->pressing = false;
         app->pick_press = 0; /* a drag on the picker's bar ends, and one on UI scale's slider, and a list's thumb */
         app->slider_drag = app->bar_held = false;
         app->bar_hold = 0;
