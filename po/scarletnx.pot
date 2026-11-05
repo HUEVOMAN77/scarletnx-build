@@ -1622,12 +1622,12 @@ msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "%s could not be drawn: the game shows Wimsy in grey"
+msgid "%s could not be drawn: the game shows Adrena's mark"
 msgstr ""
 
 #: src/gui/main.c
 #, c-format
-msgid "%s's picture could not be drawn: Wimsy shows"
+msgid "%s's picture could not be drawn: Adrena's mark shows"
 msgstr ""
 
 #: src/gui/main.c

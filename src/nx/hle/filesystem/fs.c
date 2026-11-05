@@ -2356,7 +2356,7 @@ static int nn_fssrv_sf_IFileSystemProxy_OpenDataStorageByDataId(SvcObj* self, nn
                                                           miimodel_file_write, snx_mii_model_same, "MiiModel");
             r = fs_tree_add_virtual(&g_hle.fs.tree, p, g_hle.fs.miimodelrom, g_hle.fs.miimodelrom_size, &node);
             if (!r)
-                LOG("fs: provided generated MiiModel system archive %016llx (%.1f MB): ScarletNX's own Mii parts, "
+                LOG("fs: provided generated MiiModel system archive %016llx (%.1f MB): " SNX_BRAND "'s own Mii parts, "
                     "not the console's (the player's firmware's goes in system/archives/%016llx.romfs)\n",
                     (unsigned long long)data_id, (double)g_hle.fs.miimodelrom_size / 1048576.0,
                     (unsigned long long)data_id);

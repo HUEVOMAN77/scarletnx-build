@@ -84,8 +84,8 @@ static int user_mii_picture(const SnxUser* u, u32* at, int w, int round) {
     return 0;
 }
 /* the picture of the user playing into the atlas's rows from UI_PICTURE_Y, w texels a row; transparent when there is
-   no user yet or the theme shows none. Its Mii's with picture=mii; a JPEG (or Mii) that does not draw shows Wimsy,
-   said */
+   no user yet or the theme shows none. Its Mii's with picture=mii; a JPEG (or Mii) that does not draw shows
+   Adrena's mark, said */
 static void user_picture(u32* a, int w) {
     const SnxUser* u = g_user_count ? snx_users_selected() : NULL;
     const unsigned char* jpeg;
@@ -95,12 +95,14 @@ static void user_picture(u32* a, int w) {
     if (!u || !SNX_GUI_THEME_YORHA_PICTURE) return;
     if (u->picture_mii) {
         if (!user_mii_picture(u, at, w, round)) return;
-        WARN("ui: user %d's Mii could not be drawn, Wimsy shows in the menu\n", snx_users_selected_number());
+        WARN("ui: user %d's Mii could not be drawn, Adrena's mark shows in the menu\n",
+             snx_users_selected_number());
     }
     jpeg = u->picture_mii ? NULL : snx_users_picture(u, &size);
     if (snx_splash_picture(jpeg, size, SNX_UI_PICTURE, round, at, w * 4)) {
         /* the user by number: a nickname can name the player, and players attach the log to public reports */
-        WARN("ui: user %d's picture could not be drawn, Wimsy shows in the menu\n", snx_users_selected_number());
+        WARN("ui: user %d's picture could not be drawn, Adrena's mark shows in the menu\n",
+             snx_users_selected_number());
         snx_splash_picture(NULL, 0, SNX_UI_PICTURE, round, at, w * 4);
     }
     for (y = 0; y < SNX_UI_PICTURE; ++y) /* ARGB to R G B A from the low byte, the alpha premultiplied as it was */

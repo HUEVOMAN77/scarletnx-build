@@ -454,20 +454,20 @@ typedef struct App {
     Uint64 games_tick, games_last_ms;
     Uint32 picked;                    /* the event a file from the system's picker comes back as */
     SDL_Texture* splash;              /* the boot's splash, its drawing splash_side pixels square, until splash_until */
-    const SnxSplashSvg* splash_svg;   /* the boot's pick: Adrena's mark, or Wimsy and dist/splash's */
+    const SnxSplashSvg* splash_svg;   /* the boot's pick: Adrena's mark, or one of dist/splash's */
     SnxSplashDrawing* splash_drawing; /* it, read once; NULL: the icon shows */
     int splash_side;
     /* the user at the head's right (place's badge), the one Settings' user names (users_read): 0 for none */
     char* users_dir; /* the data folder's users/ (open_files'); NULL shows none */
     int user;
     char user_name[SNX_USERS_NICKNAME + 1];
-    unsigned char* user_jpeg; /* users/<uid>.jpg, user_jpeg_size bytes; NULL for Wimsy */
+    unsigned char* user_jpeg; /* users/<uid>.jpg, user_jpeg_size bytes; NULL for Adrena's mark */
     int user_mii;             /* the Mii its picture is drawn from (users.ini's picture=mii), or -1 for the JPEG */
     size_t user_jpeg_size;
     SDL_Texture* user_picture; /* drawn user_side pixels square, in the shape it was drawn for */
     GuiIcon icons[GUI_ICONS];  /* the games' icons drawn so far (game_icon), the oldest replaced first */
     SDL_Texture* icon_loading; /* what a dump's row shows while the driver is asked for its icon */
-    SDL_Texture* icon_none;    /* what a game's row shows with no icon of its own: Wimsy in grey */
+    SDL_Texture* icon_none;    /* what a game's row shows with no icon of its own: Adrena's mark in grey */
     SDL_Texture* icon_more;    /* Show More's, as a game's cover: a grey + on white */
     GuiDumpIcons dump_icons;   /* the dumps' icons asked of the driver */
     unsigned dump_icons_seen;  /* the answers the rows were drawn after */
@@ -2751,8 +2751,8 @@ static void render_ask(App* app) {
     choices_draw(app, &c, ask_question(app), NULL);
 }
 /* the boot's splash: Adrena's own mark, the bird in a dive of dist/splash, a third of the window's shorter side square,
-   on a theme's splash page with its name and where its code lives under it; Wimsy's drawings, and the program's icon
-   when none can be read, are the fallback */
+   on a theme's splash page with its name and where its code lives under it; a drawing of dist/splash, and the
+   program's icon when none can be read, are the fallback */
 #define SNX_GITHUB_URL   "https://github.com/HUEVOMAN77"
 #define SNX_GITHUB_SHOWN "github.com/HUEVOMAN77"
 #define SNX_SPLASH_BRAND "adrena"
@@ -3547,8 +3547,8 @@ static void users_read(App* app) {
     app->user = snx_users_selected_number();
     if (was) users_migrate(app, was);
 }
-/* jpeg (size bytes; NULL for Wimsy) side pixels square in the theme's shape, a texture of its own; a JPEG that does
-   not draw is Wimsy, and *failed says so */
+/* jpeg (size bytes; NULL for Adrena's mark) side pixels square in the theme's shape, a texture of its own; a JPEG
+   that does not draw is Adrena's mark, and *failed says so */
 static SDL_Texture* picture_texture(App* app, const unsigned char* jpeg, size_t size, int side, bool* failed) {
     int round = app->theme.picture == GUI_PICTURE_ROUND;
     SDL_Texture* texture;
@@ -3937,8 +3937,8 @@ static SDL_Texture* icon_loading(App* app) {
     free(pixels);
     return app->icon_loading;
 }
-/* a + on a white square into side by side ARGB pixels, as Wimsy's cover is drawn: two bars an eighth of the side
-   thick and three fifths of it long, in a grey of Wimsy's */
+/* a + on a white square into side by side ARGB pixels, as the games' covers are drawn: two bars an eighth of the side
+   thick and three fifths of it long, in a grey of its own */
 static void plus_pixels(Uint32* pixels, int side) {
     const int c = side / 2, half = side * 3 / 10, thick = side / 16;
     for (int i = 0; i < side * side; ++i) pixels[i] = 0xffffffffu;
@@ -3971,7 +3971,7 @@ static void icon_grey(Uint32* pixels, int count) {
         pixels[i] = (p & 0xff000000u) | y << 16 | y << 8 | y;
     }
 }
-/* Wimsy in grey, as a game with no icon of its own shows: the splash's drawing */
+/* Adrena's mark in grey, as a game with no icon of its own shows: the splash's drawing */
 static SDL_Texture* icon_none(App* app) {
     Uint32* pixels;
     if (app->icon_none) return app->icon_none;
@@ -4011,7 +4011,7 @@ static SDL_Texture* game_icon(App* app, const char* path) {
     jpeg = file ? snx_read_file(file, &size) : NULL;
     pixels = jpeg ? malloc((size_t)GUI_ICON_SIDE * GUI_ICON_SIDE * 4) : NULL;
     if (pixels && snx_splash_picture(jpeg, size, GUI_ICON_SIDE, 0, pixels, GUI_ICON_SIDE * 4))
-        snprintf(app->message, sizeof app->message, snx_tr("%s could not be drawn: the game shows Wimsy in grey"),
+        snprintf(app->message, sizeof app->message, snx_tr("%s could not be drawn: the game shows Adrena's mark"),
                  file);
     else if (pixels) {
         icon->texture = SDL_CreateTexture(app->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC,
@@ -4055,8 +4055,8 @@ static void icons_free(App* app) {
     app->icons_next = 0;
 }
 /* the head's user's picture, side pixels square, kept while its size and the theme's shape are the same. A JPEG that
-   does not draw shows Wimsy, said. The preview's, at its own size and theme, is a texture of its own that the caller
-   destroys: the app it draws on is put back after it, so nothing the app keeps is touched */
+   does not draw shows Adrena's mark, said. The preview's, at its own size and theme, is a texture of its own that the
+   caller destroys: the app it draws on is put back after it, so nothing the app keeps is touched */
 static SDL_Texture* user_texture(App* app, int side) {
     SDL_Texture* texture;
     bool failed;
@@ -4066,7 +4066,7 @@ static SDL_Texture* user_texture(App* app, int side) {
                                  : picture_texture(app, app->user_jpeg, app->user_jpeg_size, side, &failed);
     if (app->previewing) return texture;
     if (failed) {
-        snprintf(app->message, sizeof app->message, snx_tr("%s's picture could not be drawn: Wimsy shows"),
+        snprintf(app->message, sizeof app->message, snx_tr("%s's picture could not be drawn: Adrena's mark shows"),
                  app->user_name);
         free(app->user_jpeg);
         app->user_jpeg = NULL;
@@ -12262,9 +12262,9 @@ static void setup_boxes(App* app, GuiSetupBoxes* b) {
     place_screen(app, &b->place, snx_tr(setup_keys_said(app)), GUI_SHOWS_TABS | GUI_SHOWS_FOOT_TIPS);
     snprintf(b->question, sizeof b->question, "%s", setup_question(app, question, sizeof question));
     if (app->theme.dialog == GUI_DIALOG_YORHA && n)
-        snprintf(b->tab, sizeof b->tab, "ADRENA  %d/%d", n, setup_steps(app));
+        snprintf(b->tab, sizeof b->tab, SNX_BRAND "  %d/%d", n, setup_steps(app));
     else if (app->theme.dialog == GUI_DIALOG_YORHA)
-        snprintf(b->tab, sizeof b->tab, "ADRENA");
+        snprintf(b->tab, sizeof b->tab, SNX_BRAND);
     else if (n)
         snprintf(b->tab, sizeof b->tab, "%d/%d", n, setup_steps(app));
     else

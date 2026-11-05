@@ -2,6 +2,7 @@
    Copyright 2026 the ScarletNX contributors */
 #include "gui/steps.h"
 #include "gui/i18n.h"
+#include "common/utilities/common.h" /* SNX_BRAND: the runtime's own line about the game it launches */
 #include "common/utilities/run_theme.h" /* snx_run_seconds_left */
 #include <stdio.h>
 #include <string.h>
@@ -39,10 +40,18 @@ static void note(GuiSteps* steps, const char* s, uint64_t now) {
     n->step = steps->step[steps->count - 1].serial;
 }
 static int prefix(const char* line, const char* text) { return !strncmp(line, text, strlen(text)); }
+/* the runtime's own line about the game it launches starts with its brand: this build's (SNX_BRAND), or the name an
+   older build's output carries. What follows it, NULL when the line isn't one */
+static const char* brand_title(const char* s) {
+    if (prefix(s, SNX_BRAND " - ")) return s + sizeof SNX_BRAND " - " - 1;
+    if (prefix(s, "ScarletNX - ")) return s + sizeof "ScarletNX - " - 1;
+    return NULL;
+}
 static void line(GuiSteps* steps, const char* s, uint64_t now) {
     GuiStep* last = current(steps);
     uint32_t before = steps->serial;
     unsigned value, total;
+    const char* title = brand_title(s);
     const char* block = strstr(s, "compiled block ");
     if (block && last && !strcmp(last->label, "RECOMPILE") &&
         sscanf(block, "compiled block %u/%u", &value, &total) == 2) {
@@ -63,9 +72,9 @@ static void line(GuiSteps* steps, const char* s, uint64_t now) {
     } else if (prefix(s, "Built ")) {
         begin(steps, SNX_TR_NOOP("BUILD"), s + 6, strlen(s + 6), now);
         current(steps)->state = GUI_STEP_DONE;
-    } else if (prefix(s, "ScarletNX - "))
-        begin(steps, SNX_TR_NOOP("LAUNCH"), s + 12, strlen(s + 12), now);
-    else if (prefix(s, "Ready "))
+    } else if (title) { /* the runtime names the game it launches after its own brand */
+        begin(steps, SNX_TR_NOOP("LAUNCH"), title, strlen(title), now);
+    } else if (prefix(s, "Ready "))
         begin(steps, SNX_TR_NOOP("READY"), s + 6, strlen(s + 6), now);
     else if (prefix(s, "vulkan: ") && !steps->gpu && strstr(s, ", Vulkan ")) {
         /* the first device line: "vulkan: <device> [(<driver>)], Vulkan <version>, ..."; a later "(" is not the

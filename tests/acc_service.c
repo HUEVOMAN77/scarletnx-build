@@ -197,7 +197,7 @@ static void test_picture(void) {
         FILE* f = fopen(getenv("SNX_TEST_PICTURE"), "wb");
         CHECK(f && fwrite(picture, 1, size, f) == size && !fclose(f));
     }
-    /* it decodes: white in the corner, around the drawing, and Wimsy in the middle */
+    /* it decodes: white in the corner, around the drawing, and Adrena's mark in the middle */
     plutovg_surface_t* decoded = plutovg_surface_load_from_image_data(picture, (int)size);
     CHECK(decoded && plutovg_surface_get_width(decoded) == 256 && plutovg_surface_get_height(decoded) == 256);
     const u8* corner = plutovg_surface_get_data(decoded);

@@ -658,8 +658,8 @@ static void test_places(App* app) {
     assert(b.choices.box.y + b.choices.box.h == b.place.list.y + b.place.list.h && b.choices.box.w == b.place.list.w);
     assert(b.choices.at.y + b.choices.at.h <= b.choices.tab.y && b.choices.at.x > width / 2);
     assert(b.content.y + b.content.h <= b.choices.at.y && b.content.h > 0);
-    assert(!strcmp(b.tab, "ScarletNX  2/5"));
-    shows(app, "ScarletNX  2/5", rgb(app->theme.ink));
+    assert(!strcmp(b.tab, SNX_BRAND "  2/5"));
+    shows(app, SNX_BRAND "  2/5", rgb(app->theme.ink));
     { /* where the choices leave the page's boxes too few rows above them (a phone's, a finger's row each: here the
          largest letters, a phone held wide's 2340 pixels), the boxes go beside them, down to the question: a notice
          there to its "now" line, which the rows above the choices cut */

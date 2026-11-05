@@ -3721,25 +3721,27 @@ int main(int argc, char** argv) {
         free(root);
     }
     /* the window says which build it is: commit, compiler, platform */
-    assert(!strcmp(SDL_GetWindowTitle(app.window), snx_build_info()) && !strncmp(snx_build_info(), "ScarletNX ", 10));
-    /* the boot's splash: a drawing of Wimsy's in the middle of the default theme's black page, a third of the window's
+    assert(!strcmp(SDL_GetWindowTitle(app.window), snx_build_info()) &&
+           !strncmp(snx_build_info(), SNX_BRAND " ", sizeof SNX_BRAND " " - 1));
+    /* the boot's splash: the brand's mark in the middle of the default theme's page, a third of the window's
        shorter side, until its time, drawn again when the window changes; a key ends it and does nothing else. Every
        drawing built in shows. A theme's own page shows in its chance of boots, the default's in the others */
     {
         SDL_Rect view;
-        SDL_Color black = {0, 0, 0, 255}, wimsy = {17, 206, 161, 255}; /* wimsy.svg's middle */
+        const GuiTheme* boot = gui_theme_builtin("default"); /* its [splash] page is what the mark is laid on */
+        SDL_Color page = { (Uint8)boot->splash_page.r, (Uint8)boot->splash_page.g, (Uint8)boot->splash_page.b, 255 };
         SnxSplashDrawing* read;
         int i, w, h;
         assert(SDL_GetWindowSize(app.window, &w, &h));
         for (i = 0; i < snx_splash_svg_count; ++i) {
-            splash_with(&app, gui_theme_builtin("default"), &snx_splash_svgs[i]);
+            splash_with(&app, boot, &snx_splash_svgs[i]);
             app.clock = app.splash_until - 1;
             render(&app);
             assert(app.splash && app.splash_svg == &snx_splash_svgs[i]);
             SDL_GetRenderViewport(app.renderer, &view);
             assert(app.splash_side == SDL_min(view.w, view.h) / 3);
-            splash_drawn(&app, &view, &snx_splash_svgs[i], app.splash_side, black);
-            if (!i) assert(near_colour(pixel(&app, view.w / 2.0f, view.h / 2.0f), wimsy, 8));
+            splash_drawn(&app, &view, &snx_splash_svgs[i], app.splash_side, page);
+            if (!i) assert(!near_colour(pixel(&app, view.w / 2.0f, view.h / 2.0f), page, 8));
             if (i + 1 < snx_splash_svg_count) {
                 SDL_DestroyTexture(app.splash);
                 app.splash = NULL;
@@ -3753,7 +3755,7 @@ int main(int argc, char** argv) {
         render(&app);
         SDL_GetRenderViewport(app.renderer, &view);
         assert(view.w == 900 && view.h == 600 && app.splash && app.splash_side == 200 && app.splash_drawing == read);
-        splash_drawn(&app, &view, app.splash_svg, 200, black);
+        splash_drawn(&app, &view, app.splash_svg, 200, page);
         key(&app, SDLK_RETURN);
         assert(!app.splash_until && app.menu.selected == GUI_SWITCH && !app.menu.activated);
         render(&app);
@@ -7218,7 +7220,7 @@ int main(int argc, char** argv) {
                 SDL_Texture* drawn;
                 icons_free(&app);
                 assert(!game_icon(&app, program));
-                list_games(&app); /* none of its own: its row shows Wimsy in grey */
+                list_games(&app); /* none of its own: its row shows Adrena's mark in grey */
                 {
                     UiRowInfo info = {0};
                     size_t k, lead = (size_t)games_lead(&app);
@@ -7254,7 +7256,7 @@ int main(int argc, char** argv) {
                 icons_free(&app);
                 app.message[0] = 0;
                 assert(!game_icon(&app, program) && strstr(app.message, icon) &&
-                       strstr(app.message, "could not be drawn: the game shows Wimsy in grey"));
+                       strstr(app.message, "could not be drawn: the game shows Adrena's mark"));
                 icons_free(&app);
                 assert(!remove(icon));
                 free(icon);
@@ -7499,7 +7501,7 @@ int main(int argc, char** argv) {
             assert(app.recent.count == 5 && app.browser.head == 4 && !app.recent_all);
             render(&app);
             shows(&app, "Recent Games", soft);
-            shows(&app, "Alpha", yellow); /* the focus, the first row, after Wimsy in grey (no icon of its own) */
+            shows(&app, "Alpha", yellow); /* the focus, first row, after Adrena's mark in grey (no icon of its own) */
             shows(&app, "Charlie", normal);
             shows(&app, "Show More", normal); /* after its cover, a + */
             hides(&app, "Delta", normal);
@@ -7783,7 +7785,7 @@ int main(int argc, char** argv) {
         close.type = SDL_EVENT_WINDOW_CLOSE_REQUESTED;
         event(&app, &close);
         assert(app.confirm.shown && app.confirm.ask == GUI_ASK_CLOSE && !app.closing_ms && !app.menu.quit);
-        assert(strstr(ask_question(&app), ": exiting ScarletNX "));
+        assert(strstr(ask_question(&app), ": exiting Adrena "));
         render(&app);
         shows(&app, "- Exit", normal);
         key(&app, SDLK_ESCAPE);
@@ -10991,7 +10993,7 @@ int main(int argc, char** argv) {
                    ui_games_shown(g.rects, app.scale, UI_GAMES_ROWS) < (size_t)g.lead + page);
             b = games_row_box(&app, &g, g.lead); /* the focus, first: the page's first game */
             text_px_is(&app, b.x + cw / 2, item_text_y(&app, b), "- ", yellow, black);
-            /* after its icon, Wimsy in grey without one of its own (ui_draw_row) */
+            /* after its icon, Adrena's mark in grey without one of its own (ui_draw_row) */
             text_px_is(&app, b.x + cw / 2 + 2 * cw + user_side(&app, b.h) + cw / 2, item_text_y(&app, b),
                        app.games.names[0], yellow, black);
             text_px_is(&app, g.place.side.x + cw, g.place.side.y + 2 * s, app.games.names[0], normal, black);

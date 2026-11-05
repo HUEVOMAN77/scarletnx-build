@@ -5,6 +5,7 @@
 #include "nx/runtime/driver/container.h"
 #include "nx/runtime/driver/extract.h"
 #include "nx/runtime/driver/game_name.h"
+#include "common/utilities/common.h"
 #include "nx/loader/loader.h"
 #include "nx/loader/module.h"
 #include "nx/loader/module_llvm.h"
@@ -745,8 +746,9 @@ int snx_recompile_game(int argc, char** argv, const SnxPaths* paths) {
         goto done;
     }
     if (!snx_is_file(ini) && !addon) { /* an add-on's names its dump only: it has its game's settings */
-        ini_text = snx_format(
-            "; ScarletNX settings for %s\n; Full option help is written on first run.\n[Display]\nlanguage=1\n", title);
+        ini_text = snx_format("; " SNX_BRAND " settings for %s\n; Full option help is written on first run.\n"
+                              "[Display]\nlanguage=1\n",
+                              title);
         if (snx_write_file(ini, ini_text, strlen(ini_text))) {
             snx_error("cannot write %s", ini);
             goto done;

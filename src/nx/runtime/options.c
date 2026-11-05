@@ -398,7 +398,7 @@ static void put_header(FILE* f) {
     const char* title = g_mod && g_mod->title && g_mod->title[0] ? g_mod->title : g_exename;
     int s, t, col = 0;
     fprintf(f, "; ==================================================================================\n");
-    fprintf(f, ";  %s: ScarletNX settings\n", title);
+    fprintf(f, ";  %s: " SNX_BRAND " settings\n", title);
     fprintf(f, ";  Most settings apply while the game runs. These apply when it next starts:\n;   ");
     for (s = 0; s < g_ini_sections_count; s++)
         for (t = 0; t < 3 && g_ini_sections[s].table[t]; t++) {

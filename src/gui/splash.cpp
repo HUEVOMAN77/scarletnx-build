@@ -61,8 +61,9 @@ int snx_splash_jpeg(const char* name, int side, int quality, SnxSplashWrite writ
 
 int snx_splash_picture(const void* jpeg, size_t size, int side, int round, void* pixels, int stride) {
     if (side <= 0 || !pixels || stride < side * 4 || size > INT_MAX) return 1;
-    plutovg_surface_t* source =
-        jpeg ? plutovg_surface_load_from_image_data(jpeg, static_cast<int>(size)) : over_white("wimsy-fuddles", side);
+    plutovg_surface_t* source = jpeg ? plutovg_surface_load_from_image_data(jpeg, static_cast<int>(size))
+                                     : over_white("adrena", side); /* Adrena's mark for a picture there is none of */
+    if (!source && snx_splash_svg_count) source = over_white(snx_splash_svgs[0].name, side);
     if (!source) return 1;
     for (int y = 0; y < side; y++)
         std::memset(static_cast<uint8_t*>(pixels) + static_cast<size_t>(y) * stride, 0, side * 4);

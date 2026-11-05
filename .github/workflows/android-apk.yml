@@ -104,7 +104,7 @@ jobs:
             JAVA_HOME=$JAVA_HOME_21_X64 scripts/android-apk.sh "$PWD/build/android-$abi" "$PWD/android-llvm" "$abi" -- \
               -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
             cp "build/android-$abi/stage/gradle/outputs/apk/debug/ScarletNX-debug.apk" \
-              "ScarletNX-android-$abi-${{ steps.commit.outputs.short }}.apk"
+              "Adrena-android-$abi-${{ steps.commit.outputs.short }}.apk"
           done
       - name: Trim the compiler cache
         run: |
@@ -137,14 +137,14 @@ jobs:
           rm -rf stage/gradle
           JAVA_HOME=$JAVA_HOME_21_X64 gradle -p dist/android assembleDebug -Pscarletnx.stage="$PWD/stage" \
             ${SNX_ANDROID_KEYSTORE:+"-Pscarletnx.keystore=$SNX_ANDROID_KEYSTORE"}
-          cp stage/gradle/outputs/apk/debug/ScarletNX-debug.apk ScarletNX-android-universal-${{ steps.commit.outputs.short }}.apk
+          cp stage/gradle/outputs/apk/debug/ScarletNX-debug.apk Adrena-android-universal-${{ steps.commit.outputs.short }}.apk
       # the certificate it carries, in the log; with the repository's key, the one ANDROID_CERT_SHA256 (a variable) names
       - name: Check the APK's signer
         env:
           EXPECTED: ${{ vars.ANDROID_CERT_SHA256 }}
         run: |
           set -euo pipefail
-          apk=ScarletNX-android-universal-${{ steps.commit.outputs.short }}.apk
+          apk=Adrena-android-universal-${{ steps.commit.outputs.short }}.apk
           apksigner=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner
           "$apksigner" verify --print-certs "$apk" | tee "$RUNNER_TEMP/certs.txt"
           # "Signer #1 certificate ...", "V2 Signer: certificate ..." (apksigner 37) or, for a signer of some SDK
@@ -164,7 +164,7 @@ jobs:
       - name: Check the APK's libraries
         run: |
           set -euo pipefail
-          apk=ScarletNX-android-universal-${{ steps.commit.outputs.short }}.apk
+          apk=Adrena-android-universal-${{ steps.commit.outputs.short }}.apk
           readelf=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-readelf
           mkdir apk && unzip -q "$apk" 'lib/*' -d apk
           system=" libc.so libm.so libdl.so liblog.so libandroid.so libz.so libEGL.so libGLESv1_CM.so libGLESv2.so libOpenSLES.so "
@@ -179,18 +179,18 @@ jobs:
           done
       - uses: actions/upload-artifact@v7
         with:
-          path: ScarletNX-android-universal-${{ steps.commit.outputs.short }}.apk
+          path: Adrena-android-universal-${{ steps.commit.outputs.short }}.apk
           archive: false
           if-no-files-found: error
       # Not zipped: each artifact is an APK itself, named after it
       - uses: actions/upload-artifact@v7
         with:
-          path: ScarletNX-android-x86_64-${{ steps.commit.outputs.short }}.apk
+          path: Adrena-android-x86_64-${{ steps.commit.outputs.short }}.apk
           archive: false
           if-no-files-found: error
       - uses: actions/upload-artifact@v7
         with:
-          path: ScarletNX-android-arm64-v8a-${{ steps.commit.outputs.short }}.apk
+          path: Adrena-android-arm64-v8a-${{ steps.commit.outputs.short }}.apk
           archive: false
           if-no-files-found: error
       # The app's unit tests (docs/ANDROID.md), on the stage the APK was packed from: its classes build against SDL's

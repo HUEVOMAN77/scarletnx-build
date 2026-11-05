@@ -5,6 +5,7 @@
 #include "common/cpu/recompiler/llvm/ir.h"
 #include "common/cpu/recompiler/llvm/rtlib_object.h"
 #include "common/utilities/bits.h"
+#include "common/utilities/common.h"
 #include "common/utilities/endian.h"
 #include <llvm-c/Core.h>
 #include <llvm-c/TargetMachine.h>
@@ -212,7 +213,7 @@ SnxJitCache* snx_jit_cache_open(const char* path, const char* key, char* error, 
     fclose(f);
     if (size < 12 || memcmp(buffer, SNX_JIT_CACHE_MAGIC, 8)) {
         free(buffer);
-        snprintf(error, error_size, "%s is not a ScarletNX JIT cache", path);
+        snprintf(error, error_size, "%s is not a " SNX_BRAND " JIT cache", path);
         return NULL;
     }
     size_t key_length = snx_ld_le32(buffer + 8);

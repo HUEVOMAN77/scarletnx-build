@@ -185,8 +185,8 @@ static int nn_account_profile_IProfile_GetBase(SvcObj* self, nn_account_profile_
     acc_profile_base(self, base);
     R_SUCCEED();
 }
-/* the picture of a user with none of its own: Wimsy in Fuddles' colours (dist/splash/wimsy-fuddles.svg, the
-   splash's drawing) at 256x256 over white, a JPEG as the console's pictures are, drawn at the first ask and kept */
+/* the picture of a user with none of its own: Adrena's mark (dist/splash/adrena.svg, the splash's drawing) at
+   256x256 over white, a JPEG as the console's pictures are, drawn at the first ask and kept */
 #define SNX_ACC_PICTURE_SIDE    256
 #define SNX_ACC_PICTURE_QUALITY 90
 
@@ -205,7 +205,7 @@ static u32 acc_picture(void) {
     pm_lock(&g_host.acc.pic_lk);
     if (!g_hle.acc.pic.made) {
         g_hle.acc.pic.made = 1;
-        if (snx_splash_jpeg("wimsy-fuddles", SNX_ACC_PICTURE_SIDE, SNX_ACC_PICTURE_QUALITY, acc_picture_write, NULL) ||
+        if (snx_splash_jpeg("adrena", SNX_ACC_PICTURE_SIDE, SNX_ACC_PICTURE_QUALITY, acc_picture_write, NULL) ||
             g_hle.acc.pic.overflow) {
             WARN("acc: the user's picture was not drawn, games get none\n");
             g_hle.acc.pic.size = 0;
@@ -216,7 +216,7 @@ static u32 acc_picture(void) {
     return size;
 }
 /* GetImageSize tells the size LoadImage writes, so a game reserves what it gets: the user's own picture
-   (users/<uid>.jpg), else Wimsy */
+   (users/<uid>.jpg), else Adrena's mark */
 static int nn_account_profile_IProfile_GetImageSize(SvcObj* self, u32* size) {
     const SnxUser* u = acc_profile_user(self);
     if (!u || !snx_users_picture(u, size)) *size = acc_picture(); /* a user deleted since: the default, as rEden */

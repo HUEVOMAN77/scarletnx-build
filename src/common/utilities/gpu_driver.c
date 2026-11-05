@@ -225,7 +225,7 @@ int snx_gpu_driver_loads(const SnxGpuDriverHost* host, char* what, size_t size) 
         snprintf(what, size, "This device: %s: custom drivers load on Android 9 (API %d) or newer.", device,
                  SNX_GPU_DRIVER_MIN_API);
     else if (android && arm64 && host->kgsl)
-        snprintf(what, size, "This device: %s: this build of ScarletNX carries no libadrenotools.", device);
+        snprintf(what, size, "This device: %s: this build of " SNX_BRAND " carries no libadrenotools.", device);
     else
         snprintf(what, size,
                  "This device: %s: custom drivers load on Android 9 (API %d) or newer, arm64, with an Adreno GPU "

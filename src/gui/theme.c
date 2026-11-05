@@ -130,7 +130,7 @@ static const char* const sections[][2] = {
     {"run", "A run: the driver's output as it comes, or a loading screen in its own colours."},
     {"prompt", "A line that waits on the user: framed, placed and blinking when its key is true."},
     {"transitions", "Milliseconds, 0 to 10000; 0 turns the thing off."},
-    {"splash", "The boot's: Adrena's mark, or a drawing of Wimsy's, on a page."}};
+    {"splash", "The boot's: Adrena's mark, or a drawing of dist/splash's, on a page."}};
 
 /* "quoted" keeps its spaces */
 static char* unquote(char* s) {
@@ -675,10 +675,10 @@ char* gui_theme_write(const GuiTheme* theme, const GuiThemeFile* file) {
     char value[80];
     size_t s;
     put(&o,
-        "; ScarletNX GUI theme, format %d: a folder of themes/ holding this file, the folder's name its id. A\n"
+        "; " SNX_BRAND " GUI theme, format %d: a folder of themes/ holding this file, the folder's name its id. A\n"
         "; folder named like a built-in replaces it. Keys left out, or that cannot be read, keep the base's value;\n"
         "; keys this GUI does not know are left for others (rEden's ErET reads the same file). A comment takes a\n"
-        "; line of its own. docs/GUI.md describes every key. Made with the theme editor in ScarletNX's menu.\n",
+        "; line of its own. docs/GUI.md describes every key. Made with the theme editor in " SNX_BRAND "'s menu.\n",
         GUI_THEME_FORMAT);
     for (s = 0; s < sizeof sections / sizeof *sections; ++s) {
         const char* name = sections[s][0];

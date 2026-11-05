@@ -7,6 +7,7 @@
 /* set and set:sys: the system's language, region, keyboard, nickname and firmware version */
 #include "nx/hle/services/services_int.h"
 #include "nx/hle/hle.h"
+#include "common/utilities/common.h" /* SNX_BRAND: the name this console answers with */
 
 #include "hle/services/set.swipc.inc"
 #include "nx/hle/services/key_code_map.inc"
@@ -119,7 +120,7 @@ static int nn_settings_ISettingsServer_GetQuestFlag(SvcObj* self, u8* quest) {
     R_SUCCEED();
 }
 static int nn_settings_ISettingsServer_GetDeviceNickName(SvcObj* self, IpcBuf name) {
-    static const char nick[] = "ScarletNX";
+    static const char nick[] = SNX_BRAND; /* what a game shows as this console's name */
     (void)self;
     if (!name.size) R_SUCCEED();
     /* cut to leave room for the NUL */

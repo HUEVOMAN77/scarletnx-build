@@ -850,7 +850,7 @@ void win_fatal_box(const char* msg) {
         char* left = __atomic_load_n(&g_fatal_left, __ATOMIC_ACQUIRE);
         __atomic_store_n(&g_fatal_taken, 1, __ATOMIC_RELEASE);
         if (!fatal_screen(left ? left : msg))
-            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ScarletNX", left ? left : msg, g_win);
+            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, SNX_BRAND, left ? left : msg, g_win);
         return;
     }
     if (g_win) {
@@ -894,7 +894,7 @@ static void hotkey(SDL_Keycode k) {
         case SDLK_F1: {
             int fs = g_fullscreen;
             if (fs) set_fullscreen(0);
-            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "ScarletNX", HELP, g_win);
+            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, SNX_BRAND, HELP, g_win);
             if (fs) set_fullscreen(1);
             break;
         }
@@ -1333,7 +1333,7 @@ void video_poll(void) {
     char* left = __atomic_load_n(&g_fatal_left, __ATOMIC_ACQUIRE);
     if (left) { /* another thread's fatal error, left for this thread to show */
         __atomic_store_n(&g_fatal_taken, 1, __ATOMIC_RELEASE);
-        if (!fatal_screen(left)) SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "ScarletNX", left, g_win);
+        if (!fatal_screen(left)) SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, SNX_BRAND, left, g_win);
         plat_exit_now(1);
     }
     /* the menu, or the keyboard's box, had the controls when this poll began: the press that closes it (B, or A that

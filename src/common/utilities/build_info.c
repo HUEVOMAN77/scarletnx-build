@@ -2,6 +2,7 @@
    Copyright 2026 the ScarletNX contributors */
 #include "common/utilities/build_info.h"
 #include "snx_commit.h"
+#include "common/utilities/common.h"
 
 #define SNX_TEXT(x)   #x
 #define SNX_NUMBER(x) SNX_TEXT(x)
@@ -54,6 +55,6 @@
 #endif
 
 const char* snx_build_info(void) {
-    return "ScarletNX " SNX_BRANCH " " SNX_COMMIT " (" SNX_COMPILER ", " SNX_OS " " SNX_ARCH ")";
+    return SNX_BRAND " " SNX_BRANCH " " SNX_COMMIT " (" SNX_COMPILER ", " SNX_OS " " SNX_ARCH ")";
 }
 const char* snx_build_commit(void) { return SNX_COMMIT; }

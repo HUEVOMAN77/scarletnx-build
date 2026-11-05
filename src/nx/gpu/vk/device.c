@@ -14,6 +14,7 @@
 #include "nx/gpu/vk/descriptors.h"
 #include "common/gpu/vk/swapchain.h"
 #include "common/gpu/vk/vk_common.h"
+#include "common/utilities/common.h"
 
 int g_vk_preserve_infnan;
 int g_vk_preserve_infnan64;
@@ -97,7 +98,7 @@ static int create_instance(void) {
         ext[next++] = VK_KHR_GET_SURFACE_CAPABILITIES_2_EXTENSION_NAME;
         g_vk.has_surface_caps2 = 1;
     }
-    SnxVkInstanceInfo info = {.app_name = "ScarletNX",
+    SnxVkInstanceInfo info = {.app_name = SNX_BRAND,
                               .extensions = ext,
                               .extension_count = next,
                               .validation = g_settings.vulkan_validation_layer != 0,
@@ -192,7 +193,7 @@ static void start_failure_devices(void) {
 #endif
     if (at < sizeof g_vk.start_failure)
         snprintf(g_vk.start_failure + at, sizeof g_vk.start_failure - at,
-                 "%sScarletNX needs Vulkan 1.3 with a %s queue%s",
+                 "%s" SNX_BRAND " needs Vulkan 1.3 with a %s queue%s",
                  n ? ", and " : "No Vulkan device: ", g_opt_headless ? "graphics" : "graphics and presentation", hint);
 }
 

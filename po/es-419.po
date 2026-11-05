@@ -1622,13 +1622,13 @@ msgstr "Los iconos de los dumps no se piden (%s)"
 
 #: src/gui/main.c
 #, c-format
-msgid "%s could not be drawn: the game shows Wimsy in grey"
-msgstr "%s no se pudo dibujar: el juego muestra a Wimsy en gris"
+msgid "%s could not be drawn: the game shows Adrena's mark"
+msgstr "%s no se pudo dibujar: el juego muestra la marca de Adrena"
 
 #: src/gui/main.c
 #, c-format
-msgid "%s's picture could not be drawn: Wimsy shows"
-msgstr "la imagen de %s no se pudo dibujar: aparece Wimsy"
+msgid "%s's picture could not be drawn: Adrena's mark shows"
+msgstr "la imagen de %s no se pudo dibujar: aparece la marca de Adrena"
 
 #: src/gui/main.c
 msgid "Who plays the games"

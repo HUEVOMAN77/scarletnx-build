@@ -19,6 +19,10 @@ typedef struct {
     const char* title_keys; /* optional title.keys path supplied with --title-keys */
 } SnxPaths;
 
+/* What the player is told this program is called. Every path, folder name and file of a player's keeps scarletnx, so
+   their games, saves and keys stay where an older version put them; only what a screen or a log says by name is here */
+#define SNX_BRAND "Adrena"
+
 void* snx_alloc(size_t size);
 void* snx_realloc(void* ptr, size_t size);
 char* snx_strdup(const char* s);

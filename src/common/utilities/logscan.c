@@ -5,6 +5,7 @@
    dump and backtrace (hle/kernel/debug.c), ipc.c's service command warnings, and what the runtime missed (gap_line) */
 #include "common/utilities/logscan.h"
 #include "common/utilities/ascii.h"
+#include "common/utilities/common.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -383,6 +384,9 @@ static int take_lit(Span* s, const char* lit) {
     *s = skip(*s, strlen(lit));
     return 1;
 }
+/* A line this program prints about itself starts with its name: this build's (SNX_BRAND), or the one an earlier
+   build's logs carry. Both are the same program's header, so a log of either summarizes the same way */
+static int take_brand(Span* s) { return take_lit(s, SNX_BRAND " ") || take_lit(s, "ScarletNX "); }
 /* s from just after lit's first place in it */
 static int after(Span* s, const char* lit) {
     long at = find(*s, lit);
@@ -515,7 +519,7 @@ static void header(SnxLogScan* s, Span title) {
 /* "build: ScarletNX <branch> <commit> (<compiler>, <system>)" or the launcher's line without "build: " */
 static int build_line(SnxLogScan* s, Span line) {
     Span rest = line;
-    if (!take_lit(&rest, "ScarletNX ") || !rest.n || rest.p[rest.n - 1] != ')') return 0;
+    if (!take_brand(&rest) || !rest.n || rest.p[rest.n - 1] != ')') return 0;
     long sp = find(rest, " ");
     if (sp <= 0) return 0;
     Span branch = span(rest.p, (size_t)sp);
@@ -532,7 +536,8 @@ static int build_line(SnxLogScan* s, Span line) {
 /* the other frontends' header, the title, its ID when there is one, and the build on one line (3ds/aot/run.c,
    vita/runtime/main.c): "Game: <title> (<title ID>) - ScarletNX ...", "Game: <title> - ScarletNX ..." */
 static int frontend_header(SnxLogScan* s, Span rest) {
-    long at = find(rest, " - ScarletNX ");
+    long at = find(rest, " - " SNX_BRAND " ");
+    if (at <= 0) at = find(rest, " - ScarletNX ");
     if (at <= 0) return 0;
     Span title = span(rest.p, (size_t)at);
     if (title.n > 19 && title.p[title.n - 1] == ')' && title.p[title.n - 18] == '(' && title.p[title.n - 19] == ' ') {
@@ -1132,7 +1137,7 @@ void snx_logscan_line(SnxLogScan* s, const char* p, size_t n) {
         case PHASE_START:
             s->phase = PHASE_LOG;
             rest = line;
-            if (take_lit(&rest, "ScarletNX ") && !starts(rest, "- ") && line.n && line.p[line.n - 1] == ')') {
+            if (take_brand(&rest) && !starts(rest, "- ") && line.n && line.p[line.n - 1] == ')') {
                 s->launcher_build = add(s, line);
                 s->phase = PHASE_HEAD;
                 return;
@@ -1167,7 +1172,8 @@ void snx_logscan_line(SnxLogScan* s, const char* p, size_t n) {
     rest = line;
     switch (line.p[0]) {
         case 'S':
-            if (!s->title && take_lit(&rest, "ScarletNX - ")) {
+        case 'A': /* SNX_BRAND's own first letter */
+            if (!s->title && take_brand(&rest) && take_lit(&rest, "- ")) {
                 header(s, rest);
                 return;
             }

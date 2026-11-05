@@ -14,6 +14,7 @@
 #include "nx/runtime/state.h"
 #include "common/utilities/bits.h"
 #include "common/utilities/build_info.h"
+#include "common/utilities/common.h"
 #include "common/utilities/endian.h"
 #include "nx/gpu/gpu.h"
 #include "nx/gpu/renderer.h"
@@ -554,7 +555,7 @@ static int names_read(StateReader* r, Names* t, char* why, size_t whysize) {
             StateFnPtr f = state_fn_find(t->name[i]);
             memcpy(&t->ptr[i], &f, sizeof f);
             if (!f) {
-                snprintf(why, whysize, "it needs %s, which this ScarletNX doesn't have", t->name[i]);
+                snprintf(why, whysize, "it needs %s, which this " SNX_BRAND " doesn't have", t->name[i]);
                 return -1;
             }
         } else if (t->kind[i] != NAME_STR || !(t->ptr[i] = (void*)(uintptr_t)intern(t->name[i])))

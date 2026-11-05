@@ -1041,7 +1041,7 @@ int main(void) {
         assert(!fatal_log_url("/tmp/a.log", NULL, 0));
     }
     /* the user playing on the head's band: Player, without users.ini, as the YoRHa theme has it (square), in the
-       atlas under the sprites: Wimsy (no picture= and no picture file), and its Mii's (Baguette's) with
+       atlas under the sprites: Adrena's mark (no picture= and no picture file), and its Mii's (Baguette's) with
        picture=mii; on the right of the band, its frame in the page colour
        and the nickname before it; none on a stopped game's panel */
     {
@@ -1151,7 +1151,7 @@ int main(void) {
         warned[0] = 0;
         ui_atlas_set(sprites, SNX_CONTROLS_ATLAS_WIDTH, SNX_CONTROLS_ATLAS_HEIGHT);
         ui_atlas_done();
-        assert(!strcmp(warned, "ui: user 1's picture could not be drawn, Wimsy shows in the menu\n"));
+        assert(!strcmp(warned, "ui: user 1's picture could not be drawn, Adrena's mark shows in the menu\n"));
         free(jpg);
         free(sprites);
         assert(!snx_users_load("/nonexistent/users", 1, why, sizeof why)); /* Player again */
