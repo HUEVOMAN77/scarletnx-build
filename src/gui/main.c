@@ -8953,7 +8953,7 @@ static void vk_system_ask(App* app) {
     PFN_vkGetPhysicalDeviceProperties props;
     PFN_vkDestroyInstance destroy;
     VkApplicationInfo ai = {
-        .sType = VK_STRUCTURE_TYPE_APPLICATION_INFO, .pApplicationName = "ScarletNX", .apiVersion = VK_API_VERSION_1_1};
+        .sType = VK_STRUCTURE_TYPE_APPLICATION_INFO, .pApplicationName = SNX_BRAND, .apiVersion = VK_API_VERSION_1_1};
     VkInstanceCreateInfo ci = {.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO, .pApplicationInfo = &ai};
     VkInstance instance = VK_NULL_HANDLE;
     VkPhysicalDevice devices[4];
