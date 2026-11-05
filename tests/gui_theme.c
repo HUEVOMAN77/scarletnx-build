@@ -378,7 +378,7 @@ int main(void) {
     memset(longer + strlen(longer), 'x', 40);
     parse(&theme, longer);
     assert(!strcmp(theme.marker, def->marker) && same(theme.page, def->page));
-    assert(strstr(said, "[theme] base = elsewhere is not a built-in theme (default or yorha): it starts from default; "
+    assert(strstr(said, "[theme] base = elsewhere is not a built-in theme: it starts from default; "
                         "[body] marker = xxxx"));
     assert(strstr(said, "x is not one line of at most 15 characters: it keeps - "));
 

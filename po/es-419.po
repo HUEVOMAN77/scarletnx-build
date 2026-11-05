@@ -5153,8 +5153,8 @@ msgstr "[theme] format = %s no es un entero desde 1: se queda con %lu"
 
 #: src/gui/theme.c
 #, c-format
-msgid "[theme] base = %s is not a built-in theme (default or yorha): it starts from %s"
-msgstr "[theme] base = %s no es un tema interno (default o yorha): empieza desde %s"
+msgid "[theme] base = %s is not a built-in theme: it starts from %s"
+msgstr "[theme] base = %s no es un tema interno: empieza desde %s"
 
 #: src/gui/theme.c
 #, c-format

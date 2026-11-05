@@ -380,7 +380,7 @@ static void apply(GuiTheme* t, const char* section, const char* key, const char*
     }
     if (!strcmp(section, "theme") && !strcmp(key, "base")) { /* read before the rest */
         if (!gui_theme_builtin(value))
-            say(to, snx_tr("[theme] base = %s is not a built-in theme (default or yorha): it starts from %s"), value,
+            say(to, snx_tr("[theme] base = %s is not a built-in theme: it starts from %s"), value,
                 to->from);
         return;
     }

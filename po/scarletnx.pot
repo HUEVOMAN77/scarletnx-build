@@ -5153,7 +5153,7 @@ msgstr ""
 
 #: src/gui/theme.c
 #, c-format
-msgid "[theme] base = %s is not a built-in theme (default or yorha): it starts from %s"
+msgid "[theme] base = %s is not a built-in theme: it starts from %s"
 msgstr ""
 
 #: src/gui/theme.c
