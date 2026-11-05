@@ -70,6 +70,12 @@ const GuiThemeKey gui_theme_keys[] = {
     TEXT("body", "marker", marker, SNX_TR_NOOP("before each item")),
     WORD("body", "focus", focus_bar, focuses, SNX_TR_NOOP("the focused box in the focus color, or on a band of it")),
     WORD("body", "panels", panels, panel_words, SNX_TR_NOOP("the boxes outlined or filled")),
+    NUMBER("body", "radius", radius, 12, SNX_TR_NOOP("the boxes' and the focused rows' corners, pixels at the text's "
+                                                     "size; 0: square")),
+    NUMBER("body", "shadow", shadow, 8, SNX_TR_NOOP("a box's shadow in the dim colour, under it and to its right; 0: "
+                                                     "none")),
+    NUMBER("body", "tint", tint, 120, SNX_TR_NOOP("a filled box's colour, this many of 255 of the way from the page "
+                                                   "to the ink")),
     WORD("body", "text", text, flows, SNX_TR_NOOP("a text too long for its box over its rows, or on one that slides")),
     TEXT("body", "cursor", cursor, SNX_TR_NOOP("in the margin, beside the focused box")),
     WORD(

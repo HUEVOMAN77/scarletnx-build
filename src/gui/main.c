@@ -2340,12 +2340,92 @@ static void left_paths(const char* line, char* old, char* now, size_t size) {
 static void fill_rect(App* app, GuiRect r, GuiRgb c) {
     if (r.w > 0 && r.h > 0) fill(app, (float)r.x, (float)r.y, (float)r.w, (float)r.h, c, 255);
 }
+/* the columns a corner of radius rad leaves out of its box's row d, counted from the edge: the pixels whose centres
+   fall outside the corner's circle */
+static int arc_skip(int rad, int d) {
+    float dy = (float)rad - 0.5f - (float)d, inside = (float)rad * (float)rad - dy * dy, first;
+    int cut;
+    if (d >= rad || d < 0) return 0;
+    if (inside <= 0) return rad;
+    first = (float)rad - 0.5f - SDL_sqrtf(inside); /* the row's first pixel whose centre is inside the circle */
+    cut = first <= 0 ? 0 : (int)first + 1;
+    return cut > rad ? rad : cut;
+}
+/* a box's corners, the theme's radius at the window's scale, within the box's shorter side */
+static int corner(const App* app, GuiRect r) {
+    int rad = (int)app->theme.radius * app->scale;
+    return SDL_min(rad, SDL_min(r.w, r.h) / 3);
+}
+/* r filled in c at alpha, its corners rounded: its middle in one fill, then a row for each corner's steps */
+static void fill_round_at(App* app, GuiRect r, GuiRgb c, int rad, Uint8 alpha) {
+    int d;
+    if (r.w <= 0 || r.h <= 0) return;
+    if (rad <= 0) {
+        fill(app, (float)r.x, (float)r.y, (float)r.w, (float)r.h, c, alpha);
+        return;
+    }
+    if (r.h > 2 * rad) fill(app, (float)r.x, (float)(r.y + rad), (float)r.w, (float)(r.h - 2 * rad), c, alpha);
+    for (d = 0; d < rad; ++d) {
+        int cut = arc_skip(rad, d), w = r.w - 2 * cut;
+        if (w <= 0) continue;
+        fill(app, (float)(r.x + cut), (float)(r.y + d), (float)w, 1.0f, c, alpha);
+        fill(app, (float)(r.x + cut), (float)(r.y + r.h - 1 - d), (float)w, 1.0f, c, alpha);
+    }
+}
+static void fill_round(App* app, GuiRect r, GuiRgb c, int rad) { fill_round_at(app, r, c, rad, 255); }
+/* a box's shadow: the dim colour over a copy of the box moved down and to its right, of which only the bands that
+   fall outside it show - what the box covers would be painted over, or is nothing at all when the box is only framed */
+static void fill_shadow(App* app, GuiRect r, int rad, int depth) {
+    GuiRect box = gui_rect(r.x + depth / 2, r.y + depth, r.w, r.h);
+    SDL_Rect was, bands[2] = {{r.x + r.w, r.y, depth, r.h + depth}, {r.x, r.y + r.h, r.w, depth}};
+    int had = SDL_RenderClipEnabled(app->renderer) && SDL_GetRenderClipRect(app->renderer, &was), i;
+    for (i = 0; i < 2; ++i) {
+        SDL_Rect band = bands[i];
+        if (had && !SDL_GetRectIntersection(&band, &was, &band)) band = (SDL_Rect){0, 0, 0, 0};
+        SDL_SetRenderClipRect(app->renderer, &band);
+        fill_round_at(app, box, app->theme.dim, SDL_min(rad + depth / 2, box.h / 3), 80);
+    }
+    SDL_SetRenderClipRect(app->renderer, had ? &was : NULL);
+}
+/* a box's head, band_h from its top: filled as the box is, so its corners are the box's, and cut straight at the
+   band's bottom - what falls below it is clipped away */
+static void fill_head(App* app, GuiRect r, int band_h, GuiRgb c, int rad) {
+    SDL_Rect was, band = {r.x, r.y, r.w, band_h};
+    int had = SDL_RenderClipEnabled(app->renderer) && SDL_GetRenderClipRect(app->renderer, &was);
+    if (had && !SDL_GetRectIntersection(&band, &was, &band)) band = (SDL_Rect){0, 0, 0, 0};
+    SDL_SetRenderClipRect(app->renderer, &band);
+    fill_round(app, r, c, rad);
+    SDL_SetRenderClipRect(app->renderer, had ? &was : NULL);
+}
+/* r's frame, s thick, in c: straight over its sides, the corners' steps where its sides turn */
+static void outline_rect(App* app, GuiRect r, GuiRgb c, int s, int rad) {
+    int d;
+    if (rad <= 0) {
+        fill_rect(app, gui_rect(r.x, r.y, r.w, s), c);
+        fill_rect(app, gui_rect(r.x, r.y + r.h - s, r.w, s), c);
+        fill_rect(app, gui_rect(r.x, r.y, s, r.h), c);
+        fill_rect(app, gui_rect(r.x + r.w - s, r.y, s, r.h), c);
+        return;
+    }
+    for (d = 0; d < s; ++d) { /* the end rows, the height's own steps, over the frame's whole thickness */
+        int cut = arc_skip(rad, d);
+        fill_rect(app, gui_rect(r.x + cut, r.y + d, r.w - 2 * cut, 1), c);
+        cut = arc_skip(rad, s - 1 - d);
+        fill_rect(app, gui_rect(r.x + cut, r.y + r.h - s + d, r.w - 2 * cut, 1), c);
+    }
+    fill_rect(app, gui_rect(r.x, r.y + rad, s, r.h - 2 * rad), c);
+    fill_rect(app, gui_rect(r.x + r.w - s, r.y + rad, s, r.h - 2 * rad), c);
+    for (d = s; d < rad; ++d) { /* between the end rows and the sides: the frame's width, where its arcs come together */
+        int out = arc_skip(rad, d), n = s + arc_skip(rad - s, d - s);
+        if (n <= out) continue;
+        fill_rect(app, gui_rect(r.x + out, r.y + d, n - out, 1), c);
+        fill_rect(app, gui_rect(r.x + r.w - n, r.y + d, n - out, 1), c);
+        fill_rect(app, gui_rect(r.x + out, r.y + r.h - 1 - d, n - out, 1), c);
+        fill_rect(app, gui_rect(r.x + r.w - n, r.y + r.h - 1 - d, n - out, 1), c);
+    }
+}
 static void outline(App* app, GuiRect r, GuiRgb c) {
-    int s = app->scale;
-    fill_rect(app, gui_rect(r.x, r.y, r.w, s), c);
-    fill_rect(app, gui_rect(r.x, r.y + r.h - s, r.w, s), c);
-    fill_rect(app, gui_rect(r.x, r.y, s, r.h), c);
-    fill_rect(app, gui_rect(r.x + r.w - s, r.y, s, r.h), c);
+    outline_rect(app, r, c, app->scale, corner(app, r));
 }
 /* value from pixel x, y up to the right edge of r, from its column skip on: the letters past that edge left out */
 static void text_from(App* app, GuiRect r, int x, int y, const char* value, int skip, SDL_Color color) {
@@ -2377,15 +2457,29 @@ static void row_text_in(App* app, GuiRect r, int x, int y, const char* value, bo
     gui_text_fit(value, (r.x + r.w - x) / cell_w(app), cut, sizeof cut);
     text_from(app, r, x, y, cut, 0, color);
 }
+/* a filled box's colour: the page tinted of the way to the ink, the theme's tint of 255 */
+static GuiRgb box_fill(const GuiTheme* t) {
+    int n = (int)t->tint > 255 ? 255 : (int)t->tint;
+    GuiRgb c = t->page;
+    if (!n) return c;
+    c.r = (uint8_t)(c.r + ((int)t->ink.r - c.r) * n / 255);
+    c.g = (uint8_t)(c.g + ((int)t->ink.g - c.g) * n / 255);
+    c.b = (uint8_t)(c.b + ((int)t->ink.b - c.b) * n / 255);
+    return c;
+}
 /* a box framed in the dim colour, filled with the page's (fill) or the frame alone (line); with a head when label is
    not NULL, its label on a band of ink (fill) or over a rule (line). Where its text starts */
 static int pane(App* app, GuiRect r, const char* label) {
     const GuiTheme* t = &app->theme;
-    int s = app->scale, filled = t->panels == GUI_PANELS_FILL;
-    if (filled) fill_rect(app, r, t->page);
-    if (label && filled) fill_rect(app, gui_rect(r.x, r.y, r.w, head_h(app)), t->ink);
-    if (label && !filled) fill_rect(app, gui_rect(r.x, r.y + head_h(app) - s, r.w, s), t->dim);
-    outline(app, r, t->dim);
+    int s = app->scale, filled = t->panels == GUI_PANELS_FILL, rad = corner(app, r);
+    if (t->shadow) fill_shadow(app, r, rad, (int)t->shadow * s);
+    if (filled) fill_round(app, r, box_fill(t), rad);
+    if (label && filled) fill_head(app, r, head_h(app), t->ink, rad);
+    if (label && !filled) { /* the head's rule, kept inside the box where its corners round */
+        int cut = arc_skip(rad, head_h(app) - s);
+        fill_rect(app, gui_rect(r.x + cut, r.y + head_h(app) - s, r.w - 2 * cut, s), t->dim);
+    }
+    outline_rect(app, r, t->dim, s, rad);
     if (label) text_in(app, inner(app, r), r.x + cell_w(app), r.y + 2 * s, label, rgb(filled ? t->page : t->ink));
     return r.y + (label ? head_h(app) : 0) + 2 * s;
 }
@@ -3192,9 +3286,9 @@ void ui_draw_row(App* app, GuiRect r, const char* text, unsigned icon, const voi
     }
     snprintf(label, sizeof label, "%s%s%s%s", t->marker, gui_icon_utf8(icon, glyph), icon ? " " : "", text);
     if (failing || inverted)
-        fill_rect(app, b, failing ? t->failure : off ? t->soft : t->focus);
+        fill_round(app, b, failing ? t->failure : off ? t->soft : t->focus, corner(app, b));
     else if (filled)
-        fill_rect(app, b, t->dim);
+        fill_round(app, b, t->dim, corner(app, b));
     if (!failing && !inverted && (!filled || look)) outline(app, b, look ? t->focus : t->dim);
     {
         SDL_Color ink = rgb(failing || inverted      ? t->page
@@ -3241,11 +3335,12 @@ void ui_draw_tile(App* app, GuiRect r, const char* text, const void* image, unsi
                                                  : ui_colour(app, color, t->ink));
     SDL_Color soft = rgb(failing || inverted ? t->page : t->soft);
     GuiRect in = gui_rect(r.x + cw / 2, r.y, r.w - cw, r.h); /* half a cell either side */
+    int rad = corner(app, r);
     if (failing || inverted)
-        fill_rect(app, r, failing ? t->failure : off ? t->soft : t->focus);
+        fill_round(app, r, failing ? t->failure : off ? t->soft : t->focus, rad);
     else if (filled)
-        fill_rect(app, r, t->dim);
-    if (!failing && !inverted && (!filled || look)) outline(app, r, look ? t->focus : t->dim);
+        fill_round(app, r, t->dim, rad);
+    if (!failing && !inverted && (!filled || look)) outline_rect(app, r, look ? t->focus : t->dim, s, rad);
     if (image && side > 0) {
         SDL_FRect at = {(float)(r.x + (r.w - side) / 2), (float)(r.y + 2 * s), (float)side, (float)side};
         SDL_RenderTexture(app->renderer, (SDL_Texture*)image, NULL, &at);
@@ -4087,7 +4182,7 @@ static void draw_user(App* app, GuiRect r, int band) {
     int s = app->scale, side = user_side(app, r.h);
     SDL_Texture* picture;
     if (!r.h || side <= 0) return;
-    if (!band && t->panels == GUI_PANELS_FILL) fill_rect(app, r, t->page);
+    if (!band && t->panels == GUI_PANELS_FILL) fill_round(app, r, t->page, corner(app, r));
     outline(app, r, band ? t->page : t->dim);
     text_in(app, gui_rect(r.x, r.y, r.w - side - 2 * s - cell_w(app), r.h), r.x + cell_w(app),
             r.y + (r.h - cell_h(app)) / 2, app->user_name, rgb(band ? t->page : t->ink));
@@ -5874,11 +5969,11 @@ static void draw_tabs(App* app, GuiRect row, int band) {
         if ((!app->setup_on || app->editing) && i == GUI_TAB_RECOMPILE) ended = recompile_tab(app, label, sizeof label);
         failing = ended == GUI_TAB_FAILED && !(t->blink_ms && (now_ms(app) / t->blink_ms) % 2);
         if (failing)
-            fill_rect(app, r, t->failure);
+            fill_round(app, r, t->failure, corner(app, r));
         else if (inverted)
-            fill_rect(app, r, focus);
+            fill_round(app, r, focus, corner(app, r));
         else if (t->panels == GUI_PANELS_FILL)
-            fill_rect(app, r, t->dim);
+            fill_round(app, r, t->dim, corner(app, r));
         if (!failing && !inverted && (t->panels == GUI_PANELS_OUTLINE || on)) outline(app, r, on ? focus : t->dim);
         tab_label(app, i, label, sizeof label);
         text_in(app, r, r.x + GUI_BUTTON_PAD * cell_w(app), r.y + (r.h - cell_h(app)) / 2, label, /* in its middle */
@@ -11291,7 +11386,7 @@ static void grouped_frames(App* app, const GuiFormBoxes* f) {
         }
         if (!a.h) continue;
         box = gui_rect(a.x - cw / 2, a.y, bw ? a.w + cw / 2 : a.w + cw, z.y + z.h - a.y);
-        if (app->theme.panels == GUI_PANELS_FILL) fill_rect(app, box, app->theme.page);
+        if (app->theme.panels == GUI_PANELS_FILL) fill_round(app, box, app->theme.page, corner(app, box));
         outline(app, box, app->theme.dim);
     }
     if (l->shift) ui_clip(app, NULL);

@@ -656,7 +656,9 @@ over the screen darkened, in a box in its middle, or with `[body] options-dialog
 foot, a tab with its label on the box's edge, the choices at its right above it, as the game's dialogs. The files an
 older version left come in a box over the screen darkened.
 
-The built-ins are `default`, the look above, and `yorha`: paper and ink, a title twice the text's size where it fits whole, a faint
+The built-ins are `default` (the look above, its boxes' corners rounded and a shadow of the dim colour under them),
+`amber` (Ámbar: the same over a dark amber page, its gold the focus), `paper` (Papel: white paper and ink, its boxes
+filled with a tint of the ink and shadowed like cards) and `yorha`: paper and ink, a title twice the text's size where it fits whole, a faint
 grid on the page, square markers, the focused box inverted, the tips in a box under the head, the keys in one on a
 band of ink at the foot, and a run drawn as a
 dark loading screen in its own colours (`[run]`): the title, the game's name with turning
@@ -737,6 +739,12 @@ marker = "> "
 focus = bar
 ; the boxes outline (framed) or fill (filled)
 panels = fill
+; the boxes' and the focused rows' corners, pixels at the text's size; 0: square
+radius = 6
+; a box's shadow in the dim colour, under it and to its right; 0: none
+shadow = 2
+; a filled box's colour, this many of 255 of the way from the page to the ink
+tint = 18
 ; a text too long for its box: wrap (over its rows) | slide (on one row)
 text = wrap
 ; in the list's margin, beside the focused box

@@ -64,6 +64,9 @@ typedef struct {
     int focus_bar; /* the focused box as a band of the focus colour, its text in the page colour */
     char marker[16];
     GuiPanels panels;
+    uint32_t radius; /* the boxes' and the focused rows' corners, pixels at scale 1; 0 keeps them square */
+    uint32_t shadow; /* a box's shadow in the dim colour, under it and to its right; 0: none */
+    uint32_t tint;   /* a filled box's colour, this many of 255 of the way from the page to the ink */
     GuiTextFlow text;
     char cursor[16]; /* in the list's margin, beside the focused box */
     GuiDialog dialog;
@@ -137,7 +140,7 @@ void gui_theme_file_free(GuiThemeFile* file);
    when out of memory */
 char* gui_theme_write(const GuiTheme* theme, const GuiThemeFile* file);
 
-/* "default" and "yorha"; NULL for any other id */
+/* each built-in's: "default", "amber", "paper", "yorha"; NULL for any other id */
 const GuiTheme* gui_theme_builtin(const char* id);
 /* the theme whose splash a boot shows: this one when roll (0 to 99) is under its chance, else the default */
 const GuiTheme* gui_splash_theme(const GuiTheme* theme, int roll);

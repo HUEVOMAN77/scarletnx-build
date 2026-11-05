@@ -10900,7 +10900,8 @@ int main(int argc, char** argv) {
             foot_px_is(&app, r.x + 8 * fs, r.y + 2 * fs, "ESC", yellow, black);
             assert(
                 same_colour(pixel(&app, (float)r.x, (float)(r.y + 10 * fs)), rgb(app.theme.dim))); /* its box's edge */
-            assert(same_colour(pixel(&app, (float)(r.x + 4 * fs), (float)r.y), rgb(app.theme.dim)));
+            assert(same_colour(pixel(&app, (float)(r.x + r.w / 2), (float)r.y),
+                               rgb(app.theme.dim))); /* its box's edge, where its corners do not round */
             shows_foot(&app, "exit", normal);
             hides(&app, "ESC", yellow);
             foot_px_is(&app, r.x + r.w - 8 * 8 * fs, r.y + 2 * fs + (rows - 1) * pitch, "F1", yellow, black);

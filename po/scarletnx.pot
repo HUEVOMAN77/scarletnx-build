@@ -4939,6 +4939,18 @@ msgid "the boxes outlined or filled"
 msgstr ""
 
 #: src/gui/theme.c
+msgid "the boxes' and the focused rows' corners, pixels at the text's size; 0: square"
+msgstr ""
+
+#: src/gui/theme.c
+msgid "a box's shadow in the dim colour, under it and to its right; 0: none"
+msgstr ""
+
+#: src/gui/theme.c
+msgid "a filled box's colour, this many of 255 of the way from the page to the ink"
+msgstr ""
+
+#: src/gui/theme.c
 msgid "a text too long for its box over its rows, or on one that slides"
 msgstr ""
 
