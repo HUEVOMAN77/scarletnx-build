@@ -600,7 +600,7 @@ static void report_lock_waits(void) {
    by two periods owes one refresh beyond its own. The game's vsync-paced logic steps once per refresh, so the ones a
    starved frontend missed are the load's slow motion */
 static int vsync_late_ticks(u64 next, u64 period) {
-    int cap = __atomic_load_n(&g_settings.vsync_catchup, __ATOMIC_RELAXED);
+    int cap = __atomic_load_n(&g_settings.v_sync_catch_up, __ATOMIC_RELAXED);
     u64 now = plat_ns(), owed;
     if (cap <= 0 || now <= next) return 0;
     owed = (now - next) / period;
