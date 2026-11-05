@@ -76,7 +76,7 @@ typedef struct {
     int counting, stop;
     int again;             /* translating the hits counting found: what counting counted is met a second time */
     u32 stages[ST_CS + 2]; /* the programs counted by stage, VertexA's last */
-    u32 found, made, known, skipped, lone, failed, lacked, unread, big;
+    u32 found, made, known, skipped, lone, failed, lacked, unread, big, notkind, earlier;
     u64 held, kept; /* bytes read into now, and the hits' bytes kept from counting */
 } Walk;
 /* a source counting found programs in, with its bytes when they were kept */
@@ -379,17 +379,24 @@ int ship_walk(const ShipSink* sink, ShipProgress* progress, int count) {
         int kind, got, rc;
         __atomic_add_fetch(&progress->files_seen, 1, __ATOMIC_RELAXED);
         /* a file of a kind skipped by its name, or that an earlier run of this walk found nothing in: none of it read */
-        if (!s->mem && (shipped_name_skips(s->name) || sink->scanned(sink->ctx, SHIP_NONE, place))) continue;
+        if (!s->mem && (shipped_name_skips(s->name) || sink->scanned(sink->ctx, SHIP_NONE, place))) {
+            w.earlier++;
+            continue;
+        }
         kind = source_kind(s, place, &id);
         if (kind < 0) {
             w.unread++;
             continue;
         }
         if (kind == SHIPPED_SKIP) { /* no container its first bytes name */
+            w.notkind++;
             read_nothing(&w, s, id, place);
             continue;
         }
-        if (sink->scanned(sink->ctx, SHIP_FILE, id)) continue;
+        if (sink->scanned(sink->ctx, SHIP_FILE, id)) {
+            w.earlier++;
+            continue;
+        }
         if (s->size > FILE_MAX) { /* marked read: no run of this walk reads it */
             w.big++;
             read_nothing(&w, s, id, place);
@@ -472,6 +479,9 @@ int ship_walk(const ShipSink* sink, ShipProgress* progress, int count) {
              stopped(&w) ? ". The rest couldn't be saved and are made as the game draws them" : "");
         detail(&w, "%u programs: %u translated, %u already translated, %u left out, %u failed", w.found, w.made,
                w.known, w.skipped + w.lone, w.failed);
+        if (!w.found) /* a game that ships no container this reads, apart from one whose files it never got to */
+            detail(&w, "%u of the %u files and segments hold no container this reads, %u read by an earlier run",
+                   w.notkind, w.nsrc, w.earlier);
     }
     if (w.unread)
         note(&w, "%u file%s skipped this time, checked again next launch", w.unread, w.unread == 1 ? "" : "s");
