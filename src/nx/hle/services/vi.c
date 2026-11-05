@@ -718,6 +718,27 @@ void vi_vsync_tick(void) {
         ev_signal(g_hle.vi.hotplug);
     }
 }
+/* The refreshes a frontend tick missed while its thread had no CPU. A game paced by vsync steps its logic once per
+   refresh it takes from this event, and the event is one flag the game clears for itself (svc's ClearEvent), so the
+   refreshes owed are armed one at a time, each only once the game has taken the one before: setting the flag three
+   times over would be one refresh taken and two lost, which is the run's slow motion. each_ns is the most one
+   arm is waited for: a game that isn't waiting on the display now isn't going to take what comes behind it, so the
+   rest are left owed for the tick after. The number armed is what the run's clock gives back to its schedule */
+int vi_vsync_catchup(int owed, u64 each_ns) {
+    KEvent* vsync = kev(g_hle.vi.vsync);
+    int taken = 0;
+    if (!vsync || owed <= 0) return 0;
+    for (int i = 0; i < owed; i++) {
+        u64 until = plat_ns() + each_ns;
+        while (kevent_signaled(vsync)) { /* the refresh armed so far: wait for the game to take it */
+            if (plat_ns() >= until) return taken;
+            plat_sleep_ns(20000); /* a twentieth of a millisecond: the game's wake, not this thread's CPU */
+        }
+        ev_signal(g_hle.vi.vsync); /* it took that one: hand it the refresh the tick missed */
+        taken++;
+    }
+    return taken;
+}
 
 static SvcObj* new_vi_u(void) { return nn_visrv_sf_IApplicationRootService_new(); }
 static SvcObj* new_vi_s(void) { return nn_visrv_sf_ISystemRootService_new(); }

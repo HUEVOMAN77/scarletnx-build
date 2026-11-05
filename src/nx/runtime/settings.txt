@@ -206,19 +206,25 @@ setting Vsync
     label VSync
     int 0 1
     default 1
+    default-if __ANDROID__ 0
     words Off|On
     help 1 = images wait for the display's refresh, so nothing tears; 0 = the newest is shown at the next refresh
     help the display allows, else at once
+    help Off on a phone: its GPU falls behind the game's pace often enough that waiting for every refresh holds the
+    help whole run back, and a touch screen shows the tearing of the newest frame instead
 setting Frame pacing
     key frame_pacing
     int 0 2
     default 1
+    default-if __ANDROID__ 0
     words Timer|Display|Display and hold
     help With VSync and fps_limit=game: 0 = the game's frames are paced by a timer; 1 = the game's next frame also
     help waits until the frame before is on the display (VK_KHR_present_wait or VK_GOOGLE_display_timing), so frames
     help don't queue for it; 2 = and a game that asks for two refreshes or more a frame has each frame held until its
     help refresh where the display can say when (VK_EXT_present_timing or VK_GOOGLE_display_timing), so its frames
     help are shown evenly. Where the display can't do one, the one before it
+    help Timer on a phone: with VSync off there is no display clock to pace by, and the timer is what paces the game
+    help at its own rate while its frames come as fast as the GPU can take them
 setting Anisotropic filtering
     key anisotropy
     int 0 16
@@ -257,6 +263,16 @@ setting FPS limit
     set options_fps_set
     help game = the pace the game asks for, as on the console (60 FPS, or 30 for a game made for 30); 0 = no limit;
     help 10 to 1000 = that many frames a second. F4 turns the limit off and on
+setting VSync catch-up
+    key vsync_catchup
+    int 0 3
+    default 2
+    words Off|1|2|3
+    help A game paced by vsync steps its logic once per display refresh, so refreshes the runtime's own thread misses
+    help (a phone whose game threads keep every CPU) make it run slow, like a camera's slow motion, with fewer frames
+    help shown for itself. 0 = one refresh per tick, as the run's clock gives; 1 to 3 = and up to that many
+    help refreshes the tick missed, each given back once the game has taken the refresh before it, so the game keeps
+    help real time ahead of the display. A game busy with its own work takes none, so none is owed to its schedule
 setting Memory (GB)
     key memory_gb
     int 0 8

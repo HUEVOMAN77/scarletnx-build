@@ -422,9 +422,11 @@ int plat_cpus_big(int* ids, int max) {
     n = plat_cpus(all, (int)sizeof all / (int)sizeof all[0]);
     for (i = 0; i < n; ++i) {
         long k = cpu_khz(all[i]);
-        if (k < 0) break;        /* no clock here, so none further in the ordered list either */
-        if (i && k < top) break; /* the first slower CPU ends the quickest run of them */
+        if (k < 0) break; /* no clock here, so none further in the ordered list either */
         if (!i) top = k;
+        /* the cluster, not one clock: a phone's quickest core often runs a little above its own cluster's, and a
+           game's thread left off the cluster lands on the slow cores, where it takes a third more time per frame */
+        if (i && k * 10 < top * 9) break; /* the first CPU under 90% of the quickest ends the run of them */
         g_big_ids[out++] = all[i];
     }
     g_big_count = out;

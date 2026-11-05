@@ -267,13 +267,14 @@ static const SnxModule* load_module(const char* path) {
            reports are grouped by */
         if (arm && arm->abi != SNX_ARM_MODULE_ABI) {
             WARN("game: its code is %s\n", path);
-            fatal("The recompiled code is from another ScarletNX version (32-bit ABI %08x, where this one runs %08x): "
+            fatal("The recompiled code is from another " SNX_BRAND
+                  " version (32-bit ABI %08x, where this one runs %08x): "
                   "recompile the game with this one",
                   (unsigned)arm->abi, (unsigned)SNX_ARM_MODULE_ABI);
         }
         m = arm_module(arm);
     } else
-        fatal("%s is not a ScarletNX game module", path);
+        fatal("%s is not a " SNX_BRAND " game module", path);
     if (!m) fatal("%s could not be loaded: it describes no game", path);
     plat_crash_code_module(sym); /* the module its descriptor's function is in */
     if ((sym = plat_dl_sym(lib, "snx_variants")) != NULL) {
@@ -595,12 +596,22 @@ static void report_lock_waits(void) {
              w[i].cond ? "waits on a condition with" : "waits for", (long long)((intptr_t)w[i].m - (intptr_t)pm_wait_base()),
              (long long)((intptr_t)w[i].at - (intptr_t)pm_lock));
 }
+/* the refreshes owed since the tick's next due time, as far as the setting lets them come back: a tick that ran late
+   by two periods owes one refresh beyond its own. The game's vsync-paced logic steps once per refresh, so the ones a
+   starved frontend missed are the load's slow motion */
+static int vsync_late_ticks(u64 next, u64 period) {
+    int cap = __atomic_load_n(&g_settings.vsync_catchup, __ATOMIC_RELAXED);
+    u64 now = plat_ns(), owed;
+    if (cap <= 0 || now <= next) return 0;
+    owed = (now - next) / period;
+    return owed > (u64)cap ? cap : (int)owed;
+}
 static void frontend_loop(void) {
     const u64 period = 1000000000u / VI_REFRESH_HZ;
-    u64 tick = 0, next = plat_ns(), now, changed = next, rate_at = next;
+    u64 tick = 0, next = plat_ns(), now, changed = next, rate_at = next, late_used = 0;
     int frames = 0, stalls = 0, rate_frames = 0;
     while (!g_quit) {
-        int shown, paused;
+        int shown, paused, late = 0;
         SNX_ZONE(z_frontend, "frontend tick");
         video_poll();
         options_tv_mode_update();
@@ -609,6 +620,12 @@ static void frontend_loop(void) {
         if (!paused) {
             hid_update();
             vi_vsync_tick();
+            /* a tick that came late (this thread didn't get a CPU while the game's threads took them all) lost
+               refreshes: the game runs its vsync-paced logic once per refresh, so the missed ones are the load's slow
+               motion, and its frames fall short on their own. vi hands them back one as the game takes each (vi.h);
+               a millisecond each, for a game that isn't waiting on the display now won't take what comes behind it */
+            late = vi_vsync_catchup(vsync_late_ticks(next, period), period / 16);
+            late_used += (u64)late;
         }
         if (++tick % 60 == 0) ini_poll(0);
         frontend_frame();
@@ -646,8 +663,10 @@ static void frontend_loop(void) {
         shown = __atomic_load_n(&g_frames, __ATOMIC_RELAXED);
         /* the pace the game is shown at, in the log every five seconds: a phone has no overlay to read it from */
         if (now - rate_at >= 5000000000u) {
-            LOG("perf: %.1f frames a second over %.1f s (%d shown in all)\n",
-                (double)(shown - rate_frames) * 1e9 / (double)(now - rate_at), (double)(now - rate_at) / 1e9, shown);
+            LOG("perf: %.1f frames a second over %.1f s (%d shown in all), %llu refresh%s late given back\n",
+                (double)(shown - rate_frames) * 1e9 / (double)(now - rate_at), (double)(now - rate_at) / 1e9, shown,
+                (unsigned long long)late_used, late_used == 1 ? "" : "es");
+            late_used = 0;
             rate_at = now;
             rate_frames = shown;
 #ifdef MODULE_PACK
@@ -671,8 +690,9 @@ static void frontend_loop(void) {
             gpu_report_stall();
             report_lock_waits();
         }
-        /* paced at the display's rate, from a schedule: one far behind (a stop in the debugger) starts again */
-        next += period;
+        /* paced at the display's rate, from a schedule: one far behind (a stop in the debugger) starts again. The
+           refreshes handed back above are off the schedule, so it doesn't drift by them */
+        next += period * (u64)(1 + late);
         if (now > next + 100000000u)
             next = now;
         else if (next > now)
@@ -934,7 +954,8 @@ int snx_main(int argc, char** argv) {
     mod = load_module(module);
     if (mod->abi != SNX_ABI) {
         WARN("game: its code is %s\n", module);
-        fatal("The recompiled code is from another ScarletNX version (ABI %u, where this one runs %u): recompile the "
+        fatal("The recompiled code is from another " SNX_BRAND
+              " version (ABI %u, where this one runs %u): recompile the "
               "game with this one",
               (unsigned)mod->abi, (unsigned)SNX_ABI);
     }
@@ -970,7 +991,7 @@ int snx_main(int argc, char** argv) {
 #endif
     /* the header the log summary reads (common/utilities/logscan.c): no folder in it, since players attach the log to
        public reports and the folder names their account */
-    LOG("ScarletNX - %s\n", title);
+    LOG(SNX_BRAND " - %s\n", title);
     LOG("build: %s\n", snx_build_info());
     {
         char sys[384];

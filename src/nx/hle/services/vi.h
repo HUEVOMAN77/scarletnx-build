@@ -12,6 +12,9 @@
 #define VI_REFRESH_HZ 60
 
 void vi_vsync_tick(void); /* one display refresh: signals the vsync event */
+/* owed refreshes the tick missed, given one at a time as the game takes them, each waited for at most each_ns: the
+   number actually given back, which the frontend's schedule then leaves out of its own waiting */
+int vi_vsync_catchup(int owed, u64 each_ns);
 /* ---- HLE state in g_hle (hle.h) */
 #define VI_LAYERS 8
 #define VI_SLOTS  64    /* BufferQueueDefs::NUM_BUFFER_SLOTS */

@@ -283,3 +283,11 @@ void kevent_clear(KEvent* e) {
     e->signaled = 0;
     klock_unlock();
 }
+int kevent_signaled(const KEvent* e) {
+    int set;
+    if (!e) return 0;
+    pm_lock(&g_host.kernel.klock);
+    set = e->signaled;
+    klock_unlock();
+    return set;
+}

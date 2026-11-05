@@ -155,6 +155,9 @@ KObj* h_get_ref(u32 h, int t);
 KEvent* kevent_new(const char* name);
 void kevent_signal(KEvent* e);
 void kevent_clear(KEvent* e);
+/* whether the event is set now, so a wait on it returns at once. The display's clock asks it before owing the game a
+   refresh it missed, to count only the vsyncs the game really takes */
+int kevent_signaled(const KEvent* e);
 
 KThread* kthread_cur(void);
 /* Taking and releasing the thread's core. core_poll is where RtAPI's poll gives it up to a waiting thread, when
